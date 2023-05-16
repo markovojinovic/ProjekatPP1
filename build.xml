@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <project name="ProjekatPP1" basedir=".">
     <target name="lexerGen">
-        <java jar="lib/JFlex.jar">
+        <java jar="lib/JFlex.jar" fork="true">
             <arg value="-h" />
-
         </java>
     </target>
 </project>
