@@ -1,10 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<project name="ProjekatPP1" default="lexerGen" basedir=".">
-    <target name="lexerGen">
+<project name="ProjekatPP1" default="compile" basedir=".">
+
+    <target name="delete">
+        <fileset dir="src/rs/ac/bg/etf/pp1">
+            <exclude name="sym.java"/>
+        </fileset>
+    </target>
+
+    <target name="lexerGen" depends="delete">
         <java jar="lib/JFlex.jar" fork="true">
             <arg value="-d" />
             <arg value="src/rs/ac/bg/etf/pp1" />
             <arg value="src/spec/mjlexer.flex" />
         </java>
+    </target>
+
+    <target name="compile" depends="lexerGen">
+        <javac srcdir="src/rs/ac/bg/etf/pp1" includeantruntime="false">
+            <classpath>
+                <pathelement path="lib/JFlex.jar"/>
+                <pathelement path="lib/cup_v10k.jar"/>
+            </classpath>
+        </javac>
     </target>
 </project>
