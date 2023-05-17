@@ -1,0 +1,13 @@
+DesignatorStatement := Designator "(" [ActPars]")" .
+Statement := "if" "(" Condition ")" Statement ["else" Statement ].
+Statement := "while" "(" Condition ")" Statement.
+Statement := "break" ";".
+Statement := "continue" ";".
+Statement := "return" [Expr] ";".
+Statement := Designator "." "foreach" "(" ident "=>" Statement ")" ";".
+Statement := "{"{Statement} "}".
+ActPars := Expr {"," Expr }.
+Condition := CondTerm { "||" CondTerm }.
+CondTerm := CondFact { "&&" CondFact }.
+CondFact = Expr [ Relop Expr ].
+Factor := Designator [ "(" [ActPars] ")" ]
