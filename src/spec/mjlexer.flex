@@ -61,6 +61,7 @@ import java_cup.runtime.Symbol;
 "}"			{ return new_symbol(sym.RBRACE, yytext()); }
 "["			{ return new_symbol(sym.LSQUARE, yytext()); }
 "]"			{ return new_symbol(sym.RSQUARE, yytext()); }
+"'"			{ return new_symbol(sym.APOSTROF, yytext()); }
 
 "//" {yybegin(COMMENT);}
 <COMMENT> . {yybegin(COMMENT);}
