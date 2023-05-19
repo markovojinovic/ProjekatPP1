@@ -11,3 +11,6 @@ Condition := CondTerm { "||" CondTerm }.
 CondTerm := CondFact { "&&" CondFact }.
 CondFact = Expr [ Relop Expr ].
 Factor := Designator [ "(" [ActPars] ")" ]
+Factor: = "new" Type "[" Expr "]" "[" Expr "]".
+VarDecl: = Type ident ["[" "]" ["[" "]"]] {"," ident ["[" "]" ["[" "]"]]} ";".
+FormPars = Type ident ["[" "]" ["[" "]"]] {"," Type ident ["[" "]" ["[" "]"]]}.

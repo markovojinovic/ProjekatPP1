@@ -2,6 +2,12 @@ program MJProgram
     int x, y;
 {
     void main(){
-
+        int a[10], b[20];
+        a[1]++;
+        b[2] = b[0] + b[1];
+        b[0] = new int;
+        char c;
+        bool nesto = false;
+        // komentar
     }
 }
