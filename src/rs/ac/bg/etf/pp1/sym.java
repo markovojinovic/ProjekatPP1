@@ -38,7 +38,7 @@ public class sym {
     public static final int EQUAL = 27;
     public static final int LSQUARE = 28;
     public static final int RSQUARE = 29;
-    public static final int APOSTROF = 32;
+    public static final int CHARCONST = 32;
 
 
     public static final int EOF = 30;
