@@ -1,16 +1,16 @@
-DesignatorStatement := Designator "(" [ActPars]")" .
-Statement := "if" "(" Condition ")" Statement ["else" Statement ].
-Statement := "while" "(" Condition ")" Statement.
-Statement := "break" ";".
-Statement := "continue" ";".
-Statement := "return" [Expr] ";".
-Statement := Designator "." "foreach" "(" ident "=>" Statement ")" ";".
-Statement := "{"{Statement} "}".
-ActPars := Expr {"," Expr }.
-Condition := CondTerm { "||" CondTerm }.
-CondTerm := CondFact { "&&" CondFact }.
-CondFact = Expr [ Relop Expr ].
-Factor := Designator [ "(" [ActPars] ")" ]
+DesignatorStatement := Designator "=" Expr.
+DesignatorStatement := "[" [Designator] {"," [Designator]}"]" "=" Designator.
+DesignatorStatement := Designator "++".
+DesignatorStatement := Designator "--".
+Statement := DesignatorStatement ";".
+Statement := "read" "(" Designator ")" ";".
+Statement := "print" "(" Expr [“,” numConst] ")" ";".
+Expr := ["‐"] Term {Addop Term}.
+Term := Factor {Mulop Factor}.
+Factor := numConst | charConst | "(" Expr ")" | boolConst | "new" Type "[" Expr "]"| Designator.
+Designator := ident [ "[" Expr "]" ].
+Addop := "+" | "‐" .
+Mulop := "*" | "/" | "%".
 Factor: = "new" Type "[" Expr "]" "[" Expr "]".
 VarDecl: = Type ident ["[" "]" ["[" "]"]] {"," ident ["[" "]" ["[" "]"]]} ";".
 FormPars = Type ident ["[" "]" ["[" "]"]] {"," Type ident ["[" "]" ["[" "]"]]}.
