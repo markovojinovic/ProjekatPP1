@@ -1,0 +1,9 @@
+INFO  14:40:58,793 - Compiling source file: C:\Users\vm190559d\Desktop\Fax\7. Semestar\PP1\Projekat\test\program.mj
+INFO  14:40:59,037 - #2 program
+INFO  14:40:59,039 - #15 test301
+INFO  14:40:59,039 - #15 const
+INFO  14:40:59,045 - #15 int
+INFO  14:40:59,047 - #15 nula
+ERROR 14:40:59,047 - 
+Sintaksna greska na liniji 5
+ERROR 14:40:59,047 - Fatalna greska, parsiranje se ne moze nastaviti na liniji 5

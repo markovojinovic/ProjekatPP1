@@ -70,3 +70,5 @@ import java_cup.runtime.Symbol;
 \'([0-9a-zA-Z])\'   {return new_symbol (sym.CHARCONST, yytext()); }
 
 . { System.err.println("Leksicka greska ("+yytext()+") u liniji "+(yyline+1)); }
+
+
