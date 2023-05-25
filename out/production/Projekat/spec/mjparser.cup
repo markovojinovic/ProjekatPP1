@@ -99,6 +99,9 @@ DesignatorList ::= (DesignatorListDesignator) Designator
                  ;
 
 Statement ::= (StatementDesignator) DesignatorStatement DOTCOMMA
+            |
+              error DOTCOMMA:l
+              {: parser.report_error("Izvrsen oporavak do ; u liniji " + lleft, null); :}
             | (StatementRead) READ LPAREN Designator RPAREN DOTCOMMA
             | (PrintStmt) PRINT LPAREN Expr NumberInPrint RPAREN DOTCOMMA
             ;

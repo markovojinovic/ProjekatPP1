@@ -1,0 +1,30 @@
+INFO  19:21:22,912 - Compiling source file: C:\Users\vm190559d\Desktop\Fax\7. Semestar\PP1\Projekat\test\program.mj
+INFO  19:21:23,008 - #2 program
+INFO  19:21:23,008 - #28 MJProgram
+INFO  19:21:23,008 - #28 int
+INFO  19:21:23,008 - #28 x
+INFO  19:21:23,008 - #12 ;
+INFO  19:21:23,023 - #28 int
+INFO  19:21:23,023 - #28 y
+INFO  19:21:23,023 - #12 ;
+INFO  19:21:23,023 - #7 {
+INFO  19:21:23,023 - #28 int
+INFO  19:21:23,023 - #28 main
+INFO  19:21:23,023 - #14 (
+INFO  19:21:23,023 - #15 )
+INFO  19:21:23,030 - #7 {
+INFO  19:21:23,030 - #16 print
+INFO  19:21:23,030 - #14 (
+INFO  19:21:23,030 - #18 1
+INFO  19:21:23,030 - #15 )
+INFO  19:21:23,030 - #12 ;
+INFO  19:21:23,039 - #28 x
+INFO  19:21:23,039 - #9 =
+INFO  19:21:23,039 - #28 y
+INFO  19:21:23,039 - #23 +
+INFO  19:21:23,039 - #18 5
+INFO  19:21:23,039 - #23 +
+INFO  19:21:23,044 - #12 ;
+ERROR 19:21:23,044 - 
+Sintaksna greska na liniji 8
+ERROR 19:21:23,044 - Fatalna greska, parsiranje se ne moze nastaviti na liniji 8

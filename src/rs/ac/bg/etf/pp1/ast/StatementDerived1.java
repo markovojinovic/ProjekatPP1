@@ -5,9 +5,9 @@
 
 package rs.ac.bg.etf.pp1.ast;
 
-public class MulOperationMul extends Mulop {
+public class StatementDerived1 extends Statement {
 
-    public MulOperationMul () {
+    public StatementDerived1 () {
     }
 
     public void accept(Visitor visitor) {
@@ -28,10 +28,10 @@ public class MulOperationMul extends Mulop {
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("MulOperationMul(\n");
+        buffer.append("StatementDerived1(\n");
 
         buffer.append(tab);
-        buffer.append(") [MulOperationMul]");
+        buffer.append(") [StatementDerived1]");
         return buffer.toString();
     }
 }
