@@ -44,102 +44,125 @@ scan with {:
 	return s;
 :}
 
-terminal PROG, LBRACE, RBRACE, DOTCOMMA, LPAREN, RPAREN, EQUAL, RETURN, PLUS, COMMA, PRINT, VOID;
-terminal Integer NUMBER;
-terminal String IDENT;
-terminal IF, ELSE, PLUSPLUS, MINUSMINUS, LSQUARE, RSQUARE, MUL, DIV, PERCENT, CHAR, BOOL, NEW, MINUS, CHARCONST, READ;
+terminal PROG, RETURN, VOID, CHARCONST, RBRACE, LBRACE, CONST;
+terminal EQUAL, PLUSPLUS, MINUSMINUS, DOTCOMMA, READ, LPAREN, RPAREN, PRINT, COMMA, NUMBER;
+terminal BOOLCONST, NEW, LSQUARE, RSQUARE, PLUS, MINUS, MUL, DIV, PERCENT, IDENT ;
 
-nonterminal Program, VarDeclList, MethodDeclList, VarDecl, Type, MethodDecl;
-nonterminal FormPars, StatementList, FormalParamList, FormalParamDecl, Statement;
-nonterminal Designator, Expr, Term, Addop, Factor, ActualPars, ActualParamList;
-nonterminal Matched, Unmatched;
+nonterminal DesignatorStatement, Designator, Expr, NumberInPrint, Minus, Term, AddopTerm, Addop;
+nonterminal  Factor, MulopFactor, Mulop, Type, ExprList, VarDecl, SquareList, FunctionType;
+nonterminal IdentSquareList, FormPars, TypeIdentSquareList, DesignatorListMany, DesignatorList, Statement;
+nonterminal VarDeclList, MethodDeclList, Program, MethodDecl, StatementList, FormalParamDecl, FormParsLst;
 
 Program ::= (Program) PROG IDENT VarDeclList LBRACE MethodDeclList RBRACE;
 
 VarDeclList ::= (VarDeclarations) VarDeclList VarDecl
 			|
-			(NoVarDecl) /* epsilon */
+			(NoVarDecl) /* epsilon smena */
 			;
 
-VarDecl ::= (VarDecl) Type:varType IDENT:varName DOTCOMMA;
-
-Type ::= (Type) IDENT:typeName;
+VarDecl ::= (VarDeclarationArray) Type IDENT SquareList IdentSquareList DOTCOMMA
+          | (ConstVarDeclaration) CONST Type IDENT EQUAL Factor DOTCOMMA
+          | (VarDeclarationEqual) Type IDENT EQUAL Factor DOTCOMMA
+          ;
 
 MethodDeclList ::= (MethodDeclarations) MethodDeclList MethodDecl
 				|
-				(NoMethodDecl) /* epsilon */
+				(NoMethodDecl) /* epsilon smena */
 				;
 
-MethodDecl ::= (MethodDecl) Type:retType IDENT:methName LPAREN FormPars RPAREN VarDeclList LBRACE StatementList RBRACE;
+MethodDecl ::= (MethodDecl) FunctionType IDENT LPAREN FormParsLst RPAREN VarDeclList LBRACE StatementList RBRACE;
 
+FunctionType ::= (FType) Type | VOID ;
 
-FormPars ::= (FormParams) FormalParamList
+StatementList ::= (Statements) StatementList Statement
+				|
+				(NoStmt) /* epsilon smena */
+				;
+
+FormParsLst ::= (FormParams) FormPars
 		  |
 		  (NoFormParam) /* epsilon */
 		  ;
 
-FormalParamList ::= (FormalParamDecls) FormalParamList COMMA FormalParamDecl
-				|
-				(SingleFormalParamDecl) FormalParamDecl
-				;
+DesignatorStatement ::= (DesignatorStatementEqual) Designator EQUAL Expr
+                       | (DesignatorStatementArray) LSQUARE DesignatorList DesignatorListMany RSQUARE EQUAL Designator
+                       | (DesignatorStatementPlusPlus) Designator PLUSPLUS
+                       | (DesignatorStatementMinusMinus) Designator MINUSMINUS
+                       ;
 
-StatementList ::= (Statements) StatementList Statement
-				|
-				(NoStmt) /* epsilon */
-				;
+DesignatorListMany ::= (DesignatorListRec) DesignatorListMany COMMA DesignatorList
+                     | (NoDesignatorList) /* epsilon smena */
+                     ;
 
-Statement ::= (MatchedStmt) Matched
-		   |
-		   (UnmatchedStmt) Unmatched
-		   ;
+DesignatorList ::= (DesignatorListDesignator) Designator
+                 | (NoDesignatorListDesignator) /* epsilon smena */
+                 ;
 
-Unmatched ::= (UnmatchedIf) IF Expr Statement
-		 	|
-		 	(UnmatchedIfElse) IF Expr Matched ELSE Unmatched
-		 	;
+Statement ::= (StatementDesignator) DesignatorStatement DOTCOMMA
+            | (StatementRead) READ LPAREN Designator RPAREN DOTCOMMA
+            | (PrintStmt) PRINT LPAREN Expr NumberInPrint RPAREN DOTCOMMA
+            ;
 
+NumberInPrint ::= (NumberInPrintNumber) COMMA NUMBER
+                | (NoNumberInPrintNumber) /* epsilon smena */
+                ;
 
-Matched ::= (Assignment) Designator:dest EQUAL Expr:e DOTCOMMA
-		   |
-		   (ErrorStmt) error DOTCOMMA:l
-		   {: parser.report_error("Izvrsen oporavak do ; u liniji " + lleft, null);  :}
-		   |
-		   (PrintStmt) PRINT LPAREN Expr RPAREN DOTCOMMA
-		   |
-		   (ReturnExpr) RETURN Expr:t DOTCOMMA
-		   |
-		   (ReturnNoExpr) RETURN DOTCOMMA
-		   |
-		   (MatchedStatement) IF Expr Matched ELSE Matched
-		   ;
+Expr ::= (Expression) Minus Term AddopTerm ;
 
-Expr ::= (AddExpr) Expr:te Addop Term:t
-	 |
-	 (TermExpr) Term:t
-	 ;
+AddopTerm ::= (AddOperationTerminatorRec) AddopTerm Addop Term
+            | (NoAddOperationTerminator) /* epsilon smena */
+            ;
 
-Term ::= (Term) Factor:t;
+Minus ::= (MinusExpression) MINUS
+        | (NoMinusExpression) /* epsilon smena */
+        ;
 
-Factor ::= (Const) NUMBER
-		|
-		(Var) Designator:d
-		|
-		(FuncCall) Designator:func LPAREN ActualPars RPAREN
-		;
+Term ::= (Terminator) Factor MulopFactor ;
 
-ActualPars ::= (Actuals) ActualParamList
-			|
-			(NoActuals) /* epsilon */
-			;
+MulopFactor ::= (MulopFactorRec) MulopFactor Mulop Factor
+              | (NoMulopFactor) /* epsilon smena */
+              ;
 
-ActualParamList ::= (ActualParams) ActualParamList COMMA Expr
-				|
-				(ActualParam) Expr
-				;
+Factor ::= (FactorNum) NUMBER
+         | (FactorChar) CHARCONST
+         | (FactorExpr) LPAREN Expr RPAREN
+         | (FactorBool) BOOLCONST
+         | (FactorNewExpr) NEW Type LSQUARE Expr RSQUARE
+         | (FactorDes) Designator
+         | (FactorNewTypeExpr) NEW Type LSQUARE Expr RSQUARE LSQUARE Expr RSQUARE
+         ;
 
-Designator ::= (Designator) IDENT:name;
+Designator ::= (DesignatorExpression) IDENT ExprList ;
 
-Addop ::= (Addop) PLUS;
+ExprList ::= (ExprListExpr) LSQUARE Expr RSQUARE
+           | (NoExprListExpr) /* epsilon smena */
+           ;
+
+Addop ::= (AddOperationPlus) PLUS
+        | (AddOperationMinus) MINUS
+        ;
+
+Mulop ::= (MulOperationMul) MUL
+        | (MulOperationDiv) DIV
+        | (MulOperationPercent) PERCENT
+        ;
+
+IdentSquareList ::= (IdentSquareListRec) IdentSquareList COMMA IDENT SquareList
+                  | (NoIdentSquareList) /* epsilon smena */
+                  ;
+
+FormPars ::= (FormParsMatrix) Type IDENT SquareList TypeIdentSquareList DOTCOMMA ;
+
+TypeIdentSquareList ::= (TypeIdentSquareListRec) TypeIdentSquareList COMMA Type IDENT SquareList
+                  | (NoTypeIdentSquareList) /* epsilon smena */
+                  ;
+
+SquareList ::= (SquareListOutside) LSQUARE RSQUARE LSQUARE RSQUARE
+             | (SquareListOutsideOne) LSQUARE RSQUARE
+             | (NoSquareListOutside) /* epsilon smena */
+             ;
+
+Type ::= (TypeIdent) IDENT ;
 
 
 

@@ -1,0 +1,146 @@
+INFO  13:33:15,279 - Compiling source file: C:\Users\vm190559d\Desktop\Fax\7. Semestar\PP1\Projekat\test\program.mj
+INFO  13:33:15,325 - #2 program
+INFO  13:33:15,325 - #28 MJProgram
+INFO  13:33:15,325 - #28 int
+INFO  13:33:15,327 - #28 x
+INFO  13:33:15,327 - #11 ;
+INFO  13:33:15,327 - #28 int
+INFO  13:33:15,329 - #28 y
+INFO  13:33:15,329 - #11 ;
+INFO  13:33:15,329 - #7 {
+INFO  13:33:15,329 - #28 int
+INFO  13:33:15,329 - #28 main
+INFO  13:33:15,329 - #13 (
+INFO  13:33:15,329 - #14 )
+INFO  13:33:15,330 - #7 {
+INFO  13:33:15,330 - #15 print
+INFO  13:33:15,330 - #13 (
+INFO  13:33:15,330 - #17 1
+INFO  13:33:15,330 - #14 )
+INFO  13:33:15,332 - #11 ;
+INFO  13:33:15,332 - #28 x
+INFO  13:33:15,332 - #8 =
+INFO  13:33:15,332 - #28 y
+INFO  13:33:15,332 - #23 +
+INFO  13:33:15,332 - #17 5
+INFO  13:33:15,332 - #11 ;
+INFO  13:33:15,332 - #15 print
+INFO  13:33:15,332 - #13 (
+INFO  13:33:15,332 - #17 2
+INFO  13:33:15,332 - #14 )
+INFO  13:33:15,332 - #11 ;
+INFO  13:33:15,336 - #6 }
+INFO  13:33:15,336 - #6 }
+INFO  13:33:15,338 - Program(
+  VarDeclarations(
+    VarDeclarations(
+      NoVarDecl(
+      ) [NoVarDecl]
+      VarDeclaration(
+        TypeIdent(
+        ) [TypeIdent]
+        NoSquareListOutside(
+        ) [NoSquareListOutside]
+        NoIdentSquareList(
+        ) [NoIdentSquareList]
+      ) [VarDeclaration]
+    ) [VarDeclarations]
+    VarDeclaration(
+      TypeIdent(
+      ) [TypeIdent]
+      NoSquareListOutside(
+      ) [NoSquareListOutside]
+      NoIdentSquareList(
+      ) [NoIdentSquareList]
+    ) [VarDeclaration]
+  ) [VarDeclarations]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      TypeIdent(
+      ) [TypeIdent]
+      NoFormParam(
+      ) [NoFormParam]
+      NoVarDecl(
+      ) [NoVarDecl]
+      Statements(
+        Statements(
+          Statements(
+            NoStmt(
+            ) [NoStmt]
+            PrintStmt(
+              Expression(
+                NoMinusExpression(
+                ) [NoMinusExpression]
+                Terminator(
+                  FactorNum(
+                  ) [FactorNum]
+                  NoMulopFactor(
+                  ) [NoMulopFactor]
+                ) [Terminator]
+                NoAddOperationTerminator(
+                ) [NoAddOperationTerminator]
+              ) [Expression]
+              NoNumberInPrintNumber(
+              ) [NoNumberInPrintNumber]
+            ) [PrintStmt]
+          ) [Statements]
+          StatementDesignator(
+            DesignatorStatementEqual(
+              DesignatorExpression(
+                NoExprListExpr(
+                ) [NoExprListExpr]
+              ) [DesignatorExpression]
+              Expression(
+                NoMinusExpression(
+                ) [NoMinusExpression]
+                Terminator(
+                  FactorDes(
+                    DesignatorExpression(
+                      NoExprListExpr(
+                      ) [NoExprListExpr]
+                    ) [DesignatorExpression]
+                  ) [FactorDes]
+                  NoMulopFactor(
+                  ) [NoMulopFactor]
+                ) [Terminator]
+                AddOperationTerminatorRec(
+                  NoAddOperationTerminator(
+                  ) [NoAddOperationTerminator]
+                  AddOperationPlus(
+                  ) [AddOperationPlus]
+                  Terminator(
+                    FactorNum(
+                    ) [FactorNum]
+                    NoMulopFactor(
+                    ) [NoMulopFactor]
+                  ) [Terminator]
+                ) [AddOperationTerminatorRec]
+              ) [Expression]
+            ) [DesignatorStatementEqual]
+          ) [StatementDesignator]
+        ) [Statements]
+        PrintStmt(
+          Expression(
+            NoMinusExpression(
+            ) [NoMinusExpression]
+            Terminator(
+              FactorNum(
+              ) [FactorNum]
+              NoMulopFactor(
+              ) [NoMulopFactor]
+            ) [Terminator]
+            NoAddOperationTerminator(
+            ) [NoAddOperationTerminator]
+          ) [Expression]
+          NoNumberInPrintNumber(
+          ) [NoNumberInPrintNumber]
+        ) [PrintStmt]
+      ) [Statements]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  13:33:15,338 - ===================================
+INFO  13:33:15,350 -  Print count calls = 2
+INFO  13:33:15,350 -  Deklarisanih promenljivih ima = 0

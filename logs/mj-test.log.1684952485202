@@ -1,0 +1,159 @@
+INFO  20:03:33,669 - Compiling source file: C:\Users\vm190559d\Desktop\Fax\7. Semestar\PP1\Projekat\test\program.mj
+INFO  20:03:33,683 - #2 program
+INFO  20:03:33,683 - #15 MJProgram
+INFO  20:03:33,683 - #15 int
+INFO  20:03:33,683 - #15 x
+INFO  20:03:33,683 - #5 ;
+INFO  20:03:33,683 - #15 int
+INFO  20:03:33,683 - #15 y
+INFO  20:03:33,683 - #5 ;
+INFO  20:03:33,683 - #3 {
+INFO  20:03:33,683 - #15 int
+INFO  20:03:33,683 - #15 main
+INFO  20:03:33,683 - #6 (
+INFO  20:03:33,689 - #7 )
+INFO  20:03:33,689 - #3 {
+INFO  20:03:33,689 - #12 print
+INFO  20:03:33,689 - #6 (
+INFO  20:03:33,689 - #14 1
+INFO  20:03:33,689 - #7 )
+INFO  20:03:33,689 - #5 ;
+INFO  20:03:33,689 - #15 x
+INFO  20:03:33,689 - #8 =
+INFO  20:03:33,689 - #15 y
+INFO  20:03:33,692 - #10 +
+INFO  20:03:33,692 - #14 5
+INFO  20:03:33,692 - #5 ;
+INFO  20:03:33,692 - #12 print
+INFO  20:03:33,692 - #6 (
+INFO  20:03:33,692 - #14 2
+INFO  20:03:33,692 - #7 )
+INFO  20:03:33,692 - #5 ;
+INFO  20:03:33,692 - #4 }
+INFO  20:03:33,692 - #4 }
+INFO  20:03:40,988 - Compiling source file: C:\Users\vm190559d\Desktop\Fax\7. Semestar\PP1\Projekat\test\program.mj
+INFO  20:03:41,082 - #2 program
+INFO  20:03:41,082 - #15 MJProgram
+INFO  20:03:41,082 - #15 int
+INFO  20:03:41,085 - #15 x
+INFO  20:03:41,087 - #5 ;
+INFO  20:03:41,087 - #15 int
+INFO  20:03:41,087 - #15 y
+INFO  20:03:41,090 - #5 ;
+INFO  20:03:41,090 - #3 {
+INFO  20:03:41,090 - #15 int
+INFO  20:03:41,090 - #15 main
+INFO  20:03:41,090 - #6 (
+INFO  20:03:41,090 - #7 )
+INFO  20:03:41,093 - #3 {
+INFO  20:03:41,093 - #12 print
+INFO  20:03:41,095 - #6 (
+INFO  20:03:41,095 - #14 1
+INFO  20:03:41,095 - #7 )
+INFO  20:03:41,095 - #5 ;
+INFO  20:03:41,095 - #15 x
+INFO  20:03:41,095 - #8 =
+INFO  20:03:41,098 - #15 y
+INFO  20:03:41,098 - #10 +
+INFO  20:03:41,098 - #14 5
+INFO  20:03:41,098 - #5 ;
+INFO  20:03:41,098 - #12 print
+INFO  20:03:41,102 - #6 (
+INFO  20:03:41,102 - #14 2
+INFO  20:03:41,102 - #7 )
+INFO  20:03:41,102 - #5 ;
+INFO  20:03:41,102 - #4 }
+INFO  20:03:41,102 - #4 }
+INFO  20:03:41,102 - Program(
+ MJProgram
+  VarDeclarations(
+    VarDeclarations(
+      NoVarDecl(
+      ) [NoVarDecl]
+      VarDecl(
+        Type(
+         int
+        ) [Type]
+       x
+      ) [VarDecl]
+    ) [VarDeclarations]
+    VarDecl(
+      Type(
+       int
+      ) [Type]
+     y
+    ) [VarDecl]
+  ) [VarDeclarations]
+  MethodDeclarations(
+    NoMethodDecl(
+    ) [NoMethodDecl]
+    MethodDecl(
+      Type(
+       int
+      ) [Type]
+     main
+      NoFormParam(
+      ) [NoFormParam]
+      NoVarDecl(
+      ) [NoVarDecl]
+      Statements(
+        Statements(
+          Statements(
+            NoStmt(
+            ) [NoStmt]
+            MatchedStmt(
+              PrintStmt(
+                TermExpr(
+                  Term(
+                    Const(
+                     1
+                    ) [Const]
+                  ) [Term]
+                ) [TermExpr]
+              ) [PrintStmt]
+            ) [MatchedStmt]
+          ) [Statements]
+          MatchedStmt(
+            Assignment(
+              Designator(
+               x
+              ) [Designator]
+              AddExpr(
+                TermExpr(
+                  Term(
+                    Var(
+                      Designator(
+                       y
+                      ) [Designator]
+                    ) [Var]
+                  ) [Term]
+                ) [TermExpr]
+                Addop(
+                ) [Addop]
+                Term(
+                  Const(
+                   5
+                  ) [Const]
+                ) [Term]
+              ) [AddExpr]
+            ) [Assignment]
+          ) [MatchedStmt]
+        ) [Statements]
+        MatchedStmt(
+          PrintStmt(
+            TermExpr(
+              Term(
+                Const(
+                 2
+                ) [Const]
+              ) [Term]
+            ) [TermExpr]
+          ) [PrintStmt]
+        ) [MatchedStmt]
+      ) [Statements]
+    ) [MethodDecl]
+  ) [MethodDeclarations]
+) [Program]
+INFO  20:03:41,102 - ===================================
+INFO  20:03:41,122 -  Print count calls = 2
+INFO  20:03:41,122 -  Deklarisanih promenljivih ima = 2

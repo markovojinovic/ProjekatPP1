@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 24/4/2023 14:36:30
+// 25/4/2023 18:48:40
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -9,24 +9,14 @@ public class Program implements SyntaxNode {
 
     private SyntaxNode parent;
     private int line;
-    private String I1;
     private VarDeclList VarDeclList;
     private MethodDeclList MethodDeclList;
 
-    public Program (String I1, VarDeclList VarDeclList, MethodDeclList MethodDeclList) {
-        this.I1=I1;
+    public Program (VarDeclList VarDeclList, MethodDeclList MethodDeclList) {
         this.VarDeclList=VarDeclList;
         if(VarDeclList!=null) VarDeclList.setParent(this);
         this.MethodDeclList=MethodDeclList;
         if(MethodDeclList!=null) MethodDeclList.setParent(this);
-    }
-
-    public String getI1() {
-        return I1;
-    }
-
-    public void setI1(String I1) {
-        this.I1=I1;
     }
 
     public VarDeclList getVarDeclList() {
@@ -86,9 +76,6 @@ public class Program implements SyntaxNode {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
         buffer.append("Program(\n");
-
-        buffer.append(" "+tab+I1);
-        buffer.append("\n");
 
         if(VarDeclList!=null)
             buffer.append(VarDeclList.toString("  "+tab));

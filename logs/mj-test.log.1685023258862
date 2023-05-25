@@ -1,0 +1,21 @@
+INFO  15:52:32,285 - Compiling source file: C:\Users\vm190559d\Desktop\Fax\7. Semestar\PP1\Projekat\test\program.mj
+INFO  15:52:32,341 - #2 program
+INFO  15:52:32,343 - #28 test301
+INFO  15:52:32,343 - #28 int
+INFO  15:52:32,343 - #28 niz
+INFO  15:52:32,343 - #21 [
+INFO  15:52:32,346 - #22 ]
+INFO  15:52:32,346 - #16 ,
+INFO  15:52:32,346 - #28 niz2
+INFO  15:52:32,346 - #21 [
+INFO  15:52:32,346 - #22 ]
+INFO  15:52:32,346 - #16 ,
+INFO  15:52:32,346 - #28 a
+INFO  15:52:32,346 - #16 ,
+INFO  15:52:32,350 - #28 b
+INFO  15:52:32,350 - #11 ;
+INFO  15:52:32,350 - #7 {
+INFO  15:52:32,350 - #4 void
+ERROR 15:52:32,350 - 
+Sintaksna greska na liniji 13
+ERROR 15:52:32,350 - Fatalna greska, parsiranje se ne moze nastaviti na liniji 13

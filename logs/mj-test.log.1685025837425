@@ -1,0 +1,38 @@
+INFO  16:43:18,644 - Compiling source file: C:\Users\vm190559d\Desktop\Fax\7. Semestar\PP1\Projekat\test\program.mj
+INFO  16:43:18,705 - #2 program
+INFO  16:43:18,706 - #29 test301
+INFO  16:43:18,706 - #8 const
+INFO  16:43:18,706 - #29 int
+INFO  16:43:18,706 - #29 nula
+INFO  16:43:18,706 - #9 =
+INFO  16:43:18,706 - #18 0
+INFO  16:43:18,706 - #12 ;
+INFO  16:43:18,706 - #8 const
+INFO  16:43:18,706 - #29 int
+INFO  16:43:18,706 - #29 jedan
+INFO  16:43:18,706 - #9 =
+INFO  16:43:18,706 - #18 1
+INFO  16:43:18,706 - #12 ;
+INFO  16:43:18,706 - #8 const
+INFO  16:43:18,706 - #29 int
+INFO  16:43:18,706 - #29 pet
+INFO  16:43:18,706 - #9 =
+INFO  16:43:18,706 - #18 5
+INFO  16:43:18,706 - #12 ;
+INFO  16:43:18,706 - #29 int
+INFO  16:43:18,713 - #29 niz
+INFO  16:43:18,713 - #22 [
+INFO  16:43:18,713 - #23 ]
+INFO  16:43:18,713 - #17 ,
+INFO  16:43:18,713 - #29 niz2
+INFO  16:43:18,713 - #22 [
+INFO  16:43:18,713 - #23 ]
+INFO  16:43:18,713 - #17 ,
+INFO  16:43:18,713 - #29 a
+INFO  16:43:18,717 - #17 ,
+INFO  16:43:18,717 - #29 b
+INFO  16:43:18,717 - #12 ;
+INFO  16:43:18,717 - #19 char
+ERROR 16:43:18,717 - 
+Sintaksna greska na liniji 10
+ERROR 16:43:18,717 - Fatalna greska, parsiranje se ne moze nastaviti na liniji 10
