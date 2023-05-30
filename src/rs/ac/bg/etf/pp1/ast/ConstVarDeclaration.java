@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 25/4/2023 19:21:43
+// 30/4/2023 14:53:4
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -8,11 +8,13 @@ package rs.ac.bg.etf.pp1.ast;
 public class ConstVarDeclaration extends VarDecl {
 
     private Type Type;
+    private String varName;
     private Factor Factor;
 
-    public ConstVarDeclaration (Type Type, Factor Factor) {
+    public ConstVarDeclaration (Type Type, String varName, Factor Factor) {
         this.Type=Type;
         if(Type!=null) Type.setParent(this);
+        this.varName=varName;
         this.Factor=Factor;
         if(Factor!=null) Factor.setParent(this);
     }
@@ -23,6 +25,14 @@ public class ConstVarDeclaration extends VarDecl {
 
     public void setType(Type Type) {
         this.Type=Type;
+    }
+
+    public String getVarName() {
+        return varName;
+    }
+
+    public void setVarName(String varName) {
+        this.varName=varName;
     }
 
     public Factor getFactor() {
@@ -63,6 +73,9 @@ public class ConstVarDeclaration extends VarDecl {
             buffer.append(Type.toString("  "+tab));
         else
             buffer.append(tab+"  null");
+        buffer.append("\n");
+
+        buffer.append(" "+tab+varName);
         buffer.append("\n");
 
         if(Factor!=null)

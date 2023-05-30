@@ -1,0 +1,44 @@
+INFO  14:22:54,688 - Compiling source file: C:\Users\vm190559d\Desktop\Fax\7. Semestar\PP1\Projekat\test\program.mj
+INFO  14:22:54,769 - #2 program
+INFO  14:22:54,769 - #27 test301
+INFO  14:22:54,769 - #8 const
+INFO  14:22:54,769 - #27 int
+INFO  14:22:54,769 - #27 nula
+INFO  14:22:54,769 - #9 =
+INFO  14:22:54,773 - #28 0
+INFO  14:22:54,773 - #12 ;
+INFO  14:22:54,773 - #8 const
+INFO  14:22:54,774 - #27 int
+INFO  14:22:54,774 - #27 jedan
+INFO  14:22:54,774 - #9 =
+INFO  14:22:54,774 - #28 1
+INFO  14:22:54,774 - #12 ;
+INFO  14:22:54,774 - #8 const
+INFO  14:22:54,774 - #27 int
+INFO  14:22:54,774 - #27 pet
+INFO  14:22:54,774 - #9 =
+INFO  14:22:54,774 - #28 5
+INFO  14:22:54,774 - #12 ;
+INFO  14:22:54,774 - #27 int
+INFO  14:22:54,774 - #27 niz
+INFO  14:22:54,774 - #20 [
+INFO  14:22:54,774 - #21 ]
+INFO  14:22:54,774 - #17 ,
+INFO  14:22:54,779 - #27 niz2
+INFO  14:22:54,779 - #20 [
+INFO  14:22:54,779 - #21 ]
+INFO  14:22:54,779 - #17 ,
+INFO  14:22:54,779 - #27 a
+INFO  14:22:54,779 - #17 ,
+INFO  14:22:54,779 - #27 b
+INFO  14:22:54,779 - #12 ;
+INFO  14:22:54,779 - #27 char
+INFO  14:22:54,779 - #27 nizch
+INFO  14:22:54,779 - #20 [
+INFO  14:22:54,784 - #21 ]
+INFO  14:22:54,784 - #12 ;
+INFO  14:22:54,784 - #7 {
+INFO  14:22:54,784 - #4 void
+ERROR 14:22:54,784 - 
+Sintaksna greska na liniji 13
+ERROR 14:22:54,784 - Fatalna greska, parsiranje se ne moze nastaviti na liniji 13

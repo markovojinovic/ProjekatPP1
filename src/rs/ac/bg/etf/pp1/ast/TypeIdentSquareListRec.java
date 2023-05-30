@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 25/4/2023 19:21:43
+// 30/4/2023 14:53:5
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -9,13 +9,15 @@ public class TypeIdentSquareListRec extends TypeIdentSquareList {
 
     private TypeIdentSquareList TypeIdentSquareList;
     private Type Type;
+    private String identName;
     private SquareList SquareList;
 
-    public TypeIdentSquareListRec (TypeIdentSquareList TypeIdentSquareList, Type Type, SquareList SquareList) {
+    public TypeIdentSquareListRec (TypeIdentSquareList TypeIdentSquareList, Type Type, String identName, SquareList SquareList) {
         this.TypeIdentSquareList=TypeIdentSquareList;
         if(TypeIdentSquareList!=null) TypeIdentSquareList.setParent(this);
         this.Type=Type;
         if(Type!=null) Type.setParent(this);
+        this.identName=identName;
         this.SquareList=SquareList;
         if(SquareList!=null) SquareList.setParent(this);
     }
@@ -34,6 +36,14 @@ public class TypeIdentSquareListRec extends TypeIdentSquareList {
 
     public void setType(Type Type) {
         this.Type=Type;
+    }
+
+    public String getIdentName() {
+        return identName;
+    }
+
+    public void setIdentName(String identName) {
+        this.identName=identName;
     }
 
     public SquareList getSquareList() {
@@ -83,6 +93,9 @@ public class TypeIdentSquareListRec extends TypeIdentSquareList {
             buffer.append(Type.toString("  "+tab));
         else
             buffer.append(tab+"  null");
+        buffer.append("\n");
+
+        buffer.append(" "+tab+identName);
         buffer.append("\n");
 
         if(SquareList!=null)

@@ -1,17 +1,27 @@
 // generated with ast extension for cup
 // version 0.8
-// 25/4/2023 19:21:43
+// 30/4/2023 14:53:5
 
 
 package rs.ac.bg.etf.pp1.ast;
 
 public class DesignatorExpression extends Designator {
 
+    private String name;
     private ExprList ExprList;
 
-    public DesignatorExpression (ExprList ExprList) {
+    public DesignatorExpression (String name, ExprList ExprList) {
+        this.name=name;
         this.ExprList=ExprList;
         if(ExprList!=null) ExprList.setParent(this);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name=name;
     }
 
     public ExprList getExprList() {
@@ -44,6 +54,9 @@ public class DesignatorExpression extends Designator {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
         buffer.append("DesignatorExpression(\n");
+
+        buffer.append(" "+tab+name);
+        buffer.append("\n");
 
         if(ExprList!=null)
             buffer.append(ExprList.toString("  "+tab));

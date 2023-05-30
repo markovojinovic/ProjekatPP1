@@ -58,8 +58,14 @@ program test301
 		read(bodovi);
 		bodovi = -bodovi + (pet * a / 2 - jedan) * bodovi - (3 % 2 + 3 * 2 - 3);
 		print(bodovi);
-
 	}
+
+	int proba(int a, int b)
+	    int c, d;
+	    char f;
+    {
+        return -a + b;
+    }
 }
 
 

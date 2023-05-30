@@ -8,6 +8,8 @@ import rs.ac.bg.etf.pp1.ast.*;
 
 parser code {:
 
+	boolean errorDetected;
+
 	Logger log = Logger.getLogger(getClass());
 
 
@@ -27,6 +29,7 @@ parser code {:
     }
 
     public void report_error(String message, Object info) {
+    	errorDetected = true;
     	StringBuilder msg = new StringBuilder(message);
     	if (info instanceof Symbol)
             msg.append (" na liniji ").append(((Symbol)info).left);
@@ -36,6 +39,9 @@ parser code {:
 
 :}
 
+init with {:
+	errorDetected = false;
+:}
 
 scan with {:
 	Symbol s = this.getScanner().next_token();
@@ -44,50 +50,49 @@ scan with {:
 	return s;
 :}
 
-terminal PROG, RETURN, VOID, CHARCONST, RBRACE, LBRACE, CONST;
-terminal EQUAL, PLUSPLUS, MINUSMINUS, DOTCOMMA, READ, LPAREN, RPAREN, PRINT, COMMA, NUMBER;
-terminal BOOLCONST, NEW, LSQUARE, RSQUARE, PLUS, MINUS, MUL, DIV, PERCENT, IDENT ;
+terminal PROG, RETURN, CHARCONST, RBRACE, LBRACE, CONST;
+terminal EQUAL, PLUSPLUS, MINUSMINUS, DOTCOMMA, READ, LPAREN, RPAREN, PRINT, COMMA;
+terminal BOOLCONST, NEW, LSQUARE, RSQUARE, PLUS, MINUS, MUL, DIV, PERCENT;
+terminal String IDENT;
+terminal Integer NUMBER;
 
 nonterminal DesignatorStatement DesignatorStatement;
-nonterminal Designator Designator;
-nonterminal Expr Expr;
 nonterminal NumberInPrint NumberInPrint;
 nonterminal Minus Minus;
-nonterminal Term Term;
-nonterminal AddopTerm AddopTerm;
 nonterminal Addop Addop;
-nonterminal  Factor Factor;
+nonterminal FunctionParameters FunctionParameters;
 nonterminal MulopFactor MulopFactor;
 nonterminal Mulop Mulop;
-nonterminal Type Type;
 nonterminal ExprList ExprList;
 nonterminal VarDecl VarDecl;
 nonterminal SquareList SquareList;
-nonterminal FunctionType FunctionType;
+nonterminal IdentInLine IdentInLine;
+nonterminal IdentList IdentList;
 nonterminal IdentSquareList IdentSquareList;
 nonterminal FormPars FormPars;
 nonterminal TypeIdentSquareList TypeIdentSquareList;
 nonterminal DesignatorListMany DesignatorListMany;
 nonterminal DesignatorList DesignatorList;
-nonterminal Statement Statement;
 nonterminal VarDeclList VarDeclList;
 nonterminal MethodDeclList MethodDeclList;
-nonterminal Program Program;
-nonterminal MethodDecl MethodDecl;
 nonterminal StatementList StatementList;
 nonterminal FormalParamDecl FormalParamDecl;
-nonterminal FormParsLst FormParsLst;
 
-Program ::= (Program) PROG IDENT VarDeclList:V1 LBRACE MethodDeclList:M2 RBRACE {: RESULT=new Program(V1, M2); RESULT.setLine(V1left); :};
+nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgName, Program, MethodDecl, MethodTypeName, Designator, FormParsLst, IdentTypeInLine, ReturnStatement;
+nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, Term, Factor, Expr, AddopTerm, Statement;
+
+Program ::= (Program) PROG ProgName:p VarDeclList:V1 LBRACE MethodDeclList:M2 RBRACE {: RESULT=new Program(p, V1, M2); RESULT.setLine(pleft); :};
+
+ProgName ::= (ProgName) IDENT:progName {: RESULT=new ProgName(progName); RESULT.setLine(progNameleft); :};
 
 VarDeclList ::= (VarDeclarations) VarDeclList:V1 VarDecl:V2 {: RESULT=new VarDeclarations(V1, V2); RESULT.setLine(V1left); :}
 			|
 			(NoVarDecl) {: RESULT=new NoVarDecl(); :} /* epsilon smena */
 			;
 
-VarDecl ::= (VarDeclarationArray) Type:T1 IDENT SquareList:S2 IdentSquareList:I3 DOTCOMMA {: RESULT=new VarDeclarationArray(T1, S2, I3); RESULT.setLine(T1left); :}
-          | (ConstVarDeclaration) CONST Type:T1 IDENT EQUAL Factor:F2 DOTCOMMA {: RESULT=new ConstVarDeclaration(T1, F2); RESULT.setLine(T1left); :}
-          | (VarDeclarationEqual) Type:T1 IDENT EQUAL Factor:F2 DOTCOMMA {: RESULT=new VarDeclarationEqual(T1, F2); RESULT.setLine(T1left); :}
+VarDecl ::= (VarDeclarationArray) Type:varType IDENT:varName SquareList:S1 IdentSquareList:I2 DOTCOMMA {: RESULT=new VarDeclarationArray(varType, varName, S1, I2); RESULT.setLine(varTypeleft); :}
+          | (ConstVarDeclaration) CONST Type:varType IDENT:varName EQUAL Factor:F1 DOTCOMMA {: RESULT=new ConstVarDeclaration(varType, varName, F1); RESULT.setLine(varTypeleft); :}
+          | (VarDeclarationEqual) Type:varType IDENT:varName EQUAL Factor:F1 DOTCOMMA {: RESULT=new VarDeclarationEqual(varType, varName, F1); RESULT.setLine(varTypeleft); :}
           ;
 
 MethodDeclList ::= (MethodDeclarations) MethodDeclList:M1 MethodDecl:M2 {: RESULT=new MethodDeclarations(M1, M2); RESULT.setLine(M1left); :}
@@ -95,21 +100,29 @@ MethodDeclList ::= (MethodDeclarations) MethodDeclList:M1 MethodDecl:M2 {: RESUL
 				(NoMethodDecl) {: RESULT=new NoMethodDecl(); :} /* epsilon smena */
 				;
 
-MethodDecl ::= (MethodDecl) FunctionType:F1 IDENT LPAREN FormParsLst:F2 RPAREN VarDeclList:V3 LBRACE StatementList:S4 RBRACE {: RESULT=new MethodDecl(F1, F2, V3, S4); RESULT.setLine(F1left); :};
+MethodDecl ::= (MethodDecl) MethodTypeName:M1 LPAREN FormParsLst:F2 RPAREN VarDeclList:V3 LBRACE StatementList:S4 ReturnStatement:R5 RBRACE {: RESULT=new MethodDecl(M1, F2, V3, S4, R5); RESULT.setLine(M1left); :};
 
-FunctionType ::= (FType) Type:T1 {: RESULT=new FType(T1); RESULT.setLine(T1left); :} | VOID {: RESULT=new FunctionTypeDerived1(); :} ;
+ReturnStatement ::= (ReturnStatementOnly) RETURN DOTCOMMA {: RESULT=new ReturnStatementOnly(); :}
+                  | (ReturnStatementExpr) RETURN Expr:exprName DOTCOMMA {: RESULT=new ReturnStatementExpr(exprName); RESULT.setLine(exprNameleft); :}
+                  | (NoReturnStatement) {: RESULT=new NoReturnStatement(); :} /* epsilon smena */
+                  ;
+
+MethodTypeName ::= (MethodTypeName) Type:retType IDENT:metName {: RESULT=new MethodTypeName(retType, metName); RESULT.setLine(retTypeleft); :};
 
 StatementList ::= (Statements) StatementList:S1 Statement:S2 {: RESULT=new Statements(S1, S2); RESULT.setLine(S1left); :}
 				|
 				(NoStmt) {: RESULT=new NoStmt(); :} /* epsilon smena */
 				;
 
-FormParsLst ::= (FormParams) FormPars:F1 {: RESULT=new FormParams(F1); RESULT.setLine(F1left); :}
-		  |
-		  (NoFormParam) {: RESULT=new NoFormParam(); :} /* epsilon */
+FormParsLst ::= (FormParams) FormParsLst:F1 Type:typeName IDENT:identName IdentList:I2 {: RESULT=new FormParams(F1, typeName, identName, I2); RESULT.setLine(F1left); :}
+		  | (NoFormParams) {: RESULT=new NoFormParams(); :} /* epsilon smena */
 		  ;
 
-DesignatorStatement ::= (DesignatorStatementEqual) Designator:D1 EQUAL Expr:E2 {: RESULT=new DesignatorStatementEqual(D1, E2); RESULT.setLine(D1left); :}
+IdentList ::= (IdentLists) IdentList:I1 IdentTypeInLine:I2 {: RESULT=new IdentLists(I1, I2); RESULT.setLine(I1left); :}
+            | (NoIdentLists) {: RESULT=new NoIdentLists(); :} /* epsilon smena */
+            ;
+
+DesignatorStatement ::= (DesignatorStatementEqual) Designator:dest EQUAL Expr:e {: RESULT=new DesignatorStatementEqual(dest, e); RESULT.setLine(destleft); :}
                        | (DesignatorStatementArray) LSQUARE DesignatorList:D1 DesignatorListMany:D2 RSQUARE EQUAL Designator:D3 {: RESULT=new DesignatorStatementArray(D1, D2, D3); RESULT.setLine(D1left); :}
                        | (DesignatorStatementPlusPlus) Designator:D1 PLUSPLUS {: RESULT=new DesignatorStatementPlusPlus(D1); RESULT.setLine(D1left); :}
                        | (DesignatorStatementMinusMinus) Designator:D1 MINUSMINUS {: RESULT=new DesignatorStatementMinusMinus(D1); RESULT.setLine(D1left); :}
@@ -129,15 +142,16 @@ Statement ::= (StatementDesignator) DesignatorStatement:D1 DOTCOMMA {: RESULT=ne
               {: parser.report_error("Izvrsen oporavak do ; u liniji " + lleft, null); :} {: RESULT=new StatementDerived1(); :}
             | (StatementRead) READ LPAREN Designator:D1 RPAREN DOTCOMMA {: RESULT=new StatementRead(D1); RESULT.setLine(D1left); :}
             | (PrintStmt) PRINT LPAREN Expr:E1 NumberInPrint:N2 RPAREN DOTCOMMA {: RESULT=new PrintStmt(E1, N2); RESULT.setLine(E1left); :}
+            | (FuncCall) Designator:func LPAREN FormParsLst:F1 RPAREN DOTCOMMA {: RESULT=new FuncCall(func, F1); RESULT.setLine(funcleft); :}
             ;
 
-NumberInPrint ::= (NumberInPrintNumber) COMMA NUMBER {: RESULT=new NumberInPrintNumber(); :}
+NumberInPrint ::= (NumberInPrintNumber) COMMA NUMBER:N1 {: RESULT=new NumberInPrintNumber(N1); RESULT.setLine(N1left); :}
                 | (NoNumberInPrintNumber) {: RESULT=new NoNumberInPrintNumber(); :} /* epsilon smena */
                 ;
 
 Expr ::= (Expression) Minus:M1 Term:T2 AddopTerm:A3 {: RESULT=new Expression(M1, T2, A3); RESULT.setLine(M1left); :} ;
 
-AddopTerm ::= (AddOperationTerminatorRec) AddopTerm:A1 Addop:A2 Term:T3 {: RESULT=new AddOperationTerminatorRec(A1, A2, T3); RESULT.setLine(A1left); :}
+AddopTerm ::= (AddOperationTerminatorRec) AddopTerm:te Addop:A1 Term:T2 {: RESULT=new AddOperationTerminatorRec(te, A1, T2); RESULT.setLine(teleft); :}
             | (NoAddOperationTerminator) {: RESULT=new NoAddOperationTerminator(); :} /* epsilon smena */
             ;
 
@@ -145,22 +159,22 @@ Minus ::= (MinusExpression) MINUS {: RESULT=new MinusExpression(); :}
         | (NoMinusExpression) {: RESULT=new NoMinusExpression(); :} /* epsilon smena */
         ;
 
-Term ::= (Terminator) Factor:F1 MulopFactor:M2 {: RESULT=new Terminator(F1, M2); RESULT.setLine(F1left); :} ;
+Term ::= (Terminator) Factor:t MulopFactor:M1 {: RESULT=new Terminator(t, M1); RESULT.setLine(tleft); :} ;
 
 MulopFactor ::= (MulopFactorRec) MulopFactor:M1 Mulop:M2 Factor:F3 {: RESULT=new MulopFactorRec(M1, M2, F3); RESULT.setLine(M1left); :}
               | (NoMulopFactor) {: RESULT=new NoMulopFactor(); :} /* epsilon smena */
               ;
 
-Factor ::= (FactorNum) NUMBER {: RESULT=new FactorNum(); :}
+Factor ::= (FactorNum) NUMBER:N1 {: RESULT=new FactorNum(N1); RESULT.setLine(N1left); :}
          | (FactorChar) CHARCONST {: RESULT=new FactorChar(); :}
          | (FactorExpr) LPAREN Expr:E1 RPAREN {: RESULT=new FactorExpr(E1); RESULT.setLine(E1left); :}
          | (FactorBool) BOOLCONST {: RESULT=new FactorBool(); :}
          | (FactorNewExpr) NEW Type:T1 LSQUARE Expr:E2 RSQUARE {: RESULT=new FactorNewExpr(T1, E2); RESULT.setLine(T1left); :}
-         | (FactorDes) Designator:D1 {: RESULT=new FactorDes(D1); RESULT.setLine(D1left); :}
+         | (FactorDes) Designator:d {: RESULT=new FactorDes(d); RESULT.setLine(dleft); :}
          | (FactorNewTypeExpr) NEW Type:T1 LSQUARE Expr:E2 RSQUARE LSQUARE Expr:E3 RSQUARE {: RESULT=new FactorNewTypeExpr(T1, E2, E3); RESULT.setLine(T1left); :}
          ;
 
-Designator ::= (DesignatorExpression) IDENT ExprList:E1 {: RESULT=new DesignatorExpression(E1); RESULT.setLine(E1left); :} ;
+Designator ::= (DesignatorExpression) IDENT:name ExprList:E1 {: RESULT=new DesignatorExpression(name, E1); RESULT.setLine(nameleft); :} ;
 
 ExprList ::= (ExprListExpr) LSQUARE Expr:E1 RSQUARE {: RESULT=new ExprListExpr(E1); RESULT.setLine(E1left); :}
            | (NoExprListExpr) {: RESULT=new NoExprListExpr(); :} /* epsilon smena */
@@ -175,13 +189,17 @@ Mulop ::= (MulOperationMul) MUL {: RESULT=new MulOperationMul(); :}
         | (MulOperationPercent) PERCENT {: RESULT=new MulOperationPercent(); :}
         ;
 
-IdentSquareList ::= (IdentSquareListRec) IdentSquareList:I1 COMMA IDENT SquareList:S2 {: RESULT=new IdentSquareListRec(I1, S2); RESULT.setLine(I1left); :}
+IdentSquareList ::= (IdentSquareListRec) IdentSquareList:I1 IdentInLine:I2 SquareList:S3 {: RESULT=new IdentSquareListRec(I1, I2, S3); RESULT.setLine(I1left); :}
                   | (NoIdentSquareList) {: RESULT=new NoIdentSquareList(); :} /* epsilon smena */
                   ;
 
-FormPars ::= (FormParsMatrix) Type:T1 IDENT SquareList:S2 TypeIdentSquareList:T3 DOTCOMMA {: RESULT=new FormParsMatrix(T1, S2, T3); RESULT.setLine(T1left); :} ;
+IdentInLine ::= (IdentInLine) COMMA IDENT:identName {: RESULT=new IdentInLine(identName); RESULT.setLine(identNameleft); :};
 
-TypeIdentSquareList ::= (TypeIdentSquareListRec) TypeIdentSquareList:T1 COMMA Type:T2 IDENT SquareList:S3 {: RESULT=new TypeIdentSquareListRec(T1, T2, S3); RESULT.setLine(T1left); :}
+IdentTypeInLine ::= (IdentTypeInLine) COMMA Type:typeName IDENT:identName {: RESULT=new IdentTypeInLine(typeName, identName); RESULT.setLine(typeNameleft); :};
+
+FormPars ::= (FormParsMatrix) Type:T1 IDENT:I2 SquareList:S3 TypeIdentSquareList:T4 DOTCOMMA {: RESULT=new FormParsMatrix(T1, I2, S3, T4); RESULT.setLine(T1left); :};
+
+TypeIdentSquareList ::= (TypeIdentSquareListRec) TypeIdentSquareList:T1 COMMA Type:typeName IDENT:identName SquareList:S2 {: RESULT=new TypeIdentSquareListRec(T1, typeName, identName, S2); RESULT.setLine(T1left); :}
                   | (NoTypeIdentSquareList) {: RESULT=new NoTypeIdentSquareList(); :} /* epsilon smena */
                   ;
 
@@ -190,7 +208,7 @@ SquareList ::= (SquareListOutside) LSQUARE RSQUARE LSQUARE RSQUARE {: RESULT=new
              | (NoSquareListOutside) {: RESULT=new NoSquareListOutside(); :} /* epsilon smena */
              ;
 
-Type ::= (TypeIdent) IDENT {: RESULT=new TypeIdent(); :} ;
+Type ::= (TypeIdent) IDENT:typeName {: RESULT=new TypeIdent(typeName); RESULT.setLine(typeNameleft); :} ;
 
 
 

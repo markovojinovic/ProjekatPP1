@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 25/4/2023 19:21:43
+// 30/4/2023 14:53:4
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -8,12 +8,14 @@ package rs.ac.bg.etf.pp1.ast;
 public class VarDeclarationArray extends VarDecl {
 
     private Type Type;
+    private String varName;
     private SquareList SquareList;
     private IdentSquareList IdentSquareList;
 
-    public VarDeclarationArray (Type Type, SquareList SquareList, IdentSquareList IdentSquareList) {
+    public VarDeclarationArray (Type Type, String varName, SquareList SquareList, IdentSquareList IdentSquareList) {
         this.Type=Type;
         if(Type!=null) Type.setParent(this);
+        this.varName=varName;
         this.SquareList=SquareList;
         if(SquareList!=null) SquareList.setParent(this);
         this.IdentSquareList=IdentSquareList;
@@ -26,6 +28,14 @@ public class VarDeclarationArray extends VarDecl {
 
     public void setType(Type Type) {
         this.Type=Type;
+    }
+
+    public String getVarName() {
+        return varName;
+    }
+
+    public void setVarName(String varName) {
+        this.varName=varName;
     }
 
     public SquareList getSquareList() {
@@ -77,6 +87,9 @@ public class VarDeclarationArray extends VarDecl {
             buffer.append(Type.toString("  "+tab));
         else
             buffer.append(tab+"  null");
+        buffer.append("\n");
+
+        buffer.append(" "+tab+varName);
         buffer.append("\n");
 
         if(SquareList!=null)

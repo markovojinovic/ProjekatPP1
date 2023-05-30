@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 25/4/2023 19:21:43
+// 30/4/2023 14:53:5
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -8,11 +8,14 @@ package rs.ac.bg.etf.pp1.ast;
 public class IdentSquareListRec extends IdentSquareList {
 
     private IdentSquareList IdentSquareList;
+    private IdentInLine IdentInLine;
     private SquareList SquareList;
 
-    public IdentSquareListRec (IdentSquareList IdentSquareList, SquareList SquareList) {
+    public IdentSquareListRec (IdentSquareList IdentSquareList, IdentInLine IdentInLine, SquareList SquareList) {
         this.IdentSquareList=IdentSquareList;
         if(IdentSquareList!=null) IdentSquareList.setParent(this);
+        this.IdentInLine=IdentInLine;
+        if(IdentInLine!=null) IdentInLine.setParent(this);
         this.SquareList=SquareList;
         if(SquareList!=null) SquareList.setParent(this);
     }
@@ -23,6 +26,14 @@ public class IdentSquareListRec extends IdentSquareList {
 
     public void setIdentSquareList(IdentSquareList IdentSquareList) {
         this.IdentSquareList=IdentSquareList;
+    }
+
+    public IdentInLine getIdentInLine() {
+        return IdentInLine;
+    }
+
+    public void setIdentInLine(IdentInLine IdentInLine) {
+        this.IdentInLine=IdentInLine;
     }
 
     public SquareList getSquareList() {
@@ -39,17 +50,20 @@ public class IdentSquareListRec extends IdentSquareList {
 
     public void childrenAccept(Visitor visitor) {
         if(IdentSquareList!=null) IdentSquareList.accept(visitor);
+        if(IdentInLine!=null) IdentInLine.accept(visitor);
         if(SquareList!=null) SquareList.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
         if(IdentSquareList!=null) IdentSquareList.traverseTopDown(visitor);
+        if(IdentInLine!=null) IdentInLine.traverseTopDown(visitor);
         if(SquareList!=null) SquareList.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
         if(IdentSquareList!=null) IdentSquareList.traverseBottomUp(visitor);
+        if(IdentInLine!=null) IdentInLine.traverseBottomUp(visitor);
         if(SquareList!=null) SquareList.traverseBottomUp(visitor);
         accept(visitor);
     }
@@ -61,6 +75,12 @@ public class IdentSquareListRec extends IdentSquareList {
 
         if(IdentSquareList!=null)
             buffer.append(IdentSquareList.toString("  "+tab));
+        else
+            buffer.append(tab+"  null");
+        buffer.append("\n");
+
+        if(IdentInLine!=null)
+            buffer.append(IdentInLine.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");

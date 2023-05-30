@@ -8,6 +8,8 @@ import rs.ac.bg.etf.pp1.ast.*;
 
 parser code {:
 
+	boolean errorDetected;
+
 	Logger log = Logger.getLogger(getClass());
 
 
@@ -27,6 +29,7 @@ parser code {:
     }
 
     public void report_error(String message, Object info) {
+    	errorDetected = true;
     	StringBuilder msg = new StringBuilder(message);
     	if (info instanceof Symbol)
             msg.append (" na liniji ").append(((Symbol)info).left);
@@ -36,6 +39,9 @@ parser code {:
 
 :}
 
+init with {:
+	errorDetected = false;
+:}
 
 scan with {:
 	Symbol s = this.getScanner().next_token();
@@ -44,25 +50,32 @@ scan with {:
 	return s;
 :}
 
-terminal PROG, RETURN, VOID, CHARCONST, RBRACE, LBRACE, CONST;
-terminal EQUAL, PLUSPLUS, MINUSMINUS, DOTCOMMA, READ, LPAREN, RPAREN, PRINT, COMMA, NUMBER;
-terminal BOOLCONST, NEW, LSQUARE, RSQUARE, PLUS, MINUS, MUL, DIV, PERCENT, IDENT ;
+terminal PROG, RETURN, CHARCONST, RBRACE, LBRACE, CONST;
+terminal EQUAL, PLUSPLUS, MINUSMINUS, DOTCOMMA, READ, LPAREN, RPAREN, PRINT, COMMA;
+terminal BOOLCONST, NEW, LSQUARE, RSQUARE, PLUS, MINUS, MUL, DIV, PERCENT;
+terminal String IDENT;
+terminal Integer NUMBER;
 
-nonterminal DesignatorStatement, Designator, Expr, NumberInPrint, Minus, Term, AddopTerm, Addop;
-nonterminal  Factor, MulopFactor, Mulop, Type, ExprList, VarDecl, SquareList, FunctionType;
-nonterminal IdentSquareList, FormPars, TypeIdentSquareList, DesignatorListMany, DesignatorList, Statement;
-nonterminal VarDeclList, MethodDeclList, Program, MethodDecl, StatementList, FormalParamDecl, FormParsLst;
+nonterminal DesignatorStatement, NumberInPrint, Minus, Addop, FunctionParameters;
+nonterminal MulopFactor, Mulop, ExprList, VarDecl, SquareList, IdentInLine, IdentList;
+nonterminal IdentSquareList, FormPars, TypeIdentSquareList, DesignatorListMany, DesignatorList;
+nonterminal VarDeclList, MethodDeclList, StatementList, FormalParamDecl;
 
-Program ::= (Program) PROG IDENT VarDeclList LBRACE MethodDeclList RBRACE;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgName, Program, MethodDecl, MethodTypeName, Designator, FormParsLst, IdentTypeInLine, ReturnStatement;
+nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, Term, Factor, Expr, AddopTerm, Statement;
+
+Program ::= (Program) PROG ProgName:p VarDeclList LBRACE MethodDeclList RBRACE;
+
+ProgName ::= (ProgName) IDENT:progName;
 
 VarDeclList ::= (VarDeclarations) VarDeclList VarDecl
 			|
 			(NoVarDecl) /* epsilon smena */
 			;
 
-VarDecl ::= (VarDeclarationArray) Type IDENT SquareList IdentSquareList DOTCOMMA
-          | (ConstVarDeclaration) CONST Type IDENT EQUAL Factor DOTCOMMA
-          | (VarDeclarationEqual) Type IDENT EQUAL Factor DOTCOMMA
+VarDecl ::= (VarDeclarationArray) Type:varType IDENT:varName SquareList IdentSquareList DOTCOMMA
+          | (ConstVarDeclaration) CONST Type:varType IDENT:varName EQUAL Factor DOTCOMMA
+          | (VarDeclarationEqual) Type:varType IDENT:varName EQUAL Factor DOTCOMMA
           ;
 
 MethodDeclList ::= (MethodDeclarations) MethodDeclList MethodDecl
@@ -70,21 +83,29 @@ MethodDeclList ::= (MethodDeclarations) MethodDeclList MethodDecl
 				(NoMethodDecl) /* epsilon smena */
 				;
 
-MethodDecl ::= (MethodDecl) FunctionType IDENT LPAREN FormParsLst RPAREN VarDeclList LBRACE StatementList RBRACE;
+MethodDecl ::= (MethodDecl) MethodTypeName LPAREN FormParsLst RPAREN VarDeclList LBRACE StatementList ReturnStatement RBRACE;
 
-FunctionType ::= (FType) Type | VOID ;
+ReturnStatement ::= (ReturnStatementOnly) RETURN DOTCOMMA
+                  | (ReturnStatementExpr) RETURN Expr:exprName DOTCOMMA
+                  | (NoReturnStatement) /* epsilon smena */
+                  ;
+
+MethodTypeName ::= (MethodTypeName) Type:retType IDENT:metName;
 
 StatementList ::= (Statements) StatementList Statement
 				|
 				(NoStmt) /* epsilon smena */
 				;
 
-FormParsLst ::= (FormParams) FormPars
-		  |
-		  (NoFormParam) /* epsilon */
+FormParsLst ::= (FormParams) FormParsLst Type:typeName IDENT:identName IdentList
+		  | (NoFormParams) /* epsilon smena */
 		  ;
 
-DesignatorStatement ::= (DesignatorStatementEqual) Designator EQUAL Expr
+IdentList ::= (IdentLists) IdentList IdentTypeInLine
+            | (NoIdentLists) /* epsilon smena */
+            ;
+
+DesignatorStatement ::= (DesignatorStatementEqual) Designator:dest EQUAL Expr:e
                        | (DesignatorStatementArray) LSQUARE DesignatorList DesignatorListMany RSQUARE EQUAL Designator
                        | (DesignatorStatementPlusPlus) Designator PLUSPLUS
                        | (DesignatorStatementMinusMinus) Designator MINUSMINUS
@@ -104,6 +125,7 @@ Statement ::= (StatementDesignator) DesignatorStatement DOTCOMMA
               {: parser.report_error("Izvrsen oporavak do ; u liniji " + lleft, null); :}
             | (StatementRead) READ LPAREN Designator RPAREN DOTCOMMA
             | (PrintStmt) PRINT LPAREN Expr NumberInPrint RPAREN DOTCOMMA
+            | (FuncCall) Designator:func LPAREN FormParsLst RPAREN DOTCOMMA
             ;
 
 NumberInPrint ::= (NumberInPrintNumber) COMMA NUMBER
@@ -112,7 +134,7 @@ NumberInPrint ::= (NumberInPrintNumber) COMMA NUMBER
 
 Expr ::= (Expression) Minus Term AddopTerm ;
 
-AddopTerm ::= (AddOperationTerminatorRec) AddopTerm Addop Term
+AddopTerm ::= (AddOperationTerminatorRec) AddopTerm:te Addop Term
             | (NoAddOperationTerminator) /* epsilon smena */
             ;
 
@@ -120,7 +142,7 @@ Minus ::= (MinusExpression) MINUS
         | (NoMinusExpression) /* epsilon smena */
         ;
 
-Term ::= (Terminator) Factor MulopFactor ;
+Term ::= (Terminator) Factor:t MulopFactor ;
 
 MulopFactor ::= (MulopFactorRec) MulopFactor Mulop Factor
               | (NoMulopFactor) /* epsilon smena */
@@ -131,11 +153,11 @@ Factor ::= (FactorNum) NUMBER
          | (FactorExpr) LPAREN Expr RPAREN
          | (FactorBool) BOOLCONST
          | (FactorNewExpr) NEW Type LSQUARE Expr RSQUARE
-         | (FactorDes) Designator
+         | (FactorDes) Designator:d
          | (FactorNewTypeExpr) NEW Type LSQUARE Expr RSQUARE LSQUARE Expr RSQUARE
          ;
 
-Designator ::= (DesignatorExpression) IDENT ExprList ;
+Designator ::= (DesignatorExpression) IDENT:name ExprList ;
 
 ExprList ::= (ExprListExpr) LSQUARE Expr RSQUARE
            | (NoExprListExpr) /* epsilon smena */
@@ -150,13 +172,17 @@ Mulop ::= (MulOperationMul) MUL
         | (MulOperationPercent) PERCENT
         ;
 
-IdentSquareList ::= (IdentSquareListRec) IdentSquareList COMMA IDENT SquareList
+IdentSquareList ::= (IdentSquareListRec) IdentSquareList IdentInLine SquareList
                   | (NoIdentSquareList) /* epsilon smena */
                   ;
 
-FormPars ::= (FormParsMatrix) Type IDENT SquareList TypeIdentSquareList DOTCOMMA ;
+IdentInLine ::= (IdentInLine) COMMA IDENT:identName;
 
-TypeIdentSquareList ::= (TypeIdentSquareListRec) TypeIdentSquareList COMMA Type IDENT SquareList
+IdentTypeInLine ::= (IdentTypeInLine) COMMA Type:typeName IDENT:identName;
+
+FormPars ::= (FormParsMatrix) Type IDENT SquareList TypeIdentSquareList DOTCOMMA;
+
+TypeIdentSquareList ::= (TypeIdentSquareListRec) TypeIdentSquareList COMMA Type:typeName IDENT:identName SquareList
                   | (NoTypeIdentSquareList) /* epsilon smena */
                   ;
 
@@ -165,7 +191,7 @@ SquareList ::= (SquareListOutside) LSQUARE RSQUARE LSQUARE RSQUARE
              | (NoSquareListOutside) /* epsilon smena */
              ;
 
-Type ::= (TypeIdent) IDENT ;
+Type ::= (TypeIdent) IDENT:typeName ;
 
 
 
