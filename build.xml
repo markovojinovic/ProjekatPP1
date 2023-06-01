@@ -17,6 +17,10 @@
                 <exclude name="mjparser.cup"/>
             </fileset>
         </delete>
+        <delete>
+            <fileset dir="logs">
+            </fileset>
+        </delete>
     </target>
 
     <target name="lexerGen" depends="delete">
