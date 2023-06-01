@@ -42,8 +42,8 @@ import java_cup.runtime.Symbol;
 "read" 		{ return new_symbol(sym.READ, yytext()); }
 "new" 		{ return new_symbol(sym.NEW, yytext()); }
 "const"     { return new_symbol(sym.CONST, yytext()); }
-"true"     { return new_symbol(sym.BOOLCONST, yytext()); }
-"false"     { return new_symbol(sym.BOOLCONST, yytext()); }
+"true"      { return new_symbol(sym.BOOLCONST, Boolean.valueOf(yytext())); }
+"false"     { return new_symbol(sym.BOOLCONST, Boolean.valueOf(yytext())); }
 "+" 		{ return new_symbol(sym.PLUS, yytext()); }
 "++" 		{ return new_symbol(sym.PLUSPLUS, yytext()); }
 "-" 		{ return new_symbol(sym.MINUS, yytext()); }
@@ -67,7 +67,7 @@ import java_cup.runtime.Symbol;
 
 [0-9]+  { return new_symbol(sym.NUMBER, new Integer (yytext())); }
 ([a-z]|[A-Z])[a-z|A-Z|0-9|_]* 	{return new_symbol (sym.IDENT, yytext()); }
-\'([0-9a-zA-Z])\'   {return new_symbol (sym.CHARCONST, yytext()); }
+\'([0-9a-zA-Z])\'   {return new_symbol (sym.CHARCONST, new Character (yytext().charAt(1))); }
 
 . { System.err.println("Leksicka greska ("+yytext()+") u liniji "+(yyline+1)); }
 

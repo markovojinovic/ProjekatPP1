@@ -50,11 +50,13 @@ scan with {:
 	return s;
 :}
 
-terminal PROG, RETURN, CHARCONST, RBRACE, LBRACE, CONST;
+terminal PROG, RETURN, RBRACE, LBRACE, CONST;
 terminal EQUAL, PLUSPLUS, MINUSMINUS, DOTCOMMA, READ, LPAREN, RPAREN, PRINT, COMMA;
-terminal BOOLCONST, NEW, LSQUARE, RSQUARE, PLUS, MINUS, MUL, DIV, PERCENT;
+terminal NEW, LSQUARE, RSQUARE, PLUS, MINUS, MUL, DIV, PERCENT;
 terminal String IDENT;
 terminal Integer NUMBER;
+terminal Boolean BOOLCONST;
+terminal Character CHARCONST;
 
 nonterminal DesignatorStatement, NumberInPrint, Minus, Addop, FunctionParameters;
 nonterminal MulopFactor, Mulop, ExprList, VarDecl, SquareList, IdentInLine, IdentList;
@@ -74,8 +76,11 @@ VarDeclList ::= (VarDeclarations) VarDeclList VarDecl
 			;
 
 VarDecl ::= (VarDeclarationArray) Type:varType IDENT:varName SquareList IdentSquareList DOTCOMMA
-          | (ConstVarDeclaration) CONST Type:varType IDENT:varName EQUAL Factor DOTCOMMA
+          | (ConstVarDeclaration) CONST Type:varType IDENT:varName EQUAL Factor:f DOTCOMMA
           | (VarDeclarationEqual) Type:varType IDENT:varName EQUAL Factor DOTCOMMA
+          |
+            error DOTCOMMA:l
+            {: parser.report_error("Izvrsen oporavak do ; u liniji " + lleft, null); :}
           ;
 
 MethodDeclList ::= (MethodDeclarations) MethodDeclList MethodDecl
@@ -85,8 +90,7 @@ MethodDeclList ::= (MethodDeclarations) MethodDeclList MethodDecl
 
 MethodDecl ::= (MethodDecl) MethodTypeName LPAREN FormParsLst RPAREN VarDeclList LBRACE StatementList ReturnStatement RBRACE;
 
-ReturnStatement ::= (ReturnStatementOnly) RETURN DOTCOMMA
-                  | (ReturnStatementExpr) RETURN Expr:exprName DOTCOMMA
+ReturnStatement ::= (ReturnStatementExpr) RETURN Expr:exprName DOTCOMMA
                   | (NoReturnStatement) /* epsilon smena */
                   ;
 
@@ -125,16 +129,15 @@ Statement ::= (StatementDesignator) DesignatorStatement DOTCOMMA
               {: parser.report_error("Izvrsen oporavak do ; u liniji " + lleft, null); :}
             | (StatementRead) READ LPAREN Designator RPAREN DOTCOMMA
             | (PrintStmt) PRINT LPAREN Expr NumberInPrint RPAREN DOTCOMMA
-            | (FuncCall) Designator:func LPAREN FormParsLst RPAREN DOTCOMMA
             ;
 
 NumberInPrint ::= (NumberInPrintNumber) COMMA NUMBER
                 | (NoNumberInPrintNumber) /* epsilon smena */
                 ;
 
-Expr ::= (Expression) Minus Term AddopTerm ;
+Expr ::= (Expression) Minus Term:t AddopTerm:a ;
 
-AddopTerm ::= (AddOperationTerminatorRec) AddopTerm:te Addop Term
+AddopTerm ::= (AddOperationTerminatorRec) AddopTerm:te Addop Term:t
             | (NoAddOperationTerminator) /* epsilon smena */
             ;
 
@@ -148,13 +151,13 @@ MulopFactor ::= (MulopFactorRec) MulopFactor Mulop Factor
               | (NoMulopFactor) /* epsilon smena */
               ;
 
-Factor ::= (FactorNum) NUMBER
-         | (FactorChar) CHARCONST
+Factor ::= (FactorNum) NUMBER:value
+         | (FactorChar) CHARCONST:value
          | (FactorExpr) LPAREN Expr RPAREN
-         | (FactorBool) BOOLCONST
-         | (FactorNewExpr) NEW Type LSQUARE Expr RSQUARE
+         | (FactorBool) BOOLCONST:value
+         | (FactorNewExpr) NEW Type:t LSQUARE Expr:e RSQUARE
          | (FactorDes) Designator:d
-         | (FactorNewTypeExpr) NEW Type LSQUARE Expr RSQUARE LSQUARE Expr RSQUARE
+         | (FactorNewTypeExpr) NEW Type:t LSQUARE Expr:e1 RSQUARE LSQUARE Expr:e2 RSQUARE
          ;
 
 Designator ::= (DesignatorExpression) IDENT:name ExprList ;

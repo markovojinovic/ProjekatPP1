@@ -50,11 +50,13 @@ scan with {:
 	return s;
 :}
 
-terminal PROG, RETURN, CHARCONST, RBRACE, LBRACE, CONST;
+terminal PROG, RETURN, RBRACE, LBRACE, CONST;
 terminal EQUAL, PLUSPLUS, MINUSMINUS, DOTCOMMA, READ, LPAREN, RPAREN, PRINT, COMMA;
-terminal BOOLCONST, NEW, LSQUARE, RSQUARE, PLUS, MINUS, MUL, DIV, PERCENT;
+terminal NEW, LSQUARE, RSQUARE, PLUS, MINUS, MUL, DIV, PERCENT;
 terminal String IDENT;
 terminal Integer NUMBER;
+terminal Boolean BOOLCONST;
+terminal Character CHARCONST;
 
 nonterminal DesignatorStatement DesignatorStatement;
 nonterminal NumberInPrint NumberInPrint;
@@ -91,8 +93,11 @@ VarDeclList ::= (VarDeclarations) VarDeclList:V1 VarDecl:V2 {: RESULT=new VarDec
 			;
 
 VarDecl ::= (VarDeclarationArray) Type:varType IDENT:varName SquareList:S1 IdentSquareList:I2 DOTCOMMA {: RESULT=new VarDeclarationArray(varType, varName, S1, I2); RESULT.setLine(varTypeleft); :}
-          | (ConstVarDeclaration) CONST Type:varType IDENT:varName EQUAL Factor:F1 DOTCOMMA {: RESULT=new ConstVarDeclaration(varType, varName, F1); RESULT.setLine(varTypeleft); :}
+          | (ConstVarDeclaration) CONST Type:varType IDENT:varName EQUAL Factor:f DOTCOMMA {: RESULT=new ConstVarDeclaration(varType, varName, f); RESULT.setLine(varTypeleft); :}
           | (VarDeclarationEqual) Type:varType IDENT:varName EQUAL Factor:F1 DOTCOMMA {: RESULT=new VarDeclarationEqual(varType, varName, F1); RESULT.setLine(varTypeleft); :}
+          |
+            error DOTCOMMA:l
+            {: parser.report_error("Izvrsen oporavak do ; u liniji " + lleft, null); :} {: RESULT=new VarDeclDerived1(); :}
           ;
 
 MethodDeclList ::= (MethodDeclarations) MethodDeclList:M1 MethodDecl:M2 {: RESULT=new MethodDeclarations(M1, M2); RESULT.setLine(M1left); :}
@@ -102,8 +107,7 @@ MethodDeclList ::= (MethodDeclarations) MethodDeclList:M1 MethodDecl:M2 {: RESUL
 
 MethodDecl ::= (MethodDecl) MethodTypeName:M1 LPAREN FormParsLst:F2 RPAREN VarDeclList:V3 LBRACE StatementList:S4 ReturnStatement:R5 RBRACE {: RESULT=new MethodDecl(M1, F2, V3, S4, R5); RESULT.setLine(M1left); :};
 
-ReturnStatement ::= (ReturnStatementOnly) RETURN DOTCOMMA {: RESULT=new ReturnStatementOnly(); :}
-                  | (ReturnStatementExpr) RETURN Expr:exprName DOTCOMMA {: RESULT=new ReturnStatementExpr(exprName); RESULT.setLine(exprNameleft); :}
+ReturnStatement ::= (ReturnStatementExpr) RETURN Expr:exprName DOTCOMMA {: RESULT=new ReturnStatementExpr(exprName); RESULT.setLine(exprNameleft); :}
                   | (NoReturnStatement) {: RESULT=new NoReturnStatement(); :} /* epsilon smena */
                   ;
 
@@ -142,16 +146,15 @@ Statement ::= (StatementDesignator) DesignatorStatement:D1 DOTCOMMA {: RESULT=ne
               {: parser.report_error("Izvrsen oporavak do ; u liniji " + lleft, null); :} {: RESULT=new StatementDerived1(); :}
             | (StatementRead) READ LPAREN Designator:D1 RPAREN DOTCOMMA {: RESULT=new StatementRead(D1); RESULT.setLine(D1left); :}
             | (PrintStmt) PRINT LPAREN Expr:E1 NumberInPrint:N2 RPAREN DOTCOMMA {: RESULT=new PrintStmt(E1, N2); RESULT.setLine(E1left); :}
-            | (FuncCall) Designator:func LPAREN FormParsLst:F1 RPAREN DOTCOMMA {: RESULT=new FuncCall(func, F1); RESULT.setLine(funcleft); :}
             ;
 
 NumberInPrint ::= (NumberInPrintNumber) COMMA NUMBER:N1 {: RESULT=new NumberInPrintNumber(N1); RESULT.setLine(N1left); :}
                 | (NoNumberInPrintNumber) {: RESULT=new NoNumberInPrintNumber(); :} /* epsilon smena */
                 ;
 
-Expr ::= (Expression) Minus:M1 Term:T2 AddopTerm:A3 {: RESULT=new Expression(M1, T2, A3); RESULT.setLine(M1left); :} ;
+Expr ::= (Expression) Minus:M1 Term:t AddopTerm:a {: RESULT=new Expression(M1, t, a); RESULT.setLine(M1left); :} ;
 
-AddopTerm ::= (AddOperationTerminatorRec) AddopTerm:te Addop:A1 Term:T2 {: RESULT=new AddOperationTerminatorRec(te, A1, T2); RESULT.setLine(teleft); :}
+AddopTerm ::= (AddOperationTerminatorRec) AddopTerm:te Addop:A1 Term:t {: RESULT=new AddOperationTerminatorRec(te, A1, t); RESULT.setLine(teleft); :}
             | (NoAddOperationTerminator) {: RESULT=new NoAddOperationTerminator(); :} /* epsilon smena */
             ;
 
@@ -165,13 +168,13 @@ MulopFactor ::= (MulopFactorRec) MulopFactor:M1 Mulop:M2 Factor:F3 {: RESULT=new
               | (NoMulopFactor) {: RESULT=new NoMulopFactor(); :} /* epsilon smena */
               ;
 
-Factor ::= (FactorNum) NUMBER:N1 {: RESULT=new FactorNum(N1); RESULT.setLine(N1left); :}
-         | (FactorChar) CHARCONST {: RESULT=new FactorChar(); :}
+Factor ::= (FactorNum) NUMBER:value {: RESULT=new FactorNum(value); RESULT.setLine(valueleft); :}
+         | (FactorChar) CHARCONST:value {: RESULT=new FactorChar(value); RESULT.setLine(valueleft); :}
          | (FactorExpr) LPAREN Expr:E1 RPAREN {: RESULT=new FactorExpr(E1); RESULT.setLine(E1left); :}
-         | (FactorBool) BOOLCONST {: RESULT=new FactorBool(); :}
-         | (FactorNewExpr) NEW Type:T1 LSQUARE Expr:E2 RSQUARE {: RESULT=new FactorNewExpr(T1, E2); RESULT.setLine(T1left); :}
+         | (FactorBool) BOOLCONST:value {: RESULT=new FactorBool(value); RESULT.setLine(valueleft); :}
+         | (FactorNewExpr) NEW Type:t LSQUARE Expr:e RSQUARE {: RESULT=new FactorNewExpr(t, e); RESULT.setLine(tleft); :}
          | (FactorDes) Designator:d {: RESULT=new FactorDes(d); RESULT.setLine(dleft); :}
-         | (FactorNewTypeExpr) NEW Type:T1 LSQUARE Expr:E2 RSQUARE LSQUARE Expr:E3 RSQUARE {: RESULT=new FactorNewTypeExpr(T1, E2, E3); RESULT.setLine(T1left); :}
+         | (FactorNewTypeExpr) NEW Type:t LSQUARE Expr:e1 RSQUARE LSQUARE Expr:e2 RSQUARE {: RESULT=new FactorNewTypeExpr(t, e1, e2); RESULT.setLine(tleft); :}
          ;
 
 Designator ::= (DesignatorExpression) IDENT:name ExprList:E1 {: RESULT=new DesignatorExpression(name, E1); RESULT.setLine(nameleft); :} ;
