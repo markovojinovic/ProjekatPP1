@@ -350,8 +350,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     public void visit(FactorNewExpr factorNewExpr) {
         assignmentType = factorNewExpr.getType().struct.getKind();
         newArrayDereference = true;
-        if(arrayDereference)
-            arrayDereference = false;
+        arrayDereference = false;
     }
 
     public void visit(FactorExpr factorExpr) {
@@ -371,7 +370,8 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
     public void visit(FactorNewTypeExpr factorNewTypeExpr) {
         assignmentType = factorNewTypeExpr.getType().struct.getKind();
-        arrayDereference = true;
+        newArrayDereference = true;
+        arrayDereference = false;
         if (identType != null) {
             int startType = identType[0];
             for (int type : identType) {

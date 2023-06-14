@@ -23,7 +23,7 @@ program test301
 		print(bodovi);
 
         matrica = new int[5][7];         // ne radi provera za bool
-        matrica[jedan][pet] = 1;     // ne radi provera ovaj deo !!!
+        matrica[jedan][pet] = 'c';     // ne radi provera ovaj deo !!!
 
 		niz = new int[3];
 		niz[nula] = jedan;
