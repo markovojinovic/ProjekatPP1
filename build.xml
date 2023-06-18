@@ -19,6 +19,8 @@
         </delete>
         <delete>
             <fileset dir="logs">
+                <exclude name="mj.log"/>
+                <exclude name="mj-test.log"/>
             </fileset>
         </delete>
     </target>
