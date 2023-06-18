@@ -163,6 +163,7 @@ Factor ::= (FactorNum) NUMBER:value
 Designator ::= (DesignatorExpression) IDENT:name ExprList ;
 
 ExprList ::= (ExprListExpr) LSQUARE Expr RSQUARE
+           | (ExprListExprMatrix) LSQUARE Expr RSQUARE LSQUARE Expr RSQUARE
            | (NoExprListExpr) /* epsilon smena */
            ;
 

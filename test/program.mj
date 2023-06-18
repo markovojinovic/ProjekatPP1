@@ -5,7 +5,7 @@ program test301
 	const int nula = 0;
     const int jedan = 1;
 	const int pet = 5;
-	const char nesto = 'c';           // ne radi za bool prom i int dodelu, sto pot i treba tako
+	const char nesto = 'c';
 
 	int niz[], niz2[], a, b, matrica[][];
 	char nizch[];
@@ -22,11 +22,11 @@ program test301
 		bodovi--;
 		print(bodovi);
 
-        matrica = new int[5][7];         // ne radi provera za bool
-        matrica[jedan][pet] = 'c';     // ne radi provera ovaj deo !!!
+        matrica = new int[5][niz[nula] - 3 + bodovi - niz[2] + 3 - niz[pet]];
+        matrica[nula][pet] = 1;
 
 		niz = new int[3];
-		niz[nula] = jedan;
+		niz[niz[nula] - 3 + bodovi - niz[2] + 3 - niz[pet]] = 1;
 		niz[1] = 2;
 		niz[niz[jedan]] = niz[niz[0]] * 3;
 		bodovi = niz[2]/niz[0];
@@ -51,9 +51,9 @@ program test301
 		[niz2[0],,,niz2[niz[nula]]] = niz; // runtime error!
 
 		nizch = new char[3];
-		nizch[0] = 'a';
+		nizch[nula] = 'a';
 		nizch[jedan] = 'b';
-		nizch[pet - 3] = 'c';
+		nizch[pet - niz[nula] + pet] = 'c';
 		print(nizch[1]);
 		print(nizch[jedan * 2]);
 

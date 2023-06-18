@@ -180,6 +180,7 @@ Factor ::= (FactorNum) NUMBER:value {: RESULT=new FactorNum(value); RESULT.setLi
 Designator ::= (DesignatorExpression) IDENT:name ExprList:E1 {: RESULT=new DesignatorExpression(name, E1); RESULT.setLine(nameleft); :} ;
 
 ExprList ::= (ExprListExpr) LSQUARE Expr:E1 RSQUARE {: RESULT=new ExprListExpr(E1); RESULT.setLine(E1left); :}
+           | (ExprListExprMatrix) LSQUARE Expr:E1 RSQUARE LSQUARE Expr:E2 RSQUARE {: RESULT=new ExprListExprMatrix(E1, E2); RESULT.setLine(E1left); :}
            | (NoExprListExpr) {: RESULT=new NoExprListExpr(); :} /* epsilon smena */
            ;
 
