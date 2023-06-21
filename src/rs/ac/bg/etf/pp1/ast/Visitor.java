@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 18/5/2023 15:16:15
+// 21/5/2023 12:8:32
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -8,8 +8,10 @@ package rs.ac.bg.etf.pp1.ast;
 public interface Visitor { 
 
     public void visit(Mulop Mulop);
+    public void visit(OptionalComma OptionalComma);
     public void visit(FormalParamDecl FormalParamDecl);
     public void visit(NumberInPrint NumberInPrint);
+    public void visit(OneVarDeclarationList OneVarDeclarationList);
     public void visit(StatementList StatementList);
     public void visit(SquareList SquareList);
     public void visit(MulopFactor MulopFactor);
@@ -28,6 +30,7 @@ public interface Visitor {
     public void visit(Expr Expr);
     public void visit(DesignatorList DesignatorList);
     public void visit(DesignatorStatement DesignatorStatement);
+    public void visit(OneVarDeclaration OneVarDeclaration);
     public void visit(Statement Statement);
     public void visit(VarDecl VarDecl);
     public void visit(AddopTerm AddopTerm);
@@ -44,6 +47,8 @@ public interface Visitor {
     public void visit(TypeIdentSquareListRec TypeIdentSquareListRec);
     public void visit(FormParsMatrix FormParsMatrix);
     public void visit(IdentTypeInLine IdentTypeInLine);
+    public void visit(IdentInLineList IdentInLineList);
+    public void visit(ListOfIdentInLine ListOfIdentInLine);
     public void visit(IdentInLine IdentInLine);
     public void visit(NoIdentSquareList NoIdentSquareList);
     public void visit(IdentSquareListRec IdentSquareListRec);
@@ -97,10 +102,17 @@ public interface Visitor {
     public void visit(MethodDecl MethodDecl);
     public void visit(NoMethodDecl NoMethodDecl);
     public void visit(MethodDeclarations MethodDeclarations);
-    public void visit(VarDeclDerived1 VarDeclDerived1);
-    public void visit(VarDeclarationEqual VarDeclarationEqual);
-    public void visit(ConstVarDeclaration ConstVarDeclaration);
+    public void visit(NoOptionalCommaClass NoOptionalCommaClass);
+    public void visit(OptionalCommaClass OptionalCommaClass);
+    public void visit(NoVarDeclarationList NoVarDeclarationList);
+    public void visit(VarDeclarationList VarDeclarationList);
+    public void visit(OneVarDeclarationDerived1 OneVarDeclarationDerived1);
+    public void visit(VarDeclaration VarDeclaration);
+    public void visit(VarDeclarationMatrix VarDeclarationMatrix);
     public void visit(VarDeclarationArray VarDeclarationArray);
+    public void visit(VarDeclDerived1 VarDeclDerived1);
+    public void visit(ConstVarDeclaration ConstVarDeclaration);
+    public void visit(VarDeclarationOther VarDeclarationOther);
     public void visit(NoVarDecl NoVarDecl);
     public void visit(VarDeclarations VarDeclarations);
     public void visit(ProgName ProgName);

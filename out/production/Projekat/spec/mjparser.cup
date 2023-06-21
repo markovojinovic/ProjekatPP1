@@ -59,9 +59,9 @@ terminal Boolean BOOLCONST;
 terminal Character CHARCONST;
 
 nonterminal DesignatorStatement, NumberInPrint, Minus, Addop, FunctionParameters;
-nonterminal MulopFactor, Mulop, ExprList, VarDecl, SquareList, IdentInLine, IdentList;
+nonterminal MulopFactor, Mulop, ExprList, VarDecl, SquareList, IdentInLine, IdentList, OptionalComma;
 nonterminal IdentSquareList, FormPars, TypeIdentSquareList, DesignatorListMany, DesignatorList;
-nonterminal VarDeclList, MethodDeclList, StatementList, FormalParamDecl;
+nonterminal VarDeclList, MethodDeclList, StatementList, FormalParamDecl, IdentInLineList, OneVarDeclaration, OneVarDeclarationList;
 
 nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgName, Program, MethodDecl, MethodTypeName, Designator, FormParsLst, IdentTypeInLine, ReturnStatement;
 nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, Term, Factor, Expr, AddopTerm, Statement;
@@ -75,13 +75,28 @@ VarDeclList ::= (VarDeclarations) VarDeclList VarDecl
 			(NoVarDecl) /* epsilon smena */
 			;
 
-VarDecl ::= (VarDeclarationArray) Type:varType IDENT:varName SquareList IdentSquareList DOTCOMMA
+VarDecl ::= (VarDeclarationOther) Type:varType OneVarDeclarationList DOTCOMMA
           | (ConstVarDeclaration) CONST Type:varType IDENT:varName EQUAL Factor:f DOTCOMMA
-          | (VarDeclarationEqual) Type:varType IDENT:varName EQUAL Factor DOTCOMMA
           |
             error DOTCOMMA:l
             {: parser.report_error("Izvrsen oporavak do ; u liniji " + lleft, null); :}
           ;
+
+OneVarDeclaration ::= (VarDeclarationArray) IDENT:varName LSQUARE RSQUARE
+                    | (VarDeclarationMatrix) IDENT:varName LSQUARE RSQUARE LSQUARE RSQUARE
+                    | (VarDeclaration) IDENT:varName
+                    |
+                        error COMMA:l
+                        {: parser.report_error("Izvrsen oporavak do , u liniji " + lleft, null); :}
+                    ;
+
+OneVarDeclarationList ::= (VarDeclarationList) OneVarDeclarationList OptionalComma OneVarDeclaration
+                        | (NoVarDeclarationList) /* epsilone smena */
+                        ;
+
+OptionalComma ::= (OptionalCommaClass) COMMA
+                | (NoOptionalCommaClass) /* epsilon smena */
+                ;
 
 MethodDeclList ::= (MethodDeclarations) MethodDeclList MethodDecl
 				|
@@ -181,6 +196,10 @@ IdentSquareList ::= (IdentSquareListRec) IdentSquareList IdentInLine SquareList
                   ;
 
 IdentInLine ::= (IdentInLine) COMMA IDENT:identName;
+
+IdentInLineList ::= (ListOfIdentInLine) IdentInLineList IdentInLine
+                  | (IdentInLineList) /* epsilon smena */
+                  ;
 
 IdentTypeInLine ::= (IdentTypeInLine) COMMA Type:typeName IDENT:identName;
 

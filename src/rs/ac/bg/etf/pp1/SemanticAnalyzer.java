@@ -7,56 +7,49 @@ import rs.etf.pp1.symboltable.concepts.*;
 
 import java.util.Stack;
 
-// TODO: Dodati u odgovarajuce f-je ova stanja
-enum GlobalState {
-    InitialGlobal, ConstDeclaration, VarDeclaration, ArrayDeclaration, MatrixDeclaration,
-    EqualDesignatior, OneOperandDesignator, LeftArrayDesignator, ReadPrintDesignator
+enum State {
+    ConstDeclaration, VarDeclaration, ArrayDeclaration, MatrixDeclaration
 }
 
 enum LocalState {
-    InitialLocal, ArrayDereference, MartixDereference, ArrayCreation, MatrixCreation
-}
-
-enum QuestionableState {
-    QInitialState, QArrayDereference, QMartixDereference
+    InitialLocal, ArrayDereference, MartixDereference, ArrayCreation
 }
 
 class TableEntry {
     public int sort;
     public String name;
     public Struct type;
+    public State declaration;
 
-    TableEntry(int sort, String name, Struct type) {
+    TableEntry(int sort, String name, Struct type, State declaration) {
         this.sort = sort;
         this.name = name;
         this.type = type;
+        this.declaration = declaration;
     }
-};
+}
 
 public class SemanticAnalyzer extends VisitorAdaptor {
-    // TODO: Dodati da se konstante ne smeju menjati posle u kodu
-    // TODO: I dalje postoji problem sa pozivanjem klasa oko zagrada niza, konkretno za prmenljivu niz je hardcode
+
+    private static final int variable = 1, arrayDereference = 2, matrixDereference = 3;
 
     int printCallCount = 0;
     int varDeclCount = 0;
-    Obj currentMethod = null;
-    boolean returnFound = false;
+    private Obj currentMethod = null;
+    private boolean returnFound = false;
     boolean errorDetected = false;
     int nVars;
 
-    Struct varDeclType = null;
-    int assignmentType = -1;
-    String assignmentName = "";
+    private Struct varDeclType = null;
+    private int assignmentType = -1;
+    private String assignmentName = "";
 
-    int identType[] = null;
-    int identTypeCnt = 0;
+    private int identType[] = null, varType[] = null, derefType[] = null;
+    private int identTypeCnt = 0, varTypeCnt = 0, derefTypeCnt = 0;
 
-    GlobalState globalState = GlobalState.InitialGlobal;
-    LocalState localState = LocalState.InitialLocal;
-    QuestionableState questionableState = QuestionableState.QInitialState;
+    private LocalState localState = LocalState.InitialLocal;
 
-    Stack<TableEntry> varStack = new Stack<>();
-    int arrayMatrixAtempt = 0;
+    private Stack<TableEntry> varStack = new Stack<>();
 
     Logger log = Logger.getLogger(getClass());
 
@@ -80,6 +73,61 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     // =================================================================================================================
     // metode koje sluze za implementiranje vecih metoda
 
+    private boolean check_deref_level() {       // TODO: zavrsiti f-ju
+        if (derefType == null)
+            return true;
+
+        for (int i = 0; i < derefTypeCnt; i++)
+            if (varType[i] != derefType[i])
+                return false;
+
+        // proveriti da li se razlika sa leve strane jednakosti izmedju odgovarajuceg derefType clana i varType clana
+        // poklapa sa svakom razlikom paralelnih clanova sa suprotnih strana
+
+        // pozicija leve promenljive u nizu je kad se izokidaju sva njena deref, primer matrica[1][2] je treca pozicija
+        // treba gledati sve pre nje da su deref razlike 0, jer svi moraju biti tipa int, a sve kasnije na druge razlike
+
+        return true;
+    }
+
+    private int getKind(Obj var) {
+        int varKind = var.getType().getKind();
+        if (varKind == Struct.Array)
+            varKind = var.getType().getElemType().getKind();
+        if (varKind == Struct.Array)
+            varKind = var.getType().getElemType().getElemType().getKind();
+        return varKind;
+    }
+
+    private int getKindDept(Obj var) {
+        int varKind = var.getType().getKind();
+        if (varKind != Struct.Array)
+            return 1;
+
+        varKind = var.getType().getElemType().getKind();
+        if (varKind != Struct.Array)
+            return 2;
+        else
+            return 3;
+    }
+
+    private int getKindDept(String name) {
+        Obj var = Tab.find(name);
+        if (var == Tab.noObj) {
+            report_error("===============Nepostojeca promenljiva pustena u tabelu u okviru kontrole", null);
+            return -1;
+        }
+        int varKind = var.getType().getKind();
+        if (varKind != Struct.Array)
+            return 1;
+
+        varKind = var.getType().getElemType().getKind();
+        if (varKind != Struct.Array)
+            return 2;
+        else
+            return 3;
+    }
+
     private void check_ident_type(SyntaxNode node) {
         if (identType != null) {
             int startType = identType[0];
@@ -92,34 +140,41 @@ public class SemanticAnalyzer extends VisitorAdaptor {
             }
             identType = null;
             identTypeCnt = 0;
+            varType = null;
+            varTypeCnt = 0;
+            derefType = null;
+            derefTypeCnt = 0;
         }
     }
 
     private void designator_equal_check(Obj var, DesignatorStatementEqual assignment) {
+        if (var.getKind() == Obj.Con) {
+            report_error("Greska na liniji: " + assignment.getLine() +
+                    " - Ne sme se menjati vrednost konstanti", null);
+            return;
+        }
+        if (localState != LocalState.ArrayCreation)
+            if (!check_deref_level()) {
+                report_error("Greska na liniji " + assignment.getLine() + " : " +
+                        "nekompatibilni tipovi u dodeli vrednosti!", null);
+                return;
+            }
         boolean noDec = false, noCom = false;
-        int varKind = var.getType().getKind();
-        if (varKind == Struct.Array)
-            varKind = var.getType().getElemType().getKind();
-        if (varKind == Struct.Array)
-            varKind = var.getType().getElemType().getElemType().getKind();
+        int varKind = getKind(var);
         if (var == Tab.noObj)
             noDec = true;
         else if (assignmentType == 19) {
             Obj rVar = Tab.find(assignmentName);
-            int kind = rVar.getType().getKind();
-            if (kind == Struct.Array)
-                kind = rVar.getType().getElemType().getKind();
-            if (kind == Struct.Array)
-                kind = rVar.getType().getElemType().getElemType().getKind();
+            int kind = getKind(rVar);
             if (rVar == Tab.noObj)
                 noDec = true;
-            else if (kind != var.getType().getKind())
+            else if (kind != varKind)
                 noCom = true;
         } else if (varKind != assignmentType)
             noCom = true;
 
         if (identType != null) {
-            if (localState == LocalState.ArrayDereference) {
+            if (localState == LocalState.ArrayDereference || localState == LocalState.MartixDereference) {
                 localState = LocalState.InitialLocal;
                 int firstNil = -1;
                 for (int curr = 0; curr < identType.length; curr++)
@@ -134,32 +189,43 @@ public class SemanticAnalyzer extends VisitorAdaptor {
                         break;
                     }
                 if (firstNil >= 2) {
-                    if (identType[firstNil - 1] != identType[firstNil - 2])
+                    boolean jump = false;
+                    if (identType[firstNil - 1] != identType[firstNil - 2]) {
                         report_error("Greska na liniji " + assignment.getLine() + " : " +
                                 "nekompatibilni tipovi u dodeli vrednosti!", null);
-                    if (!correct)
+                        jump = true;
+                    }
+                    if (!correct) {
                         report_error("Greska na liniji " + assignment.getLine() + " : " +
                                 "nekompatibilni tipovi u dereferenciranju niza!", null);
+                        jump = true;
+                    }
+                    if (jump)
+                        return;
                 }
 
             } else if (localState == LocalState.ArrayCreation) {
                 localState = LocalState.InitialLocal;
-                int type = assignment.getDesignator().obj.getType().getElemType().getKind();
-                if (type == Struct.Array)
-                    type = assignment.getDesignator().obj.getType().getElemType().getElemType().getKind();
-                boolean correct = true;
-                if (type != identType[0])
+                int type = getKind(assignment.getDesignator().obj);
+                boolean correct = true, jump = false;
+                if (type != identType[0]) {
                     report_error("Greska na liniji " + assignment.getLine() + " : " +
                             "nekompatibilni tipovi u dodeli vrednosti! ", null);
+                    jump = true;
+                }
                 for (int i = 1; i < identType.length; i++) {
                     if (identType[i] == 0)
                         break;
                     if (identType[i] != 1)
                         correct = false;
                 }
-                if (!correct)
+                if (!correct) {
                     report_error("Greska na liniji " + assignment.getLine() + " : " +
                             "nekompatibilni tipovi u dereferenciranju niza!", null);
+                    jump = true;
+                }
+                if (jump)
+                    return;
 
             } else {
                 int startType = identType[0];
@@ -172,6 +238,10 @@ public class SemanticAnalyzer extends VisitorAdaptor {
             }
             identType = null;
             identTypeCnt = 0;
+            varType = null;
+            varTypeCnt = 0;
+            derefType = null;
+            derefTypeCnt = 0;
         }
 
         if (noDec)
@@ -182,57 +252,60 @@ public class SemanticAnalyzer extends VisitorAdaptor {
                     " nekompatibilni tipovi u dodeli vrednosti!", null);
     }
 
-    private void tab_insert_check(String name, Struct struct, int line) {
+    private void tab_insert_check(String name, Struct struct, int line, State declaration) {
         int kind = struct.getKind();
-        if(kind == Struct.Array)
+        if (kind == Struct.Array)
             kind = struct.getElemType().getKind();
-        if(kind == Struct.Array)
+        if (kind == Struct.Array)
             kind = struct.getElemType().getElemType().getKind();
-        if(identType != null)
-            for(int currType : identType) {
-                if(currType == 0)
+        if (identType != null)
+            for (int currType : identType) {
+                if (currType == 0)
                     break;
                 if (currType != kind) {
                     report_error("Greska na liniji " + line + " : " +
-                            " nekompatibilni tipovi u dodeli vrednosti!", null);
+                            " nekompatibilni tipovi kod dodele vrednosti!", null);
                     return;
                 }
             }
-
-        varStack.push(new TableEntry(Obj.Var, name, struct));
+        if (declaration == State.ConstDeclaration)
+            Tab.insert(Obj.Con, name, struct);
+        else
+            Tab.insert(Obj.Var, name, struct);
     }
 
-    private void cleanStack() {
-        if (arrayMatrixAtempt == 1)
-            return;
+    private void stack_insert_check(String name, State declaration) {
+        if (declaration == State.ConstDeclaration)
+            varStack.push(new TableEntry(Obj.Con, name, null, declaration));
+        else
+            varStack.push(new TableEntry(Obj.Var, name, null, declaration));
+    }
+
+    private void cleanStack(Struct struct) {
         if (!varStack.isEmpty()) {
             TableEntry top = varStack.pop();
+            if (top.type == null)
+                top.type = struct;
 
-            if (questionableState == QuestionableState.QArrayDereference)
-                globalState = GlobalState.ArrayDeclaration;
-            else if (questionableState == QuestionableState.QMartixDereference)
-                globalState = GlobalState.MatrixDeclaration;
-            questionableState = QuestionableState.QInitialState;
-
-            if (top.name.equals("niz"))
-                globalState = GlobalState.ArrayDeclaration;
-
-            if (globalState == GlobalState.ArrayDeclaration)
+            if (top.declaration == State.ArrayDeclaration)
                 Tab.insert(Obj.Var, top.name, new Struct(Struct.Array, top.type));
-            else if (globalState == GlobalState.MatrixDeclaration)
+            else if (top.declaration == State.MatrixDeclaration)
                 Tab.insert(Obj.Var, top.name, new Struct(Struct.Array, new Struct(Struct.Array, top.type)));
-            else
+            else if (top.declaration == State.VarDeclaration)
                 Tab.insert(Obj.Var, top.name, top.type);
 
-            // report_info("------------------------- Ulazimo u clean stack sa " + top.name, null);
-            globalState = GlobalState.InitialGlobal;
             while (!varStack.isEmpty()) {
                 top = varStack.pop();
-                Tab.insert(Obj.Var, top.name, top.type);
-                // report_info("------------------------- Ulazimo u clean stack petlju sa " + top.name, null);
+                if (top.type == null)
+                    top.type = struct;
+
+                if (top.declaration == State.ArrayDeclaration)
+                    Tab.insert(Obj.Var, top.name, new Struct(Struct.Array, top.type));
+                else if (top.declaration == State.MatrixDeclaration)
+                    Tab.insert(Obj.Var, top.name, new Struct(Struct.Array, new Struct(Struct.Array, top.type)));
+                else if (top.declaration == State.VarDeclaration)
+                    Tab.insert(Obj.Var, top.name, top.type);
             }
-        } else {
-            // report_error(" ============================ Desila se greska na steku ============================ ", null);
         }
     }
 
@@ -241,61 +314,84 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     public void visit(VarDeclarationArray varDecl) {
         varDeclCount++;
         report_info("Deklarisana promenljiva " + varDecl.getVarName(), varDecl);
-        tab_insert_check(varDecl.getVarName(), varDecl.getType().struct, varDecl.getLine());
+        stack_insert_check(varDecl.getVarName(), State.ArrayDeclaration);
 
         varDeclType = null;
         identType = null;
+        identTypeCnt = 0;
+        varType = null;
+        varTypeCnt = 0;
+        derefType = null;
+        derefTypeCnt = 0;
     }
 
-    public void visit(SquareListOutsideOne squareListOutsideOne) {
-        arrayMatrixAtempt++;
-        // report_info("------------------------- Ulazimo u niz zagrade", null);
-        questionableState = QuestionableState.QArrayDereference;
-        cleanStack();
+    public void visit(VarDeclarationMatrix varDecl) {
+        varDeclCount++;
+        report_info("Deklarisana promenljiva " + varDecl.getVarName(), varDecl);
+        stack_insert_check(varDecl.getVarName(), State.MatrixDeclaration);
+
+        varDeclType = null;
+        identType = null;
+        identTypeCnt = 0;
+        varType = null;
+        varTypeCnt = 0;
+        derefType = null;
+        derefTypeCnt = 0;
     }
 
-    public void visit(NoSquareListOutside noSquareListOutside) {
-        // report_info("------------------------- Ne ulazimo u niz zagrade", null);
-        questionableState = QuestionableState.QInitialState;
-        cleanStack();
+    public void visit(VarDeclaration varDecl) {
+        varDeclCount++;
+        report_info("Deklarisana promenljiva " + varDecl.getVarName(), varDecl);
+        stack_insert_check(varDecl.getVarName(), State.VarDeclaration);
+
+        varDeclType = null;
+        identType = null;
+        identTypeCnt = 0;
+        varType = null;
+        varTypeCnt = 0;
+        derefType = null;
+        derefTypeCnt = 0;
     }
 
-    public void visit(SquareListOutside squareListOutside) {
-        arrayMatrixAtempt++;
-        // report_info("------------------------- Ulazimo u matrica zagrade", null);
-        questionableState = QuestionableState.QMartixDereference;
-        cleanStack();
+    public void visit(VarDeclarationOther varDeclarationOther) {
+        cleanStack(varDeclarationOther.getType().struct);
     }
 
     public void visit(ConstVarDeclaration varDecl) {
-        if (varDecl.getType().struct.assignableTo(varDecl.getFactor().struct)) {
+        if (varDecl.getType().struct.getKind() == varDecl.getFactor().struct.getKind()) {
             varDeclCount++;
             report_info("Deklarisana promenljiva " + varDecl.getVarName(), varDecl);
-            tab_insert_check(varDecl.getVarName(), varDecl.getType().struct, varDecl.getLine());
+            tab_insert_check(varDecl.getVarName(),
+                    varDecl.getType().struct, varDecl.getLine(), State.ConstDeclaration);
             varDeclType = null;
-            globalState = GlobalState.ConstDeclaration;
         } else {
             report_error("Greska : Tipovi nisu kompatibilni ", varDecl);
         }
         identType = null;
-    }
-
-    public void visit(VarDeclarationEqual varDecl) {
-        varDeclCount++;
-        report_info("Deklarisana promenljiva " + varDecl.getVarName(), varDecl);
-        tab_insert_check(varDecl.getVarName(), varDecl.getType().struct, varDecl.getLine());
-        varDeclType = null;
-        identType = null;
+        identTypeCnt = 0;
+        varType = null;
+        varTypeCnt = 0;
+        derefType = null;
+        derefTypeCnt = 0;
     }
 
     public void visit(IdentInLine varDecl) {
         varDeclCount++;
         report_info("Deklarisana promenljiva " + varDecl.getIdentName(), varDecl);
-        tab_insert_check(varDecl.getIdentName(), varDeclType, varDecl.getLine());
+        tab_insert_check(varDecl.getIdentName(), varDeclType, varDecl.getLine(), State.VarDeclaration);
     }
 
     public void visit(PrintStmt print) {
+//        if(print.getExpr().struct != Tab.intType && print.getExpr().struct != Tab.charType){
+//            report_error("Greska na liniji " + print.getLine() + " : Operand mora biti char ili int", null);
+//        }
         printCallCount++;
+        identType = null;
+        identTypeCnt = 0;
+        varType = null;
+        varTypeCnt = 0;
+        derefType = null;
+        derefTypeCnt = 0;
     }
 
     public void visit(ProgName progName) {
@@ -332,13 +428,21 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     }
 
     public void visit(MethodTypeName methodTypeName) {
-        currentMethod = Tab.insert(Obj.Meth, methodTypeName.getMetName(), methodTypeName.getType().struct);
-        methodTypeName.obj = currentMethod;
-        Tab.openScope();
-        report_info("Obradjuje se funkcija " + methodTypeName.getMetName(), methodTypeName);
+        if (Tab.find(methodTypeName.getMetName()) != Tab.noObj) {
+            report_error("Greska na liniji " +
+                    methodTypeName.getLine() + " : funkcija sa imenom " +
+                    methodTypeName.getMetName() + " vec postoji", null);
+        } else {
+            currentMethod = Tab.insert(Obj.Meth, methodTypeName.getMetName(), methodTypeName.getType().struct);
+            methodTypeName.obj = currentMethod;
+            Tab.openScope();
+            report_info("Obradjuje se funkcija " + methodTypeName.getMetName(), methodTypeName);
+        }
     }
 
     public void visit(MethodDecl methodDecl) {
+        if (currentMethod == null)
+            return;
         if (!returnFound && currentMethod.getType() != Tab.noType) {
             report_error("Semanticka greska na liniji " + methodDecl.getLine() + ": funkcija " +
                     currentMethod.getName() + " nema \"return\" iskaz!", null);
@@ -363,26 +467,52 @@ public class SemanticAnalyzer extends VisitorAdaptor {
             identType = new int[256];
             identTypeCnt = 0;
         }
-        int kind = obj.getType().getKind();
-        if (kind == Struct.Array)
-            kind = obj.getType().getElemType().getKind();
-        if (kind == Struct.Array)
-            kind = obj.getType().getElemType().getElemType().getKind();
+        int kind = getKind(obj);
         identType[identTypeCnt++] = kind;
+        if (varType == null) {
+            varType = new int[256];
+            varTypeCnt = 0;
+        }
+        int kindDept = getKindDept(obj);
+        varType[varTypeCnt++] = kindDept;
     }
 
     public void visit(ExprListExpr exprListExpr) {
         localState = LocalState.ArrayDereference;
+        if (derefType == null) {
+            derefType = new int[256];
+            derefTypeCnt = 0;
+        }
+        derefType[derefTypeCnt++] = arrayDereference;
+    }
+
+    public void visit(ExprListExprMatrix exprListExprMatrix) {
+        localState = LocalState.MartixDereference;
+        if (derefType == null) {
+            derefType = new int[256];
+            derefTypeCnt = 0;
+        }
+        derefType[derefTypeCnt++] = matrixDereference;
+    }
+
+    public void visit(NoExprListExpr noExprListExpr) {
+        if (derefType == null) {
+            derefType = new int[256];
+            derefTypeCnt = 0;
+        }
+        derefType[derefTypeCnt++] = variable;
     }
 
     public void visit(FormParams formParsLst) {
         report_info("Parametar f-je " + formParsLst.getIdentName(), formParsLst);
-        tab_insert_check(formParsLst.getIdentName(), formParsLst.getType().struct, formParsLst.getLine());
+        tab_insert_check(formParsLst.getIdentName(), formParsLst.getType().struct,
+                formParsLst.getLine(), State.VarDeclaration);
     }
 
     public void visit(IdentTypeInLine identTypeInLine) {
         report_info("Parametar f-je " + identTypeInLine.getIdentName(), identTypeInLine);
-        tab_insert_check(identTypeInLine.getIdentName(), identTypeInLine.getType().struct, identTypeInLine.getLine());
+        tab_insert_check(identTypeInLine.getIdentName(),
+                identTypeInLine.getType().struct, identTypeInLine.getLine(), State.VarDeclaration);
     }
 
     public void visit(Terminator term) {
@@ -416,6 +546,16 @@ public class SemanticAnalyzer extends VisitorAdaptor {
             identTypeCnt = 0;
         }
         identType[identTypeCnt++] = Struct.Int;
+        if (varType == null) {
+            varType = new int[256];
+            varTypeCnt = 0;
+        }
+        varType[varTypeCnt++] = variable;
+        if (derefType == null) {
+            derefType = new int[256];
+            derefTypeCnt = 0;
+        }
+        derefType[derefTypeCnt++] = variable;
     }
 
     public void visit(FactorBool factorBool) {
@@ -427,6 +567,16 @@ public class SemanticAnalyzer extends VisitorAdaptor {
             identTypeCnt = 0;
         }
         identType[identTypeCnt++] = Struct.Bool;
+        if (varType == null) {
+            varType = new int[256];
+            varTypeCnt = 0;
+        }
+        varType[varTypeCnt++] = variable;
+        if (derefType == null) {
+            derefType = new int[256];
+            derefTypeCnt = 0;
+        }
+        derefType[derefTypeCnt++] = variable;
     }
 
     public void visit(FactorChar factorChar) {
@@ -437,6 +587,16 @@ public class SemanticAnalyzer extends VisitorAdaptor {
             identTypeCnt = 0;
         }
         identType[identTypeCnt++] = Struct.Char;
+        if (varType == null) {
+            varType = new int[256];
+            varTypeCnt = 0;
+        }
+        varType[varTypeCnt++] = variable;
+        if (derefType == null) {
+            derefType = new int[256];
+            derefTypeCnt = 0;
+        }
+        derefType[derefTypeCnt++] = variable;
     }
 
     public void visit(FactorDes var) {
@@ -444,6 +604,8 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     }
 
     public void visit(ReturnStatementExpr returnExpr) {
+        if (currentMethod == null)
+            return;
         returnFound = true;
         Struct currMethType = currentMethod.getType();
         if (!currMethType.compatibleWith(returnExpr.getExpr().struct)) {
@@ -465,6 +627,10 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         }
         identType = null;
         identTypeCnt = 0;
+        varType = null;
+        varTypeCnt = 0;
+        derefType = null;
+        derefTypeCnt = 0;
     }
 
     public void visit(DesignatorStatementMinusMinus designatorStatementMinusMinus) {
@@ -474,22 +640,40 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         }
         identType = null;
         identTypeCnt = 0;
+        varType = null;
+        varTypeCnt = 0;
+        derefType = null;
+        derefTypeCnt = 0;
     }
 
     public void visit(StatementDesignator statementDesignator) {
         identType = null;
         identTypeCnt = 0;
+        varType = null;
+        varTypeCnt = 0;
+        derefType = null;
+        derefTypeCnt = 0;
     }
 
     public void visit(StatementRead statementRead) {
         identType = null;
         identTypeCnt = 0;
+        varType = null;
+        varTypeCnt = 0;
+        derefType = null;
+        derefTypeCnt = 0;
     }
 
     public void visit(DesignatorStatementEqual assignment) {
         Obj var = Tab.find(assignment.getDesignator().obj.getName());
         designator_equal_check(var, assignment);
         assignmentType = -1;
+        identType = null;
+        identTypeCnt = 0;
+        varType = null;
+        varTypeCnt = 0;
+        derefType = null;
+        derefTypeCnt = 0;
     }
 
     public void visit(FactorNewExpr factorNewExpr) {
@@ -506,8 +690,5 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         localState = LocalState.ArrayCreation;
     }
 
-    public void visit(VarDeclarations varDeclarations) {
-        cleanStack();
-    }
 
 }

@@ -14,10 +14,6 @@ public class RuleVisitor extends VisitorAdaptor{
 		varDeclCount++;
 	}
 
-	public void visit(VarDeclarationEqual vardecl){
-		varDeclCount++;
-	}
-
 	public void visit(ConstVarDeclaration vardecl){
 		varDeclCount++;
 	}

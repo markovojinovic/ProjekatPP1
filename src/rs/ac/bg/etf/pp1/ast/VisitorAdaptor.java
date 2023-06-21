@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 18/5/2023 15:16:15
+// 21/5/2023 12:8:32
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -8,8 +8,10 @@ package rs.ac.bg.etf.pp1.ast;
 public abstract class VisitorAdaptor implements Visitor { 
 
     public void visit(Mulop Mulop) { }
+    public void visit(OptionalComma OptionalComma) { }
     public void visit(FormalParamDecl FormalParamDecl) { }
     public void visit(NumberInPrint NumberInPrint) { }
+    public void visit(OneVarDeclarationList OneVarDeclarationList) { }
     public void visit(StatementList StatementList) { }
     public void visit(SquareList SquareList) { }
     public void visit(MulopFactor MulopFactor) { }
@@ -28,6 +30,7 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(Expr Expr) { }
     public void visit(DesignatorList DesignatorList) { }
     public void visit(DesignatorStatement DesignatorStatement) { }
+    public void visit(OneVarDeclaration OneVarDeclaration) { }
     public void visit(Statement Statement) { }
     public void visit(VarDecl VarDecl) { }
     public void visit(AddopTerm AddopTerm) { }
@@ -44,6 +47,8 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(TypeIdentSquareListRec TypeIdentSquareListRec) { visit(); }
     public void visit(FormParsMatrix FormParsMatrix) { visit(); }
     public void visit(IdentTypeInLine IdentTypeInLine) { visit(); }
+    public void visit(IdentInLineList IdentInLineList) { visit(); }
+    public void visit(ListOfIdentInLine ListOfIdentInLine) { visit(); }
     public void visit(IdentInLine IdentInLine) { visit(); }
     public void visit(NoIdentSquareList NoIdentSquareList) { visit(); }
     public void visit(IdentSquareListRec IdentSquareListRec) { visit(); }
@@ -97,10 +102,17 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(MethodDecl MethodDecl) { visit(); }
     public void visit(NoMethodDecl NoMethodDecl) { visit(); }
     public void visit(MethodDeclarations MethodDeclarations) { visit(); }
-    public void visit(VarDeclDerived1 VarDeclDerived1) { visit(); }
-    public void visit(VarDeclarationEqual VarDeclarationEqual) { visit(); }
-    public void visit(ConstVarDeclaration ConstVarDeclaration) { visit(); }
+    public void visit(NoOptionalCommaClass NoOptionalCommaClass) { visit(); }
+    public void visit(OptionalCommaClass OptionalCommaClass) { visit(); }
+    public void visit(NoVarDeclarationList NoVarDeclarationList) { visit(); }
+    public void visit(VarDeclarationList VarDeclarationList) { visit(); }
+    public void visit(OneVarDeclarationDerived1 OneVarDeclarationDerived1) { visit(); }
+    public void visit(VarDeclaration VarDeclaration) { visit(); }
+    public void visit(VarDeclarationMatrix VarDeclarationMatrix) { visit(); }
     public void visit(VarDeclarationArray VarDeclarationArray) { visit(); }
+    public void visit(VarDeclDerived1 VarDeclDerived1) { visit(); }
+    public void visit(ConstVarDeclaration ConstVarDeclaration) { visit(); }
+    public void visit(VarDeclarationOther VarDeclarationOther) { visit(); }
     public void visit(NoVarDecl NoVarDecl) { visit(); }
     public void visit(VarDeclarations VarDeclarations) { visit(); }
     public void visit(ProgName ProgName) { visit(); }

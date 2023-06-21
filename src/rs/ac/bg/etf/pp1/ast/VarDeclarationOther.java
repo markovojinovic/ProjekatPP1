@@ -1,22 +1,20 @@
 // generated with ast extension for cup
 // version 0.8
-// 18/5/2023 15:16:15
+// 21/5/2023 12:8:32
 
 
 package rs.ac.bg.etf.pp1.ast;
 
-public class VarDeclarationEqual extends VarDecl {
+public class VarDeclarationOther extends VarDecl {
 
     private Type Type;
-    private String varName;
-    private Factor Factor;
+    private OneVarDeclarationList OneVarDeclarationList;
 
-    public VarDeclarationEqual (Type Type, String varName, Factor Factor) {
+    public VarDeclarationOther (Type Type, OneVarDeclarationList OneVarDeclarationList) {
         this.Type=Type;
         if(Type!=null) Type.setParent(this);
-        this.varName=varName;
-        this.Factor=Factor;
-        if(Factor!=null) Factor.setParent(this);
+        this.OneVarDeclarationList=OneVarDeclarationList;
+        if(OneVarDeclarationList!=null) OneVarDeclarationList.setParent(this);
     }
 
     public Type getType() {
@@ -27,20 +25,12 @@ public class VarDeclarationEqual extends VarDecl {
         this.Type=Type;
     }
 
-    public String getVarName() {
-        return varName;
+    public OneVarDeclarationList getOneVarDeclarationList() {
+        return OneVarDeclarationList;
     }
 
-    public void setVarName(String varName) {
-        this.varName=varName;
-    }
-
-    public Factor getFactor() {
-        return Factor;
-    }
-
-    public void setFactor(Factor Factor) {
-        this.Factor=Factor;
+    public void setOneVarDeclarationList(OneVarDeclarationList OneVarDeclarationList) {
+        this.OneVarDeclarationList=OneVarDeclarationList;
     }
 
     public void accept(Visitor visitor) {
@@ -49,25 +39,25 @@ public class VarDeclarationEqual extends VarDecl {
 
     public void childrenAccept(Visitor visitor) {
         if(Type!=null) Type.accept(visitor);
-        if(Factor!=null) Factor.accept(visitor);
+        if(OneVarDeclarationList!=null) OneVarDeclarationList.accept(visitor);
     }
 
     public void traverseTopDown(Visitor visitor) {
         accept(visitor);
         if(Type!=null) Type.traverseTopDown(visitor);
-        if(Factor!=null) Factor.traverseTopDown(visitor);
+        if(OneVarDeclarationList!=null) OneVarDeclarationList.traverseTopDown(visitor);
     }
 
     public void traverseBottomUp(Visitor visitor) {
         if(Type!=null) Type.traverseBottomUp(visitor);
-        if(Factor!=null) Factor.traverseBottomUp(visitor);
+        if(OneVarDeclarationList!=null) OneVarDeclarationList.traverseBottomUp(visitor);
         accept(visitor);
     }
 
     public String toString(String tab) {
         StringBuffer buffer=new StringBuffer();
         buffer.append(tab);
-        buffer.append("VarDeclarationEqual(\n");
+        buffer.append("VarDeclarationOther(\n");
 
         if(Type!=null)
             buffer.append(Type.toString("  "+tab));
@@ -75,17 +65,14 @@ public class VarDeclarationEqual extends VarDecl {
             buffer.append(tab+"  null");
         buffer.append("\n");
 
-        buffer.append(" "+tab+varName);
-        buffer.append("\n");
-
-        if(Factor!=null)
-            buffer.append(Factor.toString("  "+tab));
+        if(OneVarDeclarationList!=null)
+            buffer.append(OneVarDeclarationList.toString("  "+tab));
         else
             buffer.append(tab+"  null");
         buffer.append("\n");
 
         buffer.append(tab);
-        buffer.append(") [VarDeclarationEqual]");
+        buffer.append(") [VarDeclarationOther]");
         return buffer.toString();
     }
 }

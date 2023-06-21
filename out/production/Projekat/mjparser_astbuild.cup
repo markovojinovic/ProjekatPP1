@@ -70,6 +70,7 @@ nonterminal VarDecl VarDecl;
 nonterminal SquareList SquareList;
 nonterminal IdentInLine IdentInLine;
 nonterminal IdentList IdentList;
+nonterminal OptionalComma OptionalComma;
 nonterminal IdentSquareList IdentSquareList;
 nonterminal FormPars FormPars;
 nonterminal TypeIdentSquareList TypeIdentSquareList;
@@ -79,6 +80,9 @@ nonterminal VarDeclList VarDeclList;
 nonterminal MethodDeclList MethodDeclList;
 nonterminal StatementList StatementList;
 nonterminal FormalParamDecl FormalParamDecl;
+nonterminal IdentInLineList IdentInLineList;
+nonterminal OneVarDeclaration OneVarDeclaration;
+nonterminal OneVarDeclarationList OneVarDeclarationList;
 
 nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgName, Program, MethodDecl, MethodTypeName, Designator, FormParsLst, IdentTypeInLine, ReturnStatement;
 nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, Term, Factor, Expr, AddopTerm, Statement;
@@ -92,13 +96,28 @@ VarDeclList ::= (VarDeclarations) VarDeclList:V1 VarDecl:V2 {: RESULT=new VarDec
 			(NoVarDecl) {: RESULT=new NoVarDecl(); :} /* epsilon smena */
 			;
 
-VarDecl ::= (VarDeclarationArray) Type:varType IDENT:varName SquareList:S1 IdentSquareList:I2 DOTCOMMA {: RESULT=new VarDeclarationArray(varType, varName, S1, I2); RESULT.setLine(varTypeleft); :}
+VarDecl ::= (VarDeclarationOther) Type:varType OneVarDeclarationList:O1 DOTCOMMA {: RESULT=new VarDeclarationOther(varType, O1); RESULT.setLine(varTypeleft); :}
           | (ConstVarDeclaration) CONST Type:varType IDENT:varName EQUAL Factor:f DOTCOMMA {: RESULT=new ConstVarDeclaration(varType, varName, f); RESULT.setLine(varTypeleft); :}
-          | (VarDeclarationEqual) Type:varType IDENT:varName EQUAL Factor:F1 DOTCOMMA {: RESULT=new VarDeclarationEqual(varType, varName, F1); RESULT.setLine(varTypeleft); :}
           |
             error DOTCOMMA:l
             {: parser.report_error("Izvrsen oporavak do ; u liniji " + lleft, null); :} {: RESULT=new VarDeclDerived1(); :}
           ;
+
+OneVarDeclaration ::= (VarDeclarationArray) IDENT:varName LSQUARE RSQUARE {: RESULT=new VarDeclarationArray(varName); RESULT.setLine(varNameleft); :}
+                    | (VarDeclarationMatrix) IDENT:varName LSQUARE RSQUARE LSQUARE RSQUARE {: RESULT=new VarDeclarationMatrix(varName); RESULT.setLine(varNameleft); :}
+                    | (VarDeclaration) IDENT:varName {: RESULT=new VarDeclaration(varName); RESULT.setLine(varNameleft); :}
+                    |
+                        error COMMA:l
+                        {: parser.report_error("Izvrsen oporavak do , u liniji " + lleft, null); :} {: RESULT=new OneVarDeclarationDerived1(); :}
+                    ;
+
+OneVarDeclarationList ::= (VarDeclarationList) OneVarDeclarationList:O1 OptionalComma:O2 OneVarDeclaration:O3 {: RESULT=new VarDeclarationList(O1, O2, O3); RESULT.setLine(O1left); :}
+                        | (NoVarDeclarationList) {: RESULT=new NoVarDeclarationList(); :} /* epsilone smena */
+                        ;
+
+OptionalComma ::= (OptionalCommaClass) COMMA {: RESULT=new OptionalCommaClass(); :}
+                | (NoOptionalCommaClass) {: RESULT=new NoOptionalCommaClass(); :} /* epsilon smena */
+                ;
 
 MethodDeclList ::= (MethodDeclarations) MethodDeclList:M1 MethodDecl:M2 {: RESULT=new MethodDeclarations(M1, M2); RESULT.setLine(M1left); :}
 				|
@@ -198,6 +217,10 @@ IdentSquareList ::= (IdentSquareListRec) IdentSquareList:I1 IdentInLine:I2 Squar
                   ;
 
 IdentInLine ::= (IdentInLine) COMMA IDENT:identName {: RESULT=new IdentInLine(identName); RESULT.setLine(identNameleft); :};
+
+IdentInLineList ::= (ListOfIdentInLine) IdentInLineList:I1 IdentInLine:I2 {: RESULT=new ListOfIdentInLine(I1, I2); RESULT.setLine(I1left); :}
+                  | (IdentInLineList) {: RESULT=new IdentInLineList(); :} /* epsilon smena */
+                  ;
 
 IdentTypeInLine ::= (IdentTypeInLine) COMMA Type:typeName IDENT:identName {: RESULT=new IdentTypeInLine(typeName, identName); RESULT.setLine(typeNameleft); :};
 
