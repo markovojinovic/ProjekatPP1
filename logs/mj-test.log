@@ -1,123 +1,153 @@
-INFO  22:50:42,821 - Compiling source file: C:\Users\vm190559d\Desktop\Fax\7. Semestar\PP1\Projekat\test\program.mj
-INFO  22:50:42,932 - #2 program
-INFO  22:50:42,932 - #24 test301
-INFO  22:50:42,932 - #6 const
-INFO  22:50:42,948 - #24 int
-INFO  22:50:42,949 - #24 nula
-INFO  22:50:42,949 - #7 =
-INFO  22:50:42,949 - #25 0
-INFO  22:50:42,949 - #10 ;
-INFO  22:50:42,951 - #6 const
-INFO  22:50:42,951 - #24 int
-INFO  22:50:42,951 - #24 jedan
-INFO  22:50:42,951 - #7 =
-INFO  22:50:42,951 - #25 1
-INFO  22:50:42,951 - #10 ;
-INFO  22:50:42,951 - #6 const
-INFO  22:50:42,952 - #24 int
-INFO  22:50:42,952 - #24 pet
-INFO  22:50:42,952 - #7 =
-INFO  22:50:42,952 - #25 5
-INFO  22:50:42,952 - #10 ;
-INFO  22:50:42,952 - #24 int
-INFO  22:50:42,952 - #24 niz
-INFO  22:50:42,958 - #17 [
-INFO  22:50:42,958 - #18 ]
-INFO  22:50:42,958 - #15 ,
-INFO  22:50:42,960 - #24 niz2
-INFO  22:50:42,962 - #17 [
-INFO  22:50:42,962 - #18 ]
-INFO  22:50:42,962 - #15 ,
-INFO  22:50:42,962 - #24 a
-INFO  22:50:42,962 - #15 ,
-INFO  22:50:42,963 - #24 b
-INFO  22:50:42,963 - #10 ;
-INFO  22:50:42,963 - #24 char
-INFO  22:50:42,963 - #24 nizch
-INFO  22:50:42,963 - #17 [
-INFO  22:50:42,963 - #18 ]
-INFO  22:50:42,963 - #10 ;
-INFO  22:50:42,964 - #24 int
-INFO  22:50:42,964 - #24 mat
-INFO  22:50:42,964 - #17 [
-INFO  22:50:42,964 - #18 ]
-INFO  22:50:42,964 - #17 [
-INFO  22:50:42,964 - #18 ]
-INFO  22:50:42,964 - #10 ;
-INFO  22:50:42,964 - #5 {
-INFO  22:50:42,964 - #24 void
-INFO  22:50:42,966 - #24 main
-INFO  22:50:42,966 - #12 (
-INFO  22:50:42,968 - #13 )
-INFO  22:50:42,971 - #24 int
-INFO  22:50:42,971 - #24 bodovi
-INFO  22:50:42,971 - #10 ;
-INFO  22:50:42,971 - #24 bool
-INFO  22:50:42,971 - #24 bt
-INFO  22:50:42,971 - #10 ;
-INFO  22:50:42,971 - #5 {
-INFO  22:50:42,971 - #24 niz
-INFO  22:50:42,971 - #7 =
-INFO  22:50:42,971 - #16 new
-INFO  22:50:42,980 - #24 int
-INFO  22:50:42,980 - #17 [
-INFO  22:50:42,980 - #25 3
-INFO  22:50:42,981 - #18 ]
-INFO  22:50:42,987 - #10 ;
-INFO  22:50:42,987 - #24 niz
-INFO  22:50:42,987 - #17 [
-INFO  22:50:42,987 - #24 nula
-INFO  22:50:42,987 - #18 ]
-INFO  22:50:42,987 - #7 =
-INFO  22:50:42,987 - #24 jedan
-INFO  22:50:42,987 - #10 ;
-INFO  22:50:42,987 - #24 niz
-INFO  22:50:42,987 - #17 [
-INFO  22:50:42,987 - #25 1
-INFO  22:50:42,987 - #18 ]
-INFO  22:50:42,987 - #7 =
-INFO  22:50:42,987 - #25 2
-INFO  22:50:42,987 - #10 ;
-INFO  22:50:42,987 - #24 niz
-INFO  22:50:42,987 - #17 [
-INFO  22:50:42,987 - #24 niz
-INFO  22:50:42,987 - #17 [
-INFO  22:50:42,987 - #24 jedan
-INFO  22:50:42,987 - #18 ]
-INFO  22:50:42,987 - #18 ]
-INFO  22:50:42,987 - #7 =
-INFO  22:50:42,987 - #25 2
-INFO  22:50:42,987 - #21 *
-INFO  22:50:42,987 - #25 3
-INFO  22:50:42,999 - #10 ;
-INFO  22:50:42,999 - #24 bodovi
-INFO  22:50:42,999 - #7 =
-INFO  22:50:42,999 - #24 niz
-INFO  22:50:42,999 - #17 [
-INFO  22:50:42,999 - #25 2
-INFO  22:50:42,999 - #18 ]
-INFO  22:50:42,999 - #22 /
-INFO  22:50:42,999 - #24 niz
-INFO  22:50:42,999 - #17 [
-INFO  22:50:43,003 - #25 0
-INFO  22:50:43,003 - #18 ]
-INFO  22:50:43,003 - #10 ;
-INFO  22:50:43,004 - #14 print
-INFO  22:50:43,004 - #12 (
-INFO  22:50:43,004 - #24 bodovi
-INFO  22:50:43,004 - #13 )
-INFO  22:50:43,012 - #10 ;
-INFO  22:50:43,012 - #14 print
-INFO  22:50:43,012 - #12 (
-INFO  22:50:43,012 - #24 niz
-INFO  22:50:43,012 - #17 [
-INFO  22:50:43,012 - #25 2
-INFO  22:50:43,012 - #18 ]
-INFO  22:50:43,012 - #13 )
-INFO  22:50:43,012 - #10 ;
-INFO  22:50:43,012 - #4 }
-INFO  22:50:43,012 - #4 }
-INFO  22:50:43,028 - Program(
+INFO  23:00:50,850 - Compiling source file: C:\Users\vm190559d\Desktop\Fax\7. Semestar\PP1\Projekat\test\program.mj
+INFO  23:00:50,935 - #2 program
+INFO  23:00:50,935 - #24 test301
+INFO  23:00:50,935 - #6 const
+INFO  23:00:50,945 - #24 int
+INFO  23:00:50,945 - #24 nula
+INFO  23:00:50,945 - #7 =
+INFO  23:00:50,945 - #25 0
+INFO  23:00:50,945 - #10 ;
+INFO  23:00:50,945 - #6 const
+INFO  23:00:50,945 - #24 int
+INFO  23:00:50,945 - #24 jedan
+INFO  23:00:50,945 - #7 =
+INFO  23:00:50,945 - #25 1
+INFO  23:00:50,945 - #10 ;
+INFO  23:00:50,945 - #6 const
+INFO  23:00:50,949 - #24 int
+INFO  23:00:50,949 - #24 pet
+INFO  23:00:50,949 - #7 =
+INFO  23:00:50,949 - #25 5
+INFO  23:00:50,949 - #10 ;
+INFO  23:00:50,949 - #24 int
+INFO  23:00:50,951 - #24 niz
+INFO  23:00:50,953 - #17 [
+INFO  23:00:50,953 - #18 ]
+INFO  23:00:50,955 - #10 ;
+INFO  23:00:50,955 - #24 int
+INFO  23:00:50,955 - #24 mat
+INFO  23:00:50,955 - #17 [
+INFO  23:00:50,955 - #18 ]
+INFO  23:00:50,955 - #17 [
+INFO  23:00:50,955 - #18 ]
+INFO  23:00:50,955 - #10 ;
+INFO  23:00:50,955 - #5 {
+INFO  23:00:50,955 - #24 void
+INFO  23:00:50,955 - #24 main
+INFO  23:00:50,955 - #12 (
+INFO  23:00:50,958 - #13 )
+INFO  23:00:50,959 - #5 {
+INFO  23:00:50,959 - #24 niz
+INFO  23:00:50,960 - #17 [
+INFO  23:00:50,960 - #24 nula
+INFO  23:00:50,965 - #18 ]
+INFO  23:00:50,969 - #7 =
+INFO  23:00:50,970 - #24 jedan
+INFO  23:00:50,970 - #10 ;
+INFO  23:00:50,970 - #24 mat
+INFO  23:00:50,970 - #7 =
+INFO  23:00:50,970 - #16 new
+INFO  23:00:50,970 - #24 int
+INFO  23:00:50,970 - #17 [
+INFO  23:00:50,970 - #25 2
+INFO  23:00:50,970 - #18 ]
+INFO  23:00:50,970 - #17 [
+INFO  23:00:50,970 - #25 2
+INFO  23:00:50,970 - #18 ]
+INFO  23:00:50,970 - #10 ;
+INFO  23:00:50,970 - #24 mat
+INFO  23:00:50,970 - #17 [
+INFO  23:00:50,970 - #25 0
+INFO  23:00:50,970 - #18 ]
+INFO  23:00:50,970 - #17 [
+INFO  23:00:50,970 - #25 0
+INFO  23:00:50,970 - #18 ]
+INFO  23:00:50,970 - #7 =
+INFO  23:00:50,970 - #24 niz
+INFO  23:00:50,970 - #17 [
+INFO  23:00:50,970 - #24 nula
+INFO  23:00:50,970 - #18 ]
+INFO  23:00:50,970 - #10 ;
+INFO  23:00:50,975 - #24 mat
+INFO  23:00:50,975 - #17 [
+INFO  23:00:50,975 - #25 0
+INFO  23:00:50,975 - #18 ]
+INFO  23:00:50,975 - #17 [
+INFO  23:00:50,975 - #24 mat
+INFO  23:00:50,975 - #17 [
+INFO  23:00:50,975 - #25 0
+INFO  23:00:50,975 - #18 ]
+INFO  23:00:50,975 - #17 [
+INFO  23:00:50,975 - #25 0
+INFO  23:00:50,975 - #18 ]
+INFO  23:00:50,975 - #18 ]
+INFO  23:00:50,975 - #7 =
+INFO  23:00:50,976 - #25 2
+INFO  23:00:50,976 - #10 ;
+INFO  23:00:50,976 - #24 mat
+INFO  23:00:50,976 - #17 [
+INFO  23:00:50,976 - #25 1
+INFO  23:00:50,976 - #18 ]
+INFO  23:00:50,977 - #17 [
+INFO  23:00:50,977 - #24 jedan
+INFO  23:00:50,977 - #20 -
+INFO  23:00:50,977 - #24 niz
+INFO  23:00:50,977 - #17 [
+INFO  23:00:50,977 - #25 0
+INFO  23:00:50,977 - #18 ]
+INFO  23:00:50,977 - #18 ]
+INFO  23:00:50,977 - #7 =
+INFO  23:00:50,977 - #25 5
+INFO  23:00:50,977 - #10 ;
+INFO  23:00:50,977 - #24 mat
+INFO  23:00:50,977 - #17 [
+INFO  23:00:50,977 - #25 1
+INFO  23:00:50,977 - #18 ]
+INFO  23:00:50,977 - #17 [
+INFO  23:00:50,977 - #25 1
+INFO  23:00:50,977 - #18 ]
+INFO  23:00:50,977 - #7 =
+INFO  23:00:50,977 - #24 mat
+INFO  23:00:50,977 - #17 [
+INFO  23:00:50,977 - #25 0
+INFO  23:00:50,977 - #18 ]
+INFO  23:00:50,977 - #17 [
+INFO  23:00:50,977 - #25 0
+INFO  23:00:50,977 - #18 ]
+INFO  23:00:50,977 - #21 *
+INFO  23:00:50,977 - #24 mat
+INFO  23:00:50,977 - #17 [
+INFO  23:00:50,977 - #25 0
+INFO  23:00:50,977 - #18 ]
+INFO  23:00:50,977 - #17 [
+INFO  23:00:50,977 - #25 1
+INFO  23:00:50,977 - #18 ]
+INFO  23:00:50,977 - #10 ;
+INFO  23:00:50,977 - #14 print
+INFO  23:00:50,977 - #12 (
+INFO  23:00:50,977 - #24 mat
+INFO  23:00:50,977 - #17 [
+INFO  23:00:50,977 - #25 1
+INFO  23:00:50,977 - #18 ]
+INFO  23:00:50,977 - #17 [
+INFO  23:00:50,977 - #25 0
+INFO  23:00:50,977 - #18 ]
+INFO  23:00:50,977 - #13 )
+INFO  23:00:50,977 - #10 ;
+INFO  23:00:50,977 - #14 print
+INFO  23:00:50,977 - #12 (
+INFO  23:00:50,992 - #24 mat
+INFO  23:00:50,992 - #17 [
+INFO  23:00:50,992 - #25 1
+INFO  23:00:50,992 - #18 ]
+INFO  23:00:50,992 - #17 [
+INFO  23:00:50,992 - #25 1
+INFO  23:00:50,992 - #18 ]
+INFO  23:00:50,992 - #13 )
+INFO  23:00:50,992 - #10 ;
+INFO  23:00:50,992 - #4 }
+INFO  23:00:50,992 - #4 }
+INFO  23:00:51,008 - Program(
   ProgName(
    test301
   ) [ProgName]
@@ -126,26 +156,15 @@ INFO  22:50:43,028 - Program(
       VarDeclarations(
         VarDeclarations(
           VarDeclarations(
-            VarDeclarations(
-              NoVarDecl(
-              ) [NoVarDecl]
-              ConstVarDeclaration(
-                TypeIdent(
-                 int
-                ) [TypeIdent]
-               nula
-                FactorNum(
-                 0
-                ) [FactorNum]
-              ) [ConstVarDeclaration]
-            ) [VarDeclarations]
+            NoVarDecl(
+            ) [NoVarDecl]
             ConstVarDeclaration(
               TypeIdent(
                int
               ) [TypeIdent]
-             jedan
+             nula
               FactorNum(
-               1
+               0
               ) [FactorNum]
             ) [ConstVarDeclaration]
           ) [VarDeclarations]
@@ -153,51 +172,25 @@ INFO  22:50:43,028 - Program(
             TypeIdent(
              int
             ) [TypeIdent]
-           pet
+           jedan
             FactorNum(
-             5
+             1
             ) [FactorNum]
           ) [ConstVarDeclaration]
         ) [VarDeclarations]
-        VarDeclarationOther(
+        ConstVarDeclaration(
           TypeIdent(
            int
           ) [TypeIdent]
-          VarDeclarationList(
-            VarDeclarationList(
-              VarDeclarationList(
-                VarDeclarationList(
-                  NoVarDeclarationList(
-                  ) [NoVarDeclarationList]
-                  NoOptionalCommaClass(
-                  ) [NoOptionalCommaClass]
-                  VarDeclarationArray(
-                   niz
-                  ) [VarDeclarationArray]
-                ) [VarDeclarationList]
-                OptionalCommaClass(
-                ) [OptionalCommaClass]
-                VarDeclarationArray(
-                 niz2
-                ) [VarDeclarationArray]
-              ) [VarDeclarationList]
-              OptionalCommaClass(
-              ) [OptionalCommaClass]
-              VarDeclaration(
-               a
-              ) [VarDeclaration]
-            ) [VarDeclarationList]
-            OptionalCommaClass(
-            ) [OptionalCommaClass]
-            VarDeclaration(
-             b
-            ) [VarDeclaration]
-          ) [VarDeclarationList]
-        ) [VarDeclarationOther]
+         pet
+          FactorNum(
+           5
+          ) [FactorNum]
+        ) [ConstVarDeclaration]
       ) [VarDeclarations]
       VarDeclarationOther(
         TypeIdent(
-         char
+         int
         ) [TypeIdent]
         VarDeclarationList(
           NoVarDeclarationList(
@@ -205,7 +198,7 @@ INFO  22:50:43,028 - Program(
           NoOptionalCommaClass(
           ) [NoOptionalCommaClass]
           VarDeclarationArray(
-           nizch
+           niz
           ) [VarDeclarationArray]
         ) [VarDeclarationList]
       ) [VarDeclarationOther]
@@ -237,40 +230,8 @@ INFO  22:50:43,028 - Program(
       ) [MethodTypeName]
       NoFormParams(
       ) [NoFormParams]
-      VarDeclarations(
-        VarDeclarations(
-          NoVarDecl(
-          ) [NoVarDecl]
-          VarDeclarationOther(
-            TypeIdent(
-             int
-            ) [TypeIdent]
-            VarDeclarationList(
-              NoVarDeclarationList(
-              ) [NoVarDeclarationList]
-              NoOptionalCommaClass(
-              ) [NoOptionalCommaClass]
-              VarDeclaration(
-               bodovi
-              ) [VarDeclaration]
-            ) [VarDeclarationList]
-          ) [VarDeclarationOther]
-        ) [VarDeclarations]
-        VarDeclarationOther(
-          TypeIdent(
-           bool
-          ) [TypeIdent]
-          VarDeclarationList(
-            NoVarDeclarationList(
-            ) [NoVarDeclarationList]
-            NoOptionalCommaClass(
-            ) [NoOptionalCommaClass]
-            VarDeclaration(
-             bt
-            ) [VarDeclaration]
-          ) [VarDeclarationList]
-        ) [VarDeclarationOther]
-      ) [VarDeclarations]
+      NoVarDecl(
+      ) [NoVarDecl]
       Statements(
         Statements(
           Statements(
@@ -278,12 +239,61 @@ INFO  22:50:43,028 - Program(
               Statements(
                 Statements(
                   Statements(
-                    NoStmt(
-                    ) [NoStmt]
+                    Statements(
+                      NoStmt(
+                      ) [NoStmt]
+                      StatementDesignator(
+                        DesignatorStatementEqual(
+                          DesignatorExpression(
+                           niz
+                            ExprListExpr(
+                              LsquareClass(
+                              ) [LsquareClass]
+                              Expression(
+                                NoMinusExpression(
+                                ) [NoMinusExpression]
+                                Terminator(
+                                  FactorDes(
+                                    DesignatorExpression(
+                                     nula
+                                      NoExprListExpr(
+                                      ) [NoExprListExpr]
+                                    ) [DesignatorExpression]
+                                  ) [FactorDes]
+                                  NoMulopFactor(
+                                  ) [NoMulopFactor]
+                                ) [Terminator]
+                                NoAddOperationTerminator(
+                                ) [NoAddOperationTerminator]
+                              ) [Expression]
+                              RsquareClass(
+                              ) [RsquareClass]
+                            ) [ExprListExpr]
+                          ) [DesignatorExpression]
+                          Expression(
+                            NoMinusExpression(
+                            ) [NoMinusExpression]
+                            Terminator(
+                              FactorDes(
+                                DesignatorExpression(
+                                 jedan
+                                  NoExprListExpr(
+                                  ) [NoExprListExpr]
+                                ) [DesignatorExpression]
+                              ) [FactorDes]
+                              NoMulopFactor(
+                              ) [NoMulopFactor]
+                            ) [Terminator]
+                            NoAddOperationTerminator(
+                            ) [NoAddOperationTerminator]
+                          ) [Expression]
+                        ) [DesignatorStatementEqual]
+                      ) [StatementDesignator]
+                    ) [Statements]
                     StatementDesignator(
                       DesignatorStatementEqual(
                         DesignatorExpression(
-                         niz
+                         mat
                           NoExprListExpr(
                           ) [NoExprListExpr]
                         ) [DesignatorExpression]
@@ -291,7 +301,7 @@ INFO  22:50:43,028 - Program(
                           NoMinusExpression(
                           ) [NoMinusExpression]
                           Terminator(
-                            FactorNewExpr(
+                            FactorNewTypeExpr(
                               TypeIdent(
                                int
                               ) [TypeIdent]
@@ -303,7 +313,7 @@ INFO  22:50:43,028 - Program(
                                 Terminator(
                                   Consts(
                                     FactorNum(
-                                     3
+                                     2
                                     ) [FactorNum]
                                   ) [Consts]
                                   NoMulopFactor(
@@ -314,7 +324,26 @@ INFO  22:50:43,028 - Program(
                               ) [Expression]
                               RsquareClass(
                               ) [RsquareClass]
-                            ) [FactorNewExpr]
+                              LsquareClass(
+                              ) [LsquareClass]
+                              Expression(
+                                NoMinusExpression(
+                                ) [NoMinusExpression]
+                                Terminator(
+                                  Consts(
+                                    FactorNum(
+                                     2
+                                    ) [FactorNum]
+                                  ) [Consts]
+                                  NoMulopFactor(
+                                  ) [NoMulopFactor]
+                                ) [Terminator]
+                                NoAddOperationTerminator(
+                                ) [NoAddOperationTerminator]
+                              ) [Expression]
+                              RsquareClass(
+                              ) [RsquareClass]
+                            ) [FactorNewTypeExpr]
                             NoMulopFactor(
                             ) [NoMulopFactor]
                           ) [Terminator]
@@ -327,21 +356,19 @@ INFO  22:50:43,028 - Program(
                   StatementDesignator(
                     DesignatorStatementEqual(
                       DesignatorExpression(
-                       niz
-                        ExprListExpr(
+                       mat
+                        ExprListExprMatrix(
                           LsquareClass(
                           ) [LsquareClass]
                           Expression(
                             NoMinusExpression(
                             ) [NoMinusExpression]
                             Terminator(
-                              FactorDes(
-                                DesignatorExpression(
-                                 nula
-                                  NoExprListExpr(
-                                  ) [NoExprListExpr]
-                                ) [DesignatorExpression]
-                              ) [FactorDes]
+                              Consts(
+                                FactorNum(
+                                 0
+                                ) [FactorNum]
+                              ) [Consts]
                               NoMulopFactor(
                               ) [NoMulopFactor]
                             ) [Terminator]
@@ -350,7 +377,26 @@ INFO  22:50:43,028 - Program(
                           ) [Expression]
                           RsquareClass(
                           ) [RsquareClass]
-                        ) [ExprListExpr]
+                          LsquareClass(
+                          ) [LsquareClass]
+                          Expression(
+                            NoMinusExpression(
+                            ) [NoMinusExpression]
+                            Terminator(
+                              Consts(
+                                FactorNum(
+                                 0
+                                ) [FactorNum]
+                              ) [Consts]
+                              NoMulopFactor(
+                              ) [NoMulopFactor]
+                            ) [Terminator]
+                            NoAddOperationTerminator(
+                            ) [NoAddOperationTerminator]
+                          ) [Expression]
+                          RsquareClass(
+                          ) [RsquareClass]
+                        ) [ExprListExprMatrix]
                       ) [DesignatorExpression]
                       Expression(
                         NoMinusExpression(
@@ -358,9 +404,30 @@ INFO  22:50:43,028 - Program(
                         Terminator(
                           FactorDes(
                             DesignatorExpression(
-                             jedan
-                              NoExprListExpr(
-                              ) [NoExprListExpr]
+                             niz
+                              ExprListExpr(
+                                LsquareClass(
+                                ) [LsquareClass]
+                                Expression(
+                                  NoMinusExpression(
+                                  ) [NoMinusExpression]
+                                  Terminator(
+                                    FactorDes(
+                                      DesignatorExpression(
+                                       nula
+                                        NoExprListExpr(
+                                        ) [NoExprListExpr]
+                                      ) [DesignatorExpression]
+                                    ) [FactorDes]
+                                    NoMulopFactor(
+                                    ) [NoMulopFactor]
+                                  ) [Terminator]
+                                  NoAddOperationTerminator(
+                                  ) [NoAddOperationTerminator]
+                                ) [Expression]
+                                RsquareClass(
+                                ) [RsquareClass]
+                              ) [ExprListExpr]
                             ) [DesignatorExpression]
                           ) [FactorDes]
                           NoMulopFactor(
@@ -375,8 +442,8 @@ INFO  22:50:43,028 - Program(
                 StatementDesignator(
                   DesignatorStatementEqual(
                     DesignatorExpression(
-                     niz
-                      ExprListExpr(
+                     mat
+                      ExprListExprMatrix(
                         LsquareClass(
                         ) [LsquareClass]
                         Expression(
@@ -385,7 +452,7 @@ INFO  22:50:43,028 - Program(
                           Terminator(
                             Consts(
                               FactorNum(
-                               1
+                               0
                               ) [FactorNum]
                             ) [Consts]
                             NoMulopFactor(
@@ -396,7 +463,66 @@ INFO  22:50:43,028 - Program(
                         ) [Expression]
                         RsquareClass(
                         ) [RsquareClass]
-                      ) [ExprListExpr]
+                        LsquareClass(
+                        ) [LsquareClass]
+                        Expression(
+                          NoMinusExpression(
+                          ) [NoMinusExpression]
+                          Terminator(
+                            FactorDes(
+                              DesignatorExpression(
+                               mat
+                                ExprListExprMatrix(
+                                  LsquareClass(
+                                  ) [LsquareClass]
+                                  Expression(
+                                    NoMinusExpression(
+                                    ) [NoMinusExpression]
+                                    Terminator(
+                                      Consts(
+                                        FactorNum(
+                                         0
+                                        ) [FactorNum]
+                                      ) [Consts]
+                                      NoMulopFactor(
+                                      ) [NoMulopFactor]
+                                    ) [Terminator]
+                                    NoAddOperationTerminator(
+                                    ) [NoAddOperationTerminator]
+                                  ) [Expression]
+                                  RsquareClass(
+                                  ) [RsquareClass]
+                                  LsquareClass(
+                                  ) [LsquareClass]
+                                  Expression(
+                                    NoMinusExpression(
+                                    ) [NoMinusExpression]
+                                    Terminator(
+                                      Consts(
+                                        FactorNum(
+                                         0
+                                        ) [FactorNum]
+                                      ) [Consts]
+                                      NoMulopFactor(
+                                      ) [NoMulopFactor]
+                                    ) [Terminator]
+                                    NoAddOperationTerminator(
+                                    ) [NoAddOperationTerminator]
+                                  ) [Expression]
+                                  RsquareClass(
+                                  ) [RsquareClass]
+                                ) [ExprListExprMatrix]
+                              ) [DesignatorExpression]
+                            ) [FactorDes]
+                            NoMulopFactor(
+                            ) [NoMulopFactor]
+                          ) [Terminator]
+                          NoAddOperationTerminator(
+                          ) [NoAddOperationTerminator]
+                        ) [Expression]
+                        RsquareClass(
+                        ) [RsquareClass]
+                      ) [ExprListExprMatrix]
                     ) [DesignatorExpression]
                     Expression(
                       NoMinusExpression(
@@ -419,42 +545,19 @@ INFO  22:50:43,028 - Program(
               StatementDesignator(
                 DesignatorStatementEqual(
                   DesignatorExpression(
-                   niz
-                    ExprListExpr(
+                   mat
+                    ExprListExprMatrix(
                       LsquareClass(
                       ) [LsquareClass]
                       Expression(
                         NoMinusExpression(
                         ) [NoMinusExpression]
                         Terminator(
-                          FactorDes(
-                            DesignatorExpression(
-                             niz
-                              ExprListExpr(
-                                LsquareClass(
-                                ) [LsquareClass]
-                                Expression(
-                                  NoMinusExpression(
-                                  ) [NoMinusExpression]
-                                  Terminator(
-                                    FactorDes(
-                                      DesignatorExpression(
-                                       jedan
-                                        NoExprListExpr(
-                                        ) [NoExprListExpr]
-                                      ) [DesignatorExpression]
-                                    ) [FactorDes]
-                                    NoMulopFactor(
-                                    ) [NoMulopFactor]
-                                  ) [Terminator]
-                                  NoAddOperationTerminator(
-                                  ) [NoAddOperationTerminator]
-                                ) [Expression]
-                                RsquareClass(
-                                ) [RsquareClass]
-                              ) [ExprListExpr]
-                            ) [DesignatorExpression]
-                          ) [FactorDes]
+                          Consts(
+                            FactorNum(
+                             1
+                            ) [FactorNum]
+                          ) [Consts]
                           NoMulopFactor(
                           ) [NoMulopFactor]
                         ) [Terminator]
@@ -463,7 +566,62 @@ INFO  22:50:43,028 - Program(
                       ) [Expression]
                       RsquareClass(
                       ) [RsquareClass]
-                    ) [ExprListExpr]
+                      LsquareClass(
+                      ) [LsquareClass]
+                      Expression(
+                        NoMinusExpression(
+                        ) [NoMinusExpression]
+                        Terminator(
+                          FactorDes(
+                            DesignatorExpression(
+                             jedan
+                              NoExprListExpr(
+                              ) [NoExprListExpr]
+                            ) [DesignatorExpression]
+                          ) [FactorDes]
+                          NoMulopFactor(
+                          ) [NoMulopFactor]
+                        ) [Terminator]
+                        AddOperationTerminatorRec(
+                          NoAddOperationTerminator(
+                          ) [NoAddOperationTerminator]
+                          AddOperationMinus(
+                          ) [AddOperationMinus]
+                          Terminator(
+                            FactorDes(
+                              DesignatorExpression(
+                               niz
+                                ExprListExpr(
+                                  LsquareClass(
+                                  ) [LsquareClass]
+                                  Expression(
+                                    NoMinusExpression(
+                                    ) [NoMinusExpression]
+                                    Terminator(
+                                      Consts(
+                                        FactorNum(
+                                         0
+                                        ) [FactorNum]
+                                      ) [Consts]
+                                      NoMulopFactor(
+                                      ) [NoMulopFactor]
+                                    ) [Terminator]
+                                    NoAddOperationTerminator(
+                                    ) [NoAddOperationTerminator]
+                                  ) [Expression]
+                                  RsquareClass(
+                                  ) [RsquareClass]
+                                ) [ExprListExpr]
+                              ) [DesignatorExpression]
+                            ) [FactorDes]
+                            NoMulopFactor(
+                            ) [NoMulopFactor]
+                          ) [Terminator]
+                        ) [AddOperationTerminatorRec]
+                      ) [Expression]
+                      RsquareClass(
+                      ) [RsquareClass]
+                    ) [ExprListExprMatrix]
                   ) [DesignatorExpression]
                   Expression(
                     NoMinusExpression(
@@ -471,20 +629,11 @@ INFO  22:50:43,028 - Program(
                     Terminator(
                       Consts(
                         FactorNum(
-                         2
+                         5
                         ) [FactorNum]
                       ) [Consts]
-                      MulopFactorRec(
-                        NoMulopFactor(
-                        ) [NoMulopFactor]
-                        MulOperationMul(
-                        ) [MulOperationMul]
-                        Consts(
-                          FactorNum(
-                           3
-                          ) [FactorNum]
-                        ) [Consts]
-                      ) [MulopFactorRec]
+                      NoMulopFactor(
+                      ) [NoMulopFactor]
                     ) [Terminator]
                     NoAddOperationTerminator(
                     ) [NoAddOperationTerminator]
@@ -495,9 +644,47 @@ INFO  22:50:43,028 - Program(
             StatementDesignator(
               DesignatorStatementEqual(
                 DesignatorExpression(
-                 bodovi
-                  NoExprListExpr(
-                  ) [NoExprListExpr]
+                 mat
+                  ExprListExprMatrix(
+                    LsquareClass(
+                    ) [LsquareClass]
+                    Expression(
+                      NoMinusExpression(
+                      ) [NoMinusExpression]
+                      Terminator(
+                        Consts(
+                          FactorNum(
+                           1
+                          ) [FactorNum]
+                        ) [Consts]
+                        NoMulopFactor(
+                        ) [NoMulopFactor]
+                      ) [Terminator]
+                      NoAddOperationTerminator(
+                      ) [NoAddOperationTerminator]
+                    ) [Expression]
+                    RsquareClass(
+                    ) [RsquareClass]
+                    LsquareClass(
+                    ) [LsquareClass]
+                    Expression(
+                      NoMinusExpression(
+                      ) [NoMinusExpression]
+                      Terminator(
+                        Consts(
+                          FactorNum(
+                           1
+                          ) [FactorNum]
+                        ) [Consts]
+                        NoMulopFactor(
+                        ) [NoMulopFactor]
+                      ) [Terminator]
+                      NoAddOperationTerminator(
+                      ) [NoAddOperationTerminator]
+                    ) [Expression]
+                    RsquareClass(
+                    ) [RsquareClass]
+                  ) [ExprListExprMatrix]
                 ) [DesignatorExpression]
                 Expression(
                   NoMinusExpression(
@@ -505,8 +692,8 @@ INFO  22:50:43,028 - Program(
                   Terminator(
                     FactorDes(
                       DesignatorExpression(
-                       niz
-                        ExprListExpr(
+                       mat
+                        ExprListExprMatrix(
                           LsquareClass(
                           ) [LsquareClass]
                           Expression(
@@ -515,7 +702,7 @@ INFO  22:50:43,028 - Program(
                             Terminator(
                               Consts(
                                 FactorNum(
-                                 2
+                                 0
                                 ) [FactorNum]
                               ) [Consts]
                               NoMulopFactor(
@@ -526,18 +713,37 @@ INFO  22:50:43,028 - Program(
                           ) [Expression]
                           RsquareClass(
                           ) [RsquareClass]
-                        ) [ExprListExpr]
+                          LsquareClass(
+                          ) [LsquareClass]
+                          Expression(
+                            NoMinusExpression(
+                            ) [NoMinusExpression]
+                            Terminator(
+                              Consts(
+                                FactorNum(
+                                 0
+                                ) [FactorNum]
+                              ) [Consts]
+                              NoMulopFactor(
+                              ) [NoMulopFactor]
+                            ) [Terminator]
+                            NoAddOperationTerminator(
+                            ) [NoAddOperationTerminator]
+                          ) [Expression]
+                          RsquareClass(
+                          ) [RsquareClass]
+                        ) [ExprListExprMatrix]
                       ) [DesignatorExpression]
                     ) [FactorDes]
                     MulopFactorRec(
                       NoMulopFactor(
                       ) [NoMulopFactor]
-                      MulOperationDiv(
-                      ) [MulOperationDiv]
+                      MulOperationMul(
+                      ) [MulOperationMul]
                       FactorDes(
                         DesignatorExpression(
-                         niz
-                          ExprListExpr(
+                         mat
+                          ExprListExprMatrix(
                             LsquareClass(
                             ) [LsquareClass]
                             Expression(
@@ -557,7 +763,26 @@ INFO  22:50:43,028 - Program(
                             ) [Expression]
                             RsquareClass(
                             ) [RsquareClass]
-                          ) [ExprListExpr]
+                            LsquareClass(
+                            ) [LsquareClass]
+                            Expression(
+                              NoMinusExpression(
+                              ) [NoMinusExpression]
+                              Terminator(
+                                Consts(
+                                  FactorNum(
+                                   1
+                                  ) [FactorNum]
+                                ) [Consts]
+                                NoMulopFactor(
+                                ) [NoMulopFactor]
+                              ) [Terminator]
+                              NoAddOperationTerminator(
+                              ) [NoAddOperationTerminator]
+                            ) [Expression]
+                            RsquareClass(
+                            ) [RsquareClass]
+                          ) [ExprListExprMatrix]
                         ) [DesignatorExpression]
                       ) [FactorDes]
                     ) [MulopFactorRec]
@@ -575,9 +800,47 @@ INFO  22:50:43,028 - Program(
               Terminator(
                 FactorDes(
                   DesignatorExpression(
-                   bodovi
-                    NoExprListExpr(
-                    ) [NoExprListExpr]
+                   mat
+                    ExprListExprMatrix(
+                      LsquareClass(
+                      ) [LsquareClass]
+                      Expression(
+                        NoMinusExpression(
+                        ) [NoMinusExpression]
+                        Terminator(
+                          Consts(
+                            FactorNum(
+                             1
+                            ) [FactorNum]
+                          ) [Consts]
+                          NoMulopFactor(
+                          ) [NoMulopFactor]
+                        ) [Terminator]
+                        NoAddOperationTerminator(
+                        ) [NoAddOperationTerminator]
+                      ) [Expression]
+                      RsquareClass(
+                      ) [RsquareClass]
+                      LsquareClass(
+                      ) [LsquareClass]
+                      Expression(
+                        NoMinusExpression(
+                        ) [NoMinusExpression]
+                        Terminator(
+                          Consts(
+                            FactorNum(
+                             0
+                            ) [FactorNum]
+                          ) [Consts]
+                          NoMulopFactor(
+                          ) [NoMulopFactor]
+                        ) [Terminator]
+                        NoAddOperationTerminator(
+                        ) [NoAddOperationTerminator]
+                      ) [Expression]
+                      RsquareClass(
+                      ) [RsquareClass]
+                    ) [ExprListExprMatrix]
                   ) [DesignatorExpression]
                 ) [FactorDes]
                 NoMulopFactor(
@@ -597,8 +860,8 @@ INFO  22:50:43,028 - Program(
             Terminator(
               FactorDes(
                 DesignatorExpression(
-                 niz
-                  ExprListExpr(
+                 mat
+                  ExprListExprMatrix(
                     LsquareClass(
                     ) [LsquareClass]
                     Expression(
@@ -607,7 +870,7 @@ INFO  22:50:43,028 - Program(
                       Terminator(
                         Consts(
                           FactorNum(
-                           2
+                           1
                           ) [FactorNum]
                         ) [Consts]
                         NoMulopFactor(
@@ -618,7 +881,26 @@ INFO  22:50:43,028 - Program(
                     ) [Expression]
                     RsquareClass(
                     ) [RsquareClass]
-                  ) [ExprListExpr]
+                    LsquareClass(
+                    ) [LsquareClass]
+                    Expression(
+                      NoMinusExpression(
+                      ) [NoMinusExpression]
+                      Terminator(
+                        Consts(
+                          FactorNum(
+                           1
+                          ) [FactorNum]
+                        ) [Consts]
+                        NoMulopFactor(
+                        ) [NoMulopFactor]
+                      ) [Terminator]
+                      NoAddOperationTerminator(
+                      ) [NoAddOperationTerminator]
+                    ) [Expression]
+                    RsquareClass(
+                    ) [RsquareClass]
+                  ) [ExprListExprMatrix]
                 ) [DesignatorExpression]
               ) [FactorDes]
               NoMulopFactor(
@@ -636,21 +918,15 @@ INFO  22:50:43,028 - Program(
     ) [MethodDecl]
   ) [MethodDeclarations]
 ) [Program]
-INFO  22:50:43,028 - ===================================
-INFO  22:50:43,049 - Deklarisana promenljiva nula na liniji 5
-INFO  22:50:43,049 - Deklarisana promenljiva jedan na liniji 6
-INFO  22:50:43,049 - Deklarisana promenljiva pet na liniji 7
-INFO  22:50:43,049 - Deklarisana promenljiva niz na liniji 9
-INFO  22:50:43,049 - Deklarisana promenljiva niz2 na liniji 9
-INFO  22:50:43,049 - Deklarisana promenljiva a na liniji 9
-INFO  22:50:43,049 - Deklarisana promenljiva b na liniji 9
-INFO  22:50:43,049 - Deklarisana promenljiva nizch na liniji 10
-INFO  22:50:43,049 - Deklarisana promenljiva mat na liniji 11
-INFO  22:50:43,049 - Obradjuje se funkcija main na liniji 14
-INFO  22:50:43,049 - Deklarisana promenljiva bodovi na liniji 15
-INFO  22:50:43,049 - Deklarisana promenljiva bt na liniji 16
-INFO  22:50:43,049 -  Pozvanih "print" naredbi ima = 2
-INFO  22:50:43,049 -  Deklarisanih promenljivih ima = 11
-INFO  22:50:43,049 - ===================================
-INFO  22:50:43,059 - Parsiranje uspesno zavrseno
-INFO  22:50:43,059 - Ulaz je semanticki ispravan
+INFO  23:00:51,008 - ===================================
+INFO  23:00:51,020 - Deklarisana promenljiva nula na liniji 5
+INFO  23:00:51,024 - Deklarisana promenljiva jedan na liniji 6
+INFO  23:00:51,024 - Deklarisana promenljiva pet na liniji 7
+INFO  23:00:51,024 - Deklarisana promenljiva niz na liniji 8
+INFO  23:00:51,024 - Deklarisana promenljiva mat na liniji 9
+INFO  23:00:51,024 - Obradjuje se funkcija main na liniji 11
+INFO  23:00:51,024 -  Pozvanih "print" naredbi ima = 2
+INFO  23:00:51,024 -  Deklarisanih promenljivih ima = 5
+INFO  23:00:51,024 - ===================================
+INFO  23:00:51,027 - Parsiranje uspesno zavrseno
+INFO  23:00:51,027 - Ulaz je semanticki ispravan
