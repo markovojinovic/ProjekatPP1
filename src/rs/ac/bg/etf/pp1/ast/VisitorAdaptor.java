@@ -1,6 +1,6 @@
 // generated with ast extension for cup
 // version 0.8
-// 21/5/2023 12:8:32
+// 23/5/2023 1:1:30
 
 
 package rs.ac.bg.etf.pp1.ast;
@@ -9,7 +9,7 @@ public abstract class VisitorAdaptor implements Visitor {
 
     public void visit(Mulop Mulop) { }
     public void visit(OptionalComma OptionalComma) { }
-    public void visit(FormalParamDecl FormalParamDecl) { }
+    public void visit(Constant Constant) { }
     public void visit(NumberInPrint NumberInPrint) { }
     public void visit(OneVarDeclarationList OneVarDeclarationList) { }
     public void visit(StatementList StatementList) { }
@@ -26,10 +26,12 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(IdentSquareList IdentSquareList) { }
     public void visit(ExprList ExprList) { }
     public void visit(ReturnStatement ReturnStatement) { }
+    public void visit(Lsqare Lsqare) { }
     public void visit(VarDeclList VarDeclList) { }
     public void visit(Expr Expr) { }
     public void visit(DesignatorList DesignatorList) { }
     public void visit(DesignatorStatement DesignatorStatement) { }
+    public void visit(Rsqare Rsqare) { }
     public void visit(OneVarDeclaration OneVarDeclaration) { }
     public void visit(Statement Statement) { }
     public void visit(VarDecl VarDecl) { }
@@ -39,6 +41,8 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(MethodDeclList MethodDeclList) { }
     public void visit(DesignatorListMany DesignatorListMany) { }
     public void visit(FormPars FormPars) { }
+    public void visit(RsquareClass RsquareClass) { visit(); }
+    public void visit(LsquareClass LsquareClass) { visit(); }
     public void visit(TypeIdent TypeIdent) { visit(); }
     public void visit(NoSquareListOutside NoSquareListOutside) { visit(); }
     public void visit(SquareListOutsideOne SquareListOutsideOne) { visit(); }
@@ -61,13 +65,14 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(ExprListExprMatrix ExprListExprMatrix) { visit(); }
     public void visit(ExprListExpr ExprListExpr) { visit(); }
     public void visit(DesignatorExpression DesignatorExpression) { visit(); }
+    public void visit(FactorBool FactorBool) { visit(); }
+    public void visit(FactorChar FactorChar) { visit(); }
+    public void visit(FactorNum FactorNum) { visit(); }
     public void visit(FactorNewTypeExpr FactorNewTypeExpr) { visit(); }
     public void visit(FactorDes FactorDes) { visit(); }
     public void visit(FactorNewExpr FactorNewExpr) { visit(); }
-    public void visit(FactorBool FactorBool) { visit(); }
     public void visit(FactorExpr FactorExpr) { visit(); }
-    public void visit(FactorChar FactorChar) { visit(); }
-    public void visit(FactorNum FactorNum) { visit(); }
+    public void visit(Consts Consts) { visit(); }
     public void visit(NoMulopFactor NoMulopFactor) { visit(); }
     public void visit(MulopFactorRec MulopFactorRec) { visit(); }
     public void visit(Terminator Terminator) { visit(); }
@@ -88,7 +93,6 @@ public abstract class VisitorAdaptor implements Visitor {
     public void visit(DesignatorListRec DesignatorListRec) { visit(); }
     public void visit(DesignatorStatementMinusMinus DesignatorStatementMinusMinus) { visit(); }
     public void visit(DesignatorStatementPlusPlus DesignatorStatementPlusPlus) { visit(); }
-    public void visit(DesignatorStatementArray DesignatorStatementArray) { visit(); }
     public void visit(DesignatorStatementEqual DesignatorStatementEqual) { visit(); }
     public void visit(NoIdentLists NoIdentLists) { visit(); }
     public void visit(IdentLists IdentLists) { visit(); }

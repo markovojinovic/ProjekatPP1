@@ -18,14 +18,17 @@ parser code {:
     public void report_fatal_error(String message, Object info) throws java.lang.Exception {
       done_parsing();
       report_error(message, info);
+      errorDetected = true;
     }
 
     public void syntax_error(Symbol cur_token) {
         report_error("\nSintaksna greska", cur_token);
+        errorDetected = true;
     }
 
     public void unrecovered_syntax_error(Symbol cur_token) throws java.lang.Exception {
         report_fatal_error("Fatalna greska, parsiranje se ne moze nastaviti", cur_token);
+        errorDetected = true;
     }
 
     public void report_error(String message, Object info) {
@@ -63,6 +66,8 @@ nonterminal NumberInPrint NumberInPrint;
 nonterminal Minus Minus;
 nonterminal Addop Addop;
 nonterminal FunctionParameters FunctionParameters;
+nonterminal Lsqare Lsqare;
+nonterminal Rsqare Rsqare;
 nonterminal MulopFactor MulopFactor;
 nonterminal Mulop Mulop;
 nonterminal ExprList ExprList;
@@ -79,13 +84,12 @@ nonterminal DesignatorList DesignatorList;
 nonterminal VarDeclList VarDeclList;
 nonterminal MethodDeclList MethodDeclList;
 nonterminal StatementList StatementList;
-nonterminal FormalParamDecl FormalParamDecl;
 nonterminal IdentInLineList IdentInLineList;
 nonterminal OneVarDeclaration OneVarDeclaration;
 nonterminal OneVarDeclarationList OneVarDeclarationList;
 
 nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgName, Program, MethodDecl, MethodTypeName, Designator, FormParsLst, IdentTypeInLine, ReturnStatement;
-nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, Term, Factor, Expr, AddopTerm, Statement;
+nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, Term, Factor, Expr, AddopTerm, Statement, Constant;
 
 Program ::= (Program) PROG ProgName:p VarDeclList:V1 LBRACE MethodDeclList:M2 RBRACE {: RESULT=new Program(p, V1, M2); RESULT.setLine(pleft); :};
 
@@ -97,7 +101,7 @@ VarDeclList ::= (VarDeclarations) VarDeclList:V1 VarDecl:V2 {: RESULT=new VarDec
 			;
 
 VarDecl ::= (VarDeclarationOther) Type:varType OneVarDeclarationList:O1 DOTCOMMA {: RESULT=new VarDeclarationOther(varType, O1); RESULT.setLine(varTypeleft); :}
-          | (ConstVarDeclaration) CONST Type:varType IDENT:varName EQUAL Factor:f DOTCOMMA {: RESULT=new ConstVarDeclaration(varType, varName, f); RESULT.setLine(varTypeleft); :}
+          | (ConstVarDeclaration) CONST Type:varType IDENT:varName EQUAL Constant:f DOTCOMMA {: RESULT=new ConstVarDeclaration(varType, varName, f); RESULT.setLine(varTypeleft); :}
           |
             error DOTCOMMA:l
             {: parser.report_error("Izvrsen oporavak do ; u liniji " + lleft, null); :} {: RESULT=new VarDeclDerived1(); :}
@@ -146,7 +150,6 @@ IdentList ::= (IdentLists) IdentList:I1 IdentTypeInLine:I2 {: RESULT=new IdentLi
             ;
 
 DesignatorStatement ::= (DesignatorStatementEqual) Designator:dest EQUAL Expr:e {: RESULT=new DesignatorStatementEqual(dest, e); RESULT.setLine(destleft); :}
-                       | (DesignatorStatementArray) LSQUARE DesignatorList:D1 DesignatorListMany:D2 RSQUARE EQUAL Designator:D3 {: RESULT=new DesignatorStatementArray(D1, D2, D3); RESULT.setLine(D1left); :}
                        | (DesignatorStatementPlusPlus) Designator:D1 PLUSPLUS {: RESULT=new DesignatorStatementPlusPlus(D1); RESULT.setLine(D1left); :}
                        | (DesignatorStatementMinusMinus) Designator:D1 MINUSMINUS {: RESULT=new DesignatorStatementMinusMinus(D1); RESULT.setLine(D1left); :}
                        ;
@@ -187,19 +190,22 @@ MulopFactor ::= (MulopFactorRec) MulopFactor:M1 Mulop:M2 Factor:F3 {: RESULT=new
               | (NoMulopFactor) {: RESULT=new NoMulopFactor(); :} /* epsilon smena */
               ;
 
-Factor ::= (FactorNum) NUMBER:value {: RESULT=new FactorNum(value); RESULT.setLine(valueleft); :}
-         | (FactorChar) CHARCONST:value {: RESULT=new FactorChar(value); RESULT.setLine(valueleft); :}
+Factor ::= (Consts) Constant:c {: RESULT=new Consts(c); RESULT.setLine(cleft); :}
          | (FactorExpr) LPAREN Expr:E1 RPAREN {: RESULT=new FactorExpr(E1); RESULT.setLine(E1left); :}
-         | (FactorBool) BOOLCONST:value {: RESULT=new FactorBool(value); RESULT.setLine(valueleft); :}
-         | (FactorNewExpr) NEW Type:t LSQUARE Expr:e RSQUARE {: RESULT=new FactorNewExpr(t, e); RESULT.setLine(tleft); :}
+         | (FactorNewExpr) NEW Type:t Lsqare:L1 Expr:e Rsqare:R2 {: RESULT=new FactorNewExpr(t, L1, e, R2); RESULT.setLine(tleft); :}
          | (FactorDes) Designator:d {: RESULT=new FactorDes(d); RESULT.setLine(dleft); :}
-         | (FactorNewTypeExpr) NEW Type:t LSQUARE Expr:e1 RSQUARE LSQUARE Expr:e2 RSQUARE {: RESULT=new FactorNewTypeExpr(t, e1, e2); RESULT.setLine(tleft); :}
+         | (FactorNewTypeExpr) NEW Type:t Lsqare:L1 Expr:e1 Rsqare:R2 Lsqare:L3 Expr:e2 Rsqare:R4 {: RESULT=new FactorNewTypeExpr(t, L1, e1, R2, L3, e2, R4); RESULT.setLine(tleft); :}
          ;
+
+Constant ::= (FactorNum) NUMBER:value {: RESULT=new FactorNum(value); RESULT.setLine(valueleft); :}
+           | (FactorChar) CHARCONST:value {: RESULT=new FactorChar(value); RESULT.setLine(valueleft); :}
+           | (FactorBool) BOOLCONST:value {: RESULT=new FactorBool(value); RESULT.setLine(valueleft); :}
+           ;
 
 Designator ::= (DesignatorExpression) IDENT:name ExprList:E1 {: RESULT=new DesignatorExpression(name, E1); RESULT.setLine(nameleft); :} ;
 
-ExprList ::= (ExprListExpr) LSQUARE Expr:E1 RSQUARE {: RESULT=new ExprListExpr(E1); RESULT.setLine(E1left); :}
-           | (ExprListExprMatrix) LSQUARE Expr:E1 RSQUARE LSQUARE Expr:E2 RSQUARE {: RESULT=new ExprListExprMatrix(E1, E2); RESULT.setLine(E1left); :}
+ExprList ::= (ExprListExpr) Lsqare:L1 Expr:E2 Rsqare:R3 {: RESULT=new ExprListExpr(L1, E2, R3); RESULT.setLine(L1left); :}
+           | (ExprListExprMatrix) Lsqare:L1 Expr:E2 Rsqare:R3 Lsqare:L4 Expr:E5 Rsqare:R6 {: RESULT=new ExprListExprMatrix(L1, E2, R3, L4, E5, R6); RESULT.setLine(L1left); :}
            | (NoExprListExpr) {: RESULT=new NoExprListExpr(); :} /* epsilon smena */
            ;
 
@@ -237,5 +243,6 @@ SquareList ::= (SquareListOutside) LSQUARE RSQUARE LSQUARE RSQUARE {: RESULT=new
 
 Type ::= (TypeIdent) IDENT:typeName {: RESULT=new TypeIdent(typeName); RESULT.setLine(typeNameleft); :} ;
 
+Lsqare ::= (LsquareClass) LSQUARE {: RESULT=new LsquareClass(); :};
 
-
+Rsqare ::= (RsquareClass) RSQUARE {: RESULT=new RsquareClass(); :};

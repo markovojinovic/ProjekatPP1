@@ -18,14 +18,17 @@ parser code {:
     public void report_fatal_error(String message, Object info) throws java.lang.Exception {
       done_parsing();
       report_error(message, info);
+      errorDetected = true;
     }
 
     public void syntax_error(Symbol cur_token) {
         report_error("\nSintaksna greska", cur_token);
+        errorDetected = true;
     }
 
     public void unrecovered_syntax_error(Symbol cur_token) throws java.lang.Exception {
         report_fatal_error("Fatalna greska, parsiranje se ne moze nastaviti", cur_token);
+        errorDetected = true;
     }
 
     public void report_error(String message, Object info) {
@@ -58,13 +61,13 @@ terminal Integer NUMBER;
 terminal Boolean BOOLCONST;
 terminal Character CHARCONST;
 
-nonterminal DesignatorStatement, NumberInPrint, Minus, Addop, FunctionParameters;
+nonterminal DesignatorStatement, NumberInPrint, Minus, Addop, FunctionParameters, Lsqare, Rsqare;
 nonterminal MulopFactor, Mulop, ExprList, VarDecl, SquareList, IdentInLine, IdentList, OptionalComma;
 nonterminal IdentSquareList, FormPars, TypeIdentSquareList, DesignatorListMany, DesignatorList;
-nonterminal VarDeclList, MethodDeclList, StatementList, FormalParamDecl, IdentInLineList, OneVarDeclaration, OneVarDeclarationList;
+nonterminal VarDeclList, MethodDeclList, StatementList, IdentInLineList, OneVarDeclaration, OneVarDeclarationList;
 
 nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgName, Program, MethodDecl, MethodTypeName, Designator, FormParsLst, IdentTypeInLine, ReturnStatement;
-nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, Term, Factor, Expr, AddopTerm, Statement;
+nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, Term, Factor, Expr, AddopTerm, Statement, Constant;
 
 Program ::= (Program) PROG ProgName:p VarDeclList LBRACE MethodDeclList RBRACE;
 
@@ -76,7 +79,7 @@ VarDeclList ::= (VarDeclarations) VarDeclList VarDecl
 			;
 
 VarDecl ::= (VarDeclarationOther) Type:varType OneVarDeclarationList DOTCOMMA
-          | (ConstVarDeclaration) CONST Type:varType IDENT:varName EQUAL Factor:f DOTCOMMA
+          | (ConstVarDeclaration) CONST Type:varType IDENT:varName EQUAL Constant:f DOTCOMMA
           |
             error DOTCOMMA:l
             {: parser.report_error("Izvrsen oporavak do ; u liniji " + lleft, null); :}
@@ -125,7 +128,6 @@ IdentList ::= (IdentLists) IdentList IdentTypeInLine
             ;
 
 DesignatorStatement ::= (DesignatorStatementEqual) Designator:dest EQUAL Expr:e
-                       | (DesignatorStatementArray) LSQUARE DesignatorList DesignatorListMany RSQUARE EQUAL Designator
                        | (DesignatorStatementPlusPlus) Designator PLUSPLUS
                        | (DesignatorStatementMinusMinus) Designator MINUSMINUS
                        ;
@@ -166,19 +168,22 @@ MulopFactor ::= (MulopFactorRec) MulopFactor Mulop Factor
               | (NoMulopFactor) /* epsilon smena */
               ;
 
-Factor ::= (FactorNum) NUMBER:value
-         | (FactorChar) CHARCONST:value
+Factor ::= (Consts) Constant:c
          | (FactorExpr) LPAREN Expr RPAREN
-         | (FactorBool) BOOLCONST:value
-         | (FactorNewExpr) NEW Type:t LSQUARE Expr:e RSQUARE
+         | (FactorNewExpr) NEW Type:t Lsqare Expr:e Rsqare
          | (FactorDes) Designator:d
-         | (FactorNewTypeExpr) NEW Type:t LSQUARE Expr:e1 RSQUARE LSQUARE Expr:e2 RSQUARE
+         | (FactorNewTypeExpr) NEW Type:t Lsqare Expr:e1 Rsqare Lsqare Expr:e2 Rsqare
          ;
+
+Constant ::= (FactorNum) NUMBER:value
+           | (FactorChar) CHARCONST:value
+           | (FactorBool) BOOLCONST:value
+           ;
 
 Designator ::= (DesignatorExpression) IDENT:name ExprList ;
 
-ExprList ::= (ExprListExpr) LSQUARE Expr RSQUARE
-           | (ExprListExprMatrix) LSQUARE Expr RSQUARE LSQUARE Expr RSQUARE
+ExprList ::= (ExprListExpr) Lsqare Expr Rsqare
+           | (ExprListExprMatrix) Lsqare Expr Rsqare Lsqare Expr Rsqare
            | (NoExprListExpr) /* epsilon smena */
            ;
 
@@ -216,5 +221,6 @@ SquareList ::= (SquareListOutside) LSQUARE RSQUARE LSQUARE RSQUARE
 
 Type ::= (TypeIdent) IDENT:typeName ;
 
+Lsqare ::= (LsquareClass) LSQUARE;
 
-
+Rsqare ::= (RsquareClass) RSQUARE;

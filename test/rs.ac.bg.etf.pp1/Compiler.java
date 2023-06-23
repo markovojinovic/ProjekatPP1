@@ -52,14 +52,19 @@ public class Compiler {
 
             if (!p.errorDetected) {
                 log.info("Parsiranje uspesno zavrseno");
-                File objFile = new File("test/program.obj");
-                if(objFile.exists())
-                    objFile.delete();
-                CodeGenerator cd = new CodeGenerator();
-                prog.traverseBottomUp(cd);
-                Code.dataSize = v.varDeclCount;
-                Code.mainPc = cd.getMainPc();
-                Code.write(new FileOutputStream(objFile));
+                if (!v.errorDetected) {
+                    log.info("Ulaz je semanticki ispravan");
+                    File objFile = new File("test/program.obj");
+                    if (objFile.exists())
+                        objFile.delete();
+                    CodeGenerator cd = new CodeGenerator();
+                    prog.traverseBottomUp(cd);
+                    Code.dataSize = v.varDeclCount;
+                    Code.mainPc = cd.getMainPc();
+                    Code.write(new FileOutputStream(objFile));
+                }else{
+                    log.info("Ulaz nije semanticki ispravan");
+                }
             } else {
                 log.info("Parsiranje nije uspesno zavrseno");
             }

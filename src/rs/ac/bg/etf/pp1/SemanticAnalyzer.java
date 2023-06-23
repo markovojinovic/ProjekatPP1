@@ -42,7 +42,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
     private Struct varDeclType = null;
     private int assignmentType = -1;
-    private String assignmentName = "";
+    private String assignmentName = "", designatorName = "";
 
     private int identType[] = null, varType[] = null, derefType[] = null;
     private int identTypeCnt = 0, varTypeCnt = 0, derefTypeCnt = 0;
@@ -87,6 +87,16 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         // pozicija leve promenljive u nizu je kad se izokidaju sva njena deref, primer matrica[1][2] je treca pozicija
         // treba gledati sve pre nje da su deref razlike 0, jer svi moraju biti tipa int, a sve kasnije na druge razlike
 
+        return true;
+    }
+
+    private boolean check_expr_deref_level() {
+        if (derefType == null)
+            return true;
+
+        for (int i = 0; i < derefTypeCnt; i++)
+            if (varType[i] != derefType[i])
+                return false;
         return true;
     }
 
@@ -252,7 +262,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
                     " nekompatibilni tipovi u dodeli vrednosti!", null);
     }
 
-    private void tab_insert_check(String name, Struct struct, int line, State declaration) {
+    private void tab_insert_check(String name, Struct struct, int line, State declaration, ConstVarDeclaration varDecl) {
         int kind = struct.getKind();
         if (kind == Struct.Array)
             kind = struct.getElemType().getKind();
@@ -268,9 +278,16 @@ public class SemanticAnalyzer extends VisitorAdaptor {
                     return;
                 }
             }
-        if (declaration == State.ConstDeclaration)
-            Tab.insert(Obj.Con, name, struct);
-        else
+        if (declaration == State.ConstDeclaration) {
+            Obj o = Tab.insert(Obj.Con, name, struct);
+            if (varDecl.getConstant().getClass() == FactorNum.class)
+                o.setAdr(((FactorNum) varDecl.getConstant()).getValue());
+            else if (varDecl.getConstant().getClass() == FactorChar.class)
+                o.setAdr(((FactorChar) varDecl.getConstant()).getValue());
+            else
+                o.setAdr((((FactorBool) varDecl.getConstant()).getValue()) ? 1 : 0);
+
+        } else
             Tab.insert(Obj.Var, name, struct);
     }
 
@@ -358,11 +375,11 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     }
 
     public void visit(ConstVarDeclaration varDecl) {
-        if (varDecl.getType().struct.getKind() == varDecl.getFactor().struct.getKind()) {
+        if (varDecl.getType().struct.getKind() == varDecl.getConstant().struct.getKind()) {
             varDeclCount++;
             report_info("Deklarisana promenljiva " + varDecl.getVarName(), varDecl);
             tab_insert_check(varDecl.getVarName(),
-                    varDecl.getType().struct, varDecl.getLine(), State.ConstDeclaration);
+                    varDecl.getType().struct, varDecl.getLine(), State.ConstDeclaration, varDecl);
             varDeclType = null;
         } else {
             report_error("Greska : Tipovi nisu kompatibilni ", varDecl);
@@ -378,13 +395,18 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     public void visit(IdentInLine varDecl) {
         varDeclCount++;
         report_info("Deklarisana promenljiva " + varDecl.getIdentName(), varDecl);
-        tab_insert_check(varDecl.getIdentName(), varDeclType, varDecl.getLine(), State.VarDeclaration);
+        tab_insert_check(varDecl.getIdentName(), varDeclType, varDecl.getLine(), State.VarDeclaration, null);
     }
 
     public void visit(PrintStmt print) {
-//        if(print.getExpr().struct != Tab.intType && print.getExpr().struct != Tab.charType){
-//            report_error("Greska na liniji " + print.getLine() + " : Operand mora biti char ili int", null);
-//        }
+        boolean wrongType = false;
+        for (int i : identType)
+            if (i == Struct.Bool)
+                wrongType = true;
+
+        if (!check_expr_deref_level() || wrongType) {
+            report_error("Greska na liniji " + print.getLine() + " : Operand mora biti char ili int", null);
+        }
         printCallCount++;
         identType = null;
         identTypeCnt = 0;
@@ -455,6 +477,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     }
 
     public void visit(DesignatorExpression designator) {
+        designatorName = designator.getName();
         Obj obj = Tab.find(designator.getName());
         if (obj == Tab.noObj) {
             report_error("Greska na liniji " + designator.getLine() + " : ime " + designator.getName() +
@@ -506,13 +529,13 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     public void visit(FormParams formParsLst) {
         report_info("Parametar f-je " + formParsLst.getIdentName(), formParsLst);
         tab_insert_check(formParsLst.getIdentName(), formParsLst.getType().struct,
-                formParsLst.getLine(), State.VarDeclaration);
+                formParsLst.getLine(), State.VarDeclaration, null);
     }
 
     public void visit(IdentTypeInLine identTypeInLine) {
         report_info("Parametar f-je " + identTypeInLine.getIdentName(), identTypeInLine);
         tab_insert_check(identTypeInLine.getIdentName(),
-                identTypeInLine.getType().struct, identTypeInLine.getLine(), State.VarDeclaration);
+                identTypeInLine.getType().struct, identTypeInLine.getLine(), State.VarDeclaration, null);
     }
 
     public void visit(Terminator term) {
@@ -616,14 +639,22 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         check_ident_type(returnExpr);
     }
 
-    public void visit(DesignatorStatementArray designatorStatementArray) {
-        check_ident_type(designatorStatementArray);
-    }
-
     public void visit(DesignatorStatementPlusPlus designatorStatementPlusPlus) {
-        if (designatorStatementPlusPlus.getDesignator().obj.getType().getKind() != Struct.Int) {
-            report_error("Greska na liniji " + designatorStatementPlusPlus.getLine() +
-                    " : nekompatibilni tipovi u izrazu", null);
+        for(int curr : identType){
+            if(curr == 0)
+                break;
+            if(curr != Struct.Int){
+                report_error("Greska na liniji " + designatorStatementPlusPlus.getLine() +
+                        " : nekompatibilni tipovi u izrazu", null);
+                return;
+            }
+        }
+        for(int i = 0; i < derefTypeCnt; i++){
+            if(derefType[i] != varType[i]){
+                report_error("Greska na liniji " + designatorStatementPlusPlus.getLine() +
+                        " : nekompatibilni tipovi u izrazu", null);
+                return;
+            }
         }
         identType = null;
         identTypeCnt = 0;
@@ -634,9 +665,21 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     }
 
     public void visit(DesignatorStatementMinusMinus designatorStatementMinusMinus) {
-        if (designatorStatementMinusMinus.getDesignator().obj.getType().getKind() != Struct.Int) {
-            report_error("Greska na liniji " + designatorStatementMinusMinus.getLine() +
-                    " : nekompatibilni tipovi u izrazu", null);
+        for(int curr : identType){
+            if(curr == 0)
+                break;
+            if(curr != Struct.Int){
+                report_error("Greska na liniji " + designatorStatementMinusMinus.getLine() +
+                        " : nekompatibilni tipovi u izrazu", null);
+                return;
+            }
+        }
+        for(int i = 0; i < derefTypeCnt; i++){
+            if(derefType[i] != varType[i]){
+                report_error("Greska na liniji " + designatorStatementMinusMinus.getLine() +
+                        " : nekompatibilni tipovi u izrazu", null);
+                return;
+            }
         }
         identType = null;
         identTypeCnt = 0;
@@ -656,6 +699,15 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     }
 
     public void visit(StatementRead statementRead) {
+        boolean wrongType = false;
+        for (int i : identType)
+            if (i == Struct.Bool)
+                wrongType = true;
+
+        if (!check_expr_deref_level() || wrongType) {
+            report_error("Greska na liniji " + statementRead.getLine() +
+                    " : Operand mora biti char ili int", null);
+        }
         identType = null;
         identTypeCnt = 0;
         varType = null;
@@ -677,17 +729,24 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     }
 
     public void visit(FactorNewExpr factorNewExpr) {
+        factorNewExpr.struct = factorNewExpr.getType().struct;
         assignmentType = factorNewExpr.getType().struct.getKind();
         localState = LocalState.ArrayCreation;
     }
 
     public void visit(FactorExpr factorExpr) {
+        factorExpr.struct = factorExpr.getExpr().struct;
         check_ident_type(factorExpr);
     }
 
     public void visit(FactorNewTypeExpr factorNewTypeExpr) {
+        factorNewTypeExpr.struct = factorNewTypeExpr.getType().struct;
         assignmentType = factorNewTypeExpr.getType().struct.getKind();
         localState = LocalState.ArrayCreation;
+    }
+
+    public void visit(Consts consts) {
+        consts.struct = consts.getConstant().struct;
     }
 
 

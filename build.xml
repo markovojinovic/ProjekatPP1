@@ -10,6 +10,7 @@
                 <exclude name="RuleVisitor.java"/>
                 <exclude name="SemanticAnalyzer.java"/>
                 <exclude name="CodeGenerator.java"/>
+                <exclude name="CounterVisitor.java"/>
             </fileset>
         </delete>
         <delete>
@@ -28,9 +29,9 @@
 
     <target name="lexerGen" depends="delete">
         <java jar="lib/JFlex.jar" fork="true">
-            <arg value="-d" />
-            <arg value="src/rs/ac/bg/etf/pp1" />
-            <arg value="src/spec/mjlexer.flex" />
+            <arg value="-d"/>
+            <arg value="src/rs/ac/bg/etf/pp1"/>
+            <arg value="src/spec/mjlexer.flex"/>
         </java>
     </target>
 
@@ -62,7 +63,24 @@
                 <pathelement path="lib/mj-runtime-1.1.jar"/>
             </classpath>
         </javac>
+    </target>
 
+    <target name="disasm">
+        <java classname="rs.etf.pp1.mj.runtime.disasm">
+            <arg value="test/program.obj"/>
+            <classpath>
+                <pathelement location="lib/mj-runtime-1.1.jar"/>
+            </classpath>
+        </java>
+    </target>
+
+    <target name="runObj" depends="disasm">
+        <java classname="rs.etf.pp1.mj.runtime.Run">
+            <arg value="test/program.obj"/>
+            <classpath>
+                <pathelement location="lib/mj-runtime-1.1.jar"/>
+            </classpath>
+        </java>
     </target>
 
 </project>
