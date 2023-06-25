@@ -62,12 +62,12 @@ terminal Boolean BOOLCONST;
 terminal Character CHARCONST;
 
 nonterminal DesignatorStatement, NumberInPrint, Minus, Addop, FunctionParameters, Lsqare, Rsqare;
-nonterminal MulopFactor, Mulop, ExprList, VarDecl, SquareList, IdentInLine, IdentList, OptionalComma;
+nonterminal Mulop, ExprList, VarDecl, SquareList, IdentInLine, IdentList, OptionalComma;
 nonterminal IdentSquareList, FormPars, TypeIdentSquareList, DesignatorListMany, DesignatorList;
 nonterminal VarDeclList, MethodDeclList, StatementList, IdentInLineList, OneVarDeclaration, OneVarDeclarationList;
 
 nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgName, Program, MethodDecl, MethodTypeName, Designator, FormParsLst, IdentTypeInLine, ReturnStatement;
-nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, Term, Factor, Expr, AddopTerm, Statement, Constant;
+nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, Term, Factor, Expr, AddopTerm, Statement, Constant, MulopFactor;
 
 Program ::= (Program) PROG ProgName:p VarDeclList LBRACE MethodDeclList RBRACE;
 
@@ -109,6 +109,7 @@ MethodDeclList ::= (MethodDeclarations) MethodDeclList MethodDecl
 MethodDecl ::= (MethodDecl) MethodTypeName LPAREN FormParsLst RPAREN VarDeclList LBRACE StatementList ReturnStatement RBRACE;
 
 ReturnStatement ::= (ReturnStatementExpr) RETURN Expr:exprName DOTCOMMA
+                  | (ReturnStatement) RETURN DOTCOMMA
                   | (NoReturnStatement) /* epsilon smena */
                   ;
 
