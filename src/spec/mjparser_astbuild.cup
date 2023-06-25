@@ -68,7 +68,6 @@ nonterminal Addop Addop;
 nonterminal FunctionParameters FunctionParameters;
 nonterminal Lsqare Lsqare;
 nonterminal Rsqare Rsqare;
-nonterminal MulopFactor MulopFactor;
 nonterminal Mulop Mulop;
 nonterminal ExprList ExprList;
 nonterminal VarDecl VarDecl;
@@ -89,7 +88,7 @@ nonterminal OneVarDeclaration OneVarDeclaration;
 nonterminal OneVarDeclarationList OneVarDeclarationList;
 
 nonterminal rs.etf.pp1.symboltable.concepts.Obj ProgName, Program, MethodDecl, MethodTypeName, Designator, FormParsLst, IdentTypeInLine, ReturnStatement;
-nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, Term, Factor, Expr, AddopTerm, Statement, Constant;
+nonterminal rs.etf.pp1.symboltable.concepts.Struct Type, Term, Factor, Expr, AddopTerm, Statement, Constant, MulopFactor;
 
 Program ::= (Program) PROG ProgName:p VarDeclList:V1 LBRACE MethodDeclList:M2 RBRACE {: RESULT=new Program(p, V1, M2); RESULT.setLine(pleft); :};
 
@@ -131,6 +130,7 @@ MethodDeclList ::= (MethodDeclarations) MethodDeclList:M1 MethodDecl:M2 {: RESUL
 MethodDecl ::= (MethodDecl) MethodTypeName:M1 LPAREN FormParsLst:F2 RPAREN VarDeclList:V3 LBRACE StatementList:S4 ReturnStatement:R5 RBRACE {: RESULT=new MethodDecl(M1, F2, V3, S4, R5); RESULT.setLine(M1left); :};
 
 ReturnStatement ::= (ReturnStatementExpr) RETURN Expr:exprName DOTCOMMA {: RESULT=new ReturnStatementExpr(exprName); RESULT.setLine(exprNameleft); :}
+                  | (ReturnStatement) RETURN DOTCOMMA {: RESULT=new ReturnStatement(); :}
                   | (NoReturnStatement) {: RESULT=new NoReturnStatement(); :} /* epsilon smena */
                   ;
 

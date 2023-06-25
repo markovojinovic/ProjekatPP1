@@ -10,7 +10,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 // TODO: videti da li treba da se dodaje i dodavanje bool konstanti u tabelu simbola
-// TODO: idalje postoji bag kod linije niz[niz[jedan]] = niz[niz[0]] * 3;
+// TODO: idalje postoji bag kod linije niz[niz[jedan]] = niz[niz[0]] * 3; - MOZDA LINIJA 185
 
 public class CodeGenerator extends VisitorAdaptor {
 
@@ -20,8 +20,9 @@ public class CodeGenerator extends VisitorAdaptor {
     private Queue<Integer>[] expressions = new LinkedList[256];
     private Queue<Integer> currentOperations;
     private Queue<Integer> currentExpressions;
-    private boolean arrayCreation = false, exprEnter = false, oneOperandDeref = false;
-    private int indexing = 0, dereference = 0;
+    private boolean arrayCreation = false, exprEnter = false, oneOperandDeref = false,
+            matrixCreation = false, exprEnterMatrix = false;
+    private int indexing = 0, dereference = 0, matrixDerederence = 0;
     private Struct arrayType = null;
     private Obj arrayValue = null, arrayIndex = null;
 
@@ -121,8 +122,31 @@ public class CodeGenerator extends VisitorAdaptor {
             else
                 Code.put(0);
             Code.store(designatorStatementEqual.getDesignator().obj);
+        } else if (matrixCreation) {
+            matrixCreation = false;
+            int iterations;
+            // rowNumber columnNumber ---- stanje na steku u ovom trenutku
+            Code.store(index);                                                 // broj kolona - duzina pojedinacnog niza
+            Obj index2 = Tab.insert(Obj.Var, "#index2$", Tab.intType);
+            Code.store(index2);                  // broj redova - duzina niza ciji je svaki elem niz duzine columnNumber
+            iterations = index2.getAdr();
+            Obj matrixAddress = Tab.insert(Obj.Var, "#matrix$", Tab.intType);
+            Code.load(index2);
+            Code.put(Code.newarray);
+            Code.store(matrixAddress);                                          // ne desava se ova linija u run
+            for (int i = 0; i < iterations; i++) {
+                Code.load(index);
+                Code.put(Code.newarray);
+                Obj arrayAddress = Tab.insert(Obj.Var, "#array$", Tab.intType);     // videti da li ovde treba da stoji ovaj tip
+                Code.store(arrayAddress);
+                Code.load(matrixAddress);
+                index2.setAdr(i);
+                Code.load(index2);
+                Code.load(arrayAddress);
+                Code.put(Code.astore);
+            }
         } else if (dereference > 0) {
-            Obj arrayValue = Tab.insert(Obj.Var, "#value$", Tab.intType);
+            Obj arrayValue = Tab.insert(Obj.Var, "#value$", Tab.intType);           // videti da li ovde treba da stoji ovaj tip
             Code.store(arrayValue);
             Code.store(index);
             Code.load(designatorStatementEqual.getDesignator().obj);
@@ -130,7 +154,22 @@ public class CodeGenerator extends VisitorAdaptor {
             Code.load(arrayValue);
             Code.put(Code.astore);
             dereference--;
-        } else
+        }else if(matrixDerederence > 0){
+            matrixDerederence--;
+            Obj matrixValue = Tab.insert(Obj.Var, "#value$", Tab.intType);
+            Code.store(matrixValue);
+            Obj columnIndex = Tab.insert(Obj.Var, "#index$", Tab.intType);
+            Obj rowIndex = Tab.insert(Obj.Var, "#index2$", Tab.intType);
+            Code.store(columnIndex);
+            Code.store(rowIndex);
+            Code.load(designatorStatementEqual.getDesignator().obj);
+            Code.load(rowIndex);
+            Code.put(Code.aload);
+            Code.load(rowIndex);
+            Code.load(matrixValue);
+            Code.put(Code.astore);
+        }
+        else
             Code.store(designatorStatementEqual.getDesignator().obj);
     }
 
@@ -143,7 +182,7 @@ public class CodeGenerator extends VisitorAdaptor {
             oneOperandDeref = false;
 
         }
-        if(DesignatorStatementPlusPlus.class == parent.getClass()
+        if (DesignatorStatementPlusPlus.class == parent.getClass()
                 || DesignatorStatementMinusMinus.class == parent.getClass())
             pass = true;
         if (DesignatorStatementEqual.class != parent.getClass()) {
@@ -158,12 +197,29 @@ public class CodeGenerator extends VisitorAdaptor {
                 Code.load(index);
                 Code.put(Code.aload);
                 if (indexing > 0) {
-                    Obj curr = Tab.insert(Obj.Var, "$$", Tab.intType);      // ovde su problemi
+                    Obj curr = Tab.insert(Obj.Var, "$$", Tab.intType);      // ovde su problemi - OBAVEZNO PROVERITI
                     Code.store(curr);
                     currentExpressions.add(curr.getAdr());
                 } else if (!currentOperations.isEmpty())
                     Code.put(currentOperations.remove());
                 dereference--;
+            } else if (matrixDerederence > 0 && exprEnterMatrix) {      // rowIndex columnIndex -- sadrzaj steka
+                Obj columnIndex = Tab.insert(Obj.Var, "#index$", Tab.intType);
+                Obj rowIndex = Tab.insert(Obj.Var, "#index2$", Tab.intType);
+                Code.store(columnIndex);
+                Code.store(rowIndex);
+                Code.load(designator.obj);
+                Code.load(rowIndex);
+                Code.put(Code.aload);
+                Code.load(columnIndex);
+                Code.put(Code.aload);
+                if (indexing > 0) {
+                    Obj curr = Tab.insert(Obj.Var, "$$", Tab.intType);      // ovde su problemi - OBAVEZNO PROVERITI
+                    Code.store(curr);
+                    currentExpressions.add(curr.getAdr());
+                } else if (!currentOperations.isEmpty())
+                    Code.put(currentOperations.remove());
+                matrixDerederence--;
             } else {
                 if (indexing > 0)
                     currentExpressions.add(designator.obj.getAdr());
@@ -171,8 +227,8 @@ public class CodeGenerator extends VisitorAdaptor {
                     Code.load(designator.obj);
             }
         }
-        if (exprEnter)
-            exprEnter = false;
+        exprEnter = false;
+        exprEnterMatrix = false;
     }
 
     public void visit(AddOperationPlus addOperationPlus) {
@@ -281,6 +337,17 @@ public class CodeGenerator extends VisitorAdaptor {
         dereference++;
         exprEnter = true;
         oneOperandDeref = true;
+    }
+
+    public void visit(ExprListExprMatrix exprListExprMatrix) {
+        matrixDerederence++;
+        exprEnterMatrix = true;
+        // TODO: proveriti za flag-ove kao kod f-je iznad, treba li sta da se dodaje
+    }
+
+    public void visit(FactorNewTypeExpr factorNewTypeExpr) {
+        matrixCreation = true;
+        arrayType = factorNewTypeExpr.getType().struct;
     }
 
     public void visit(StatementDesignator statementDesignator) {

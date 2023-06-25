@@ -36,7 +36,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     int printCallCount = 0;
     int varDeclCount = 0;
     private Obj currentMethod = null;
-    private boolean returnFound = false;
+    private boolean returnFound = false, noParamMethod = false, miniusExpr = false;
     boolean errorDetected = false;
     int nVars;
 
@@ -400,9 +400,12 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
     public void visit(PrintStmt print) {
         boolean wrongType = false;
-        for (int i : identType)
-            if (i == Struct.Bool)
+        for (int i : identType) {
+            if (i == 0)
+                break;
+            if (i != Struct.Bool && i != Struct.Int && i != Struct.Char)
                 wrongType = true;
+        }
 
         if (!check_expr_deref_level() || wrongType) {
             report_error("Greska na liniji " + print.getLine() + " : Operand mora biti char ili int", null);
@@ -454,6 +457,10 @@ public class SemanticAnalyzer extends VisitorAdaptor {
             report_error("Greska na liniji " +
                     methodTypeName.getLine() + " : funkcija sa imenom " +
                     methodTypeName.getMetName() + " vec postoji", null);
+        } else if (methodTypeName.getMetName().equals("main") && methodTypeName.getType().struct != Tab.noType) {
+            report_error("Greska na liniji " +
+                    methodTypeName.getLine() + " : funkcija sa imenom " +
+                    methodTypeName.getMetName() + " mora biti tipa noType", null);
         } else {
             currentMethod = Tab.insert(Obj.Meth, methodTypeName.getMetName(), methodTypeName.getType().struct);
             methodTypeName.obj = currentMethod;
@@ -465,6 +472,11 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     public void visit(MethodDecl methodDecl) {
         if (currentMethod == null)
             return;
+        if (currentMethod.getName().equals("main") && !noParamMethod) {
+            report_error("Greska na liniji " +
+                    methodDecl.getLine() + " : funkcija sa imenom " +
+                    currentMethod.getName() + " ne sme imati parametre", null);
+        }
         if (!returnFound && currentMethod.getType() != Tab.noType) {
             report_error("Semanticka greska na liniji " + methodDecl.getLine() + ": funkcija " +
                     currentMethod.getName() + " nema \"return\" iskaz!", null);
@@ -543,6 +555,10 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     }
 
     public void visit(Expression termExpr) {
+        if (miniusExpr && termExpr.getTerm().struct != Tab.intType) {
+            report_error("Greska na liniji " + termExpr.getLine() +
+                    " : nekompatibilni tipovi u izrazu.", null);
+        }
         termExpr.struct = termExpr.getTerm().struct;
     }
 
@@ -640,17 +656,17 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     }
 
     public void visit(DesignatorStatementPlusPlus designatorStatementPlusPlus) {
-        for(int curr : identType){
-            if(curr == 0)
+        for (int curr : identType) {
+            if (curr == 0)
                 break;
-            if(curr != Struct.Int){
+            if (curr != Struct.Int) {
                 report_error("Greska na liniji " + designatorStatementPlusPlus.getLine() +
                         " : nekompatibilni tipovi u izrazu", null);
                 return;
             }
         }
-        for(int i = 0; i < derefTypeCnt; i++){
-            if(derefType[i] != varType[i]){
+        for (int i = 0; i < derefTypeCnt; i++) {
+            if (derefType[i] != varType[i]) {
                 report_error("Greska na liniji " + designatorStatementPlusPlus.getLine() +
                         " : nekompatibilni tipovi u izrazu", null);
                 return;
@@ -665,17 +681,17 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     }
 
     public void visit(DesignatorStatementMinusMinus designatorStatementMinusMinus) {
-        for(int curr : identType){
-            if(curr == 0)
+        for (int curr : identType) {
+            if (curr == 0)
                 break;
-            if(curr != Struct.Int){
+            if (curr != Struct.Int) {
                 report_error("Greska na liniji " + designatorStatementMinusMinus.getLine() +
                         " : nekompatibilni tipovi u izrazu", null);
                 return;
             }
         }
-        for(int i = 0; i < derefTypeCnt; i++){
-            if(derefType[i] != varType[i]){
+        for (int i = 0; i < derefTypeCnt; i++) {
+            if (derefType[i] != varType[i]) {
                 report_error("Greska na liniji " + designatorStatementMinusMinus.getLine() +
                         " : nekompatibilni tipovi u izrazu", null);
                 return;
@@ -700,9 +716,12 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
     public void visit(StatementRead statementRead) {
         boolean wrongType = false;
-        for (int i : identType)
-            if (i == Struct.Bool)
+        for (int i : identType) {
+            if (i == 0)
+                break;
+            if (i != Struct.Bool && i != Struct.Int && i != Struct.Char)
                 wrongType = true;
+        }
 
         if (!check_expr_deref_level() || wrongType) {
             report_error("Greska na liniji " + statementRead.getLine() +
@@ -749,5 +768,36 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         consts.struct = consts.getConstant().struct;
     }
 
+    public void visit(NoFormParams noFormParams) {
+        if (noFormParams.getParent().getClass() != FormParams.class)
+            noParamMethod = true;
+    }
+
+    public void visit(ReturnStatement returnStatement) {
+        if (currentMethod.getType() != Tab.noType) {
+            report_error("Greska na liniji " + returnStatement.getLine() + " : " +
+                    "tip izraza u \"return\" naredbi ne slaze se sa tipom povratne vrednosti funkcije " +
+                    currentMethod.getName(), null);
+        }
+    }
+
+    public void visit(MinusExpression minusExpression) {
+        miniusExpr = true;
+    }
+
+    public void visit(MulopFactorRec mulopFactorRec) {
+        Struct te = mulopFactorRec.getMulopFactor().struct;
+        Struct t = mulopFactorRec.getFactor().struct;
+        if (te == null || t == null) {
+            return;
+        }
+        if (te.equals(t) && te == Tab.intType) {
+            mulopFactorRec.struct = te;
+        } else {
+            report_error("Greska na liniji " + mulopFactorRec.getLine() +
+                    " : nekompatibilni tipovi u izrazu za mnozenje.", null);
+            mulopFactorRec.struct = Tab.noType;
+        }
+    }
 
 }

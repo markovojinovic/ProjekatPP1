@@ -11,12 +11,26 @@ import rs.ac.bg.etf.pp1.ast.Program;
 import rs.ac.bg.etf.pp1.util.Log4JUtils;
 import rs.etf.pp1.mj.runtime.Code;
 import rs.etf.pp1.symboltable.Tab;
+import rs.etf.pp1.symboltable.concepts.Obj;
+import rs.etf.pp1.symboltable.concepts.Scope;
+import rs.etf.pp1.symboltable.concepts.Struct;
+import rs.etf.pp1.symboltable.visitors.DumpSymbolTableVisitor;
 
 public class Compiler {
 
     static {
         DOMConfigurator.configure(Log4JUtils.instance().findLoggerConfigFile());
         Log4JUtils.instance().prepareLogFile(Logger.getRootLogger());
+    }
+
+
+    public static void tsdump(){
+        System.out.println("=====================SYMBOL TABLE DUMP=========================");
+        MyDumpSymbolTableVisitor stv = new MyDumpSymbolTableVisitor();
+        for (Scope s = Tab.currentScope(); s != null; s = s.getOuter()) {
+            s.accept(stv);
+        }
+        System.out.println(stv.getOutput());
     }
 
     public static void main(String[] args) throws Exception {
@@ -48,7 +62,7 @@ public class Compiler {
             log.info(" Deklarisanih promenljivih ima = " + v.varDeclCount);
 
             log.info("===================================");
-            Tab.dump();
+            tsdump();
 
             if (!p.errorDetected) {
                 log.info("Parsiranje uspesno zavrseno");
