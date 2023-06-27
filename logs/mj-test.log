@@ -1,345 +1,306 @@
-INFO  22:47:36,420 - Compiling source file: C:\Users\vm190559d\Desktop\Fax\7. Semestar\PP1\Projekat\test\program.mj
-INFO  22:47:36,476 - #2 program
-INFO  22:47:36,476 - #24 test301
-INFO  22:47:36,476 - #6 const
-INFO  22:47:36,476 - #24 int
-INFO  22:47:36,476 - #24 nula
-INFO  22:47:36,476 - #7 =
-INFO  22:47:36,476 - #25 0
-INFO  22:47:36,476 - #10 ;
-INFO  22:47:36,476 - #6 const
-INFO  22:47:36,476 - #24 int
-INFO  22:47:36,476 - #24 jedan
-INFO  22:47:36,476 - #7 =
-INFO  22:47:36,476 - #25 1
-INFO  22:47:36,476 - #10 ;
-INFO  22:47:36,476 - #6 const
-INFO  22:47:36,476 - #24 int
-INFO  22:47:36,476 - #24 pet
-INFO  22:47:36,476 - #7 =
-INFO  22:47:36,476 - #25 5
-INFO  22:47:36,476 - #10 ;
-INFO  22:47:36,476 - #24 int
-INFO  22:47:36,476 - #24 niz
-INFO  22:47:36,476 - #17 [
-INFO  22:47:36,476 - #18 ]
-INFO  22:47:36,476 - #15 ,
-INFO  22:47:36,476 - #24 niz2
-INFO  22:47:36,476 - #17 [
-INFO  22:47:36,476 - #18 ]
-INFO  22:47:36,476 - #15 ,
-INFO  22:47:36,476 - #24 a
-INFO  22:47:36,476 - #15 ,
-INFO  22:47:36,476 - #24 b
-INFO  22:47:36,476 - #10 ;
-INFO  22:47:36,476 - #24 char
-INFO  22:47:36,476 - #24 nizch
-INFO  22:47:36,476 - #17 [
-INFO  22:47:36,476 - #18 ]
-INFO  22:47:36,476 - #10 ;
-INFO  22:47:36,476 - #24 int
-INFO  22:47:36,476 - #24 mat
-INFO  22:47:36,476 - #17 [
-INFO  22:47:36,476 - #18 ]
-INFO  22:47:36,476 - #17 [
-INFO  22:47:36,476 - #18 ]
-INFO  22:47:36,476 - #10 ;
-INFO  22:47:36,476 - #5 {
-INFO  22:47:36,476 - #24 void
-INFO  22:47:36,492 - #24 main
-INFO  22:47:36,492 - #12 (
-INFO  22:47:36,492 - #13 )
-INFO  22:47:36,492 - #24 int
-INFO  22:47:36,492 - #24 bodovi
-INFO  22:47:36,492 - #10 ;
-INFO  22:47:36,492 - #24 bool
-INFO  22:47:36,492 - #24 bt
-INFO  22:47:36,492 - #10 ;
-INFO  22:47:36,492 - #5 {
-INFO  22:47:36,492 - #24 bodovi
-INFO  22:47:36,492 - #7 =
-INFO  22:47:36,492 - #25 0
-INFO  22:47:36,492 - #10 ;
-INFO  22:47:36,492 - #24 bodovi
-INFO  22:47:36,492 - #8 ++
-INFO  22:47:36,492 - #10 ;
-INFO  22:47:36,492 - #24 bodovi
-INFO  22:47:36,492 - #7 =
-INFO  22:47:36,492 - #24 bodovi
-INFO  22:47:36,492 - #19 +
-INFO  22:47:36,492 - #24 jedan
-INFO  22:47:36,507 - #10 ;
-INFO  22:47:36,507 - #24 bodovi
-INFO  22:47:36,507 - #7 =
-INFO  22:47:36,507 - #24 bodovi
-INFO  22:47:36,507 - #21 *
-INFO  22:47:36,507 - #24 pet
-INFO  22:47:36,507 - #10 ;
-INFO  22:47:36,507 - #24 bodovi
-INFO  22:47:36,507 - #9 --
-INFO  22:47:36,507 - #10 ;
-INFO  22:47:36,507 - #14 print
-INFO  22:47:36,507 - #12 (
-INFO  22:47:36,507 - #24 bodovi
-INFO  22:47:36,507 - #13 )
-INFO  22:47:36,507 - #10 ;
-INFO  22:47:36,507 - #24 niz
-INFO  22:47:36,507 - #7 =
-INFO  22:47:36,507 - #16 new
-INFO  22:47:36,507 - #24 int
-INFO  22:47:36,507 - #17 [
-INFO  22:47:36,507 - #25 3
-INFO  22:47:36,514 - #18 ]
-INFO  22:47:36,514 - #10 ;
-INFO  22:47:36,514 - #24 niz
-INFO  22:47:36,514 - #17 [
-INFO  22:47:36,514 - #24 nula
-INFO  22:47:36,514 - #18 ]
-INFO  22:47:36,514 - #7 =
-INFO  22:47:36,514 - #24 jedan
-INFO  22:47:36,514 - #10 ;
-INFO  22:47:36,514 - #24 niz
-INFO  22:47:36,514 - #17 [
-INFO  22:47:36,514 - #25 1
-INFO  22:47:36,523 - #18 ]
-INFO  22:47:36,523 - #7 =
-INFO  22:47:36,523 - #25 2
-INFO  22:47:36,523 - #10 ;
-INFO  22:47:36,523 - #24 niz
-INFO  22:47:36,523 - #17 [
-INFO  22:47:36,523 - #24 niz
-INFO  22:47:36,523 - #17 [
-INFO  22:47:36,523 - #24 jedan
-INFO  22:47:36,523 - #18 ]
-INFO  22:47:36,523 - #18 ]
-INFO  22:47:36,523 - #7 =
-INFO  22:47:36,523 - #24 niz
-INFO  22:47:36,523 - #17 [
-INFO  22:47:36,523 - #24 niz
-INFO  22:47:36,523 - #17 [
-INFO  22:47:36,525 - #25 0
-INFO  22:47:36,525 - #18 ]
-INFO  22:47:36,525 - #18 ]
-INFO  22:47:36,525 - #21 *
-INFO  22:47:36,525 - #25 3
-INFO  22:47:36,525 - #10 ;
-INFO  22:47:36,525 - #24 bodovi
-INFO  22:47:36,525 - #7 =
-INFO  22:47:36,525 - #24 niz
-INFO  22:47:36,525 - #17 [
-INFO  22:47:36,525 - #25 2
-INFO  22:47:36,525 - #18 ]
-INFO  22:47:36,525 - #22 /
-INFO  22:47:36,525 - #24 niz
-INFO  22:47:36,525 - #17 [
-INFO  22:47:36,525 - #25 0
-INFO  22:47:36,525 - #18 ]
-INFO  22:47:36,525 - #10 ;
-INFO  22:47:36,525 - #14 print
-INFO  22:47:36,525 - #12 (
-INFO  22:47:36,525 - #24 bodovi
-INFO  22:47:36,525 - #13 )
-INFO  22:47:36,525 - #10 ;
-INFO  22:47:36,525 - #14 print
-INFO  22:47:36,525 - #12 (
-INFO  22:47:36,525 - #24 niz
-INFO  22:47:36,525 - #17 [
-INFO  22:47:36,525 - #25 2
-INFO  22:47:36,525 - #18 ]
-INFO  22:47:36,525 - #13 )
-INFO  22:47:36,525 - #10 ;
-INFO  22:47:36,525 - #24 mat
-INFO  22:47:36,525 - #7 =
-INFO  22:47:36,525 - #16 new
-INFO  22:47:36,525 - #24 int
-INFO  22:47:36,525 - #17 [
-INFO  22:47:36,525 - #25 2
-INFO  22:47:36,525 - #18 ]
-INFO  22:47:36,525 - #17 [
-INFO  22:47:36,525 - #25 2
-INFO  22:47:36,525 - #18 ]
-INFO  22:47:36,525 - #10 ;
-INFO  22:47:36,525 - #24 mat
-INFO  22:47:36,525 - #17 [
-INFO  22:47:36,525 - #25 0
-INFO  22:47:36,525 - #18 ]
-INFO  22:47:36,525 - #17 [
-INFO  22:47:36,525 - #25 0
-INFO  22:47:36,525 - #18 ]
-INFO  22:47:36,525 - #7 =
-INFO  22:47:36,525 - #24 niz
-INFO  22:47:36,525 - #17 [
-INFO  22:47:36,525 - #24 nula
-INFO  22:47:36,525 - #18 ]
-INFO  22:47:36,525 - #10 ;
-INFO  22:47:36,525 - #24 mat
-INFO  22:47:36,525 - #17 [
-INFO  22:47:36,525 - #25 0
-INFO  22:47:36,525 - #18 ]
-INFO  22:47:36,525 - #17 [
-INFO  22:47:36,525 - #24 mat
-INFO  22:47:36,525 - #17 [
-INFO  22:47:36,525 - #25 0
-INFO  22:47:36,525 - #18 ]
-INFO  22:47:36,525 - #17 [
-INFO  22:47:36,525 - #25 0
-INFO  22:47:36,525 - #18 ]
-INFO  22:47:36,525 - #18 ]
-INFO  22:47:36,525 - #7 =
-INFO  22:47:36,525 - #25 2
-INFO  22:47:36,525 - #10 ;
-INFO  22:47:36,525 - #24 mat
-INFO  22:47:36,525 - #17 [
-INFO  22:47:36,525 - #25 1
-INFO  22:47:36,525 - #18 ]
-INFO  22:47:36,525 - #17 [
-INFO  22:47:36,525 - #24 jedan
-INFO  22:47:36,525 - #20 -
-INFO  22:47:36,525 - #24 niz
-INFO  22:47:36,525 - #17 [
-INFO  22:47:36,525 - #25 0
-INFO  22:47:36,525 - #18 ]
-INFO  22:47:36,525 - #18 ]
-INFO  22:47:36,525 - #7 =
-INFO  22:47:36,525 - #25 5
-INFO  22:47:36,525 - #10 ;
-INFO  22:47:36,525 - #24 mat
-INFO  22:47:36,525 - #17 [
-INFO  22:47:36,525 - #25 1
-INFO  22:47:36,525 - #18 ]
-INFO  22:47:36,525 - #17 [
-INFO  22:47:36,525 - #25 1
-INFO  22:47:36,525 - #18 ]
-INFO  22:47:36,525 - #7 =
-INFO  22:47:36,525 - #24 mat
-INFO  22:47:36,525 - #17 [
-INFO  22:47:36,525 - #25 0
-INFO  22:47:36,525 - #18 ]
-INFO  22:47:36,525 - #17 [
-INFO  22:47:36,525 - #25 0
-INFO  22:47:36,525 - #18 ]
-INFO  22:47:36,525 - #21 *
-INFO  22:47:36,525 - #24 mat
-INFO  22:47:36,525 - #17 [
-INFO  22:47:36,525 - #25 0
-INFO  22:47:36,525 - #18 ]
-INFO  22:47:36,525 - #17 [
-INFO  22:47:36,525 - #25 1
-INFO  22:47:36,525 - #18 ]
-INFO  22:47:36,525 - #10 ;
-INFO  22:47:36,525 - #14 print
-INFO  22:47:36,525 - #12 (
-INFO  22:47:36,525 - #24 mat
-INFO  22:47:36,525 - #17 [
-INFO  22:47:36,525 - #25 1
-INFO  22:47:36,525 - #18 ]
-INFO  22:47:36,525 - #17 [
-INFO  22:47:36,525 - #25 0
-INFO  22:47:36,525 - #18 ]
-INFO  22:47:36,525 - #13 )
-INFO  22:47:36,525 - #10 ;
-INFO  22:47:36,525 - #14 print
-INFO  22:47:36,525 - #12 (
-INFO  22:47:36,525 - #24 mat
-INFO  22:47:36,525 - #17 [
-INFO  22:47:36,525 - #25 1
-INFO  22:47:36,525 - #18 ]
-INFO  22:47:36,525 - #17 [
-INFO  22:47:36,525 - #25 1
-INFO  22:47:36,525 - #18 ]
-INFO  22:47:36,525 - #13 )
-INFO  22:47:36,525 - #10 ;
-INFO  22:47:36,525 - #24 nizch
-INFO  22:47:36,525 - #7 =
-INFO  22:47:36,525 - #16 new
-INFO  22:47:36,525 - #24 char
-INFO  22:47:36,525 - #17 [
-INFO  22:47:36,525 - #25 3
-INFO  22:47:36,525 - #18 ]
-INFO  22:47:36,525 - #10 ;
-INFO  22:47:36,525 - #24 nizch
-INFO  22:47:36,525 - #17 [
-INFO  22:47:36,525 - #25 0
-INFO  22:47:36,525 - #18 ]
-INFO  22:47:36,525 - #7 =
-INFO  22:47:36,525 - #27 a
-INFO  22:47:36,525 - #10 ;
-INFO  22:47:36,525 - #24 nizch
-INFO  22:47:36,525 - #17 [
-INFO  22:47:36,525 - #24 jedan
-INFO  22:47:36,525 - #18 ]
-INFO  22:47:36,525 - #7 =
-INFO  22:47:36,525 - #27 b
-INFO  22:47:36,525 - #10 ;
-INFO  22:47:36,525 - #24 nizch
-INFO  22:47:36,525 - #17 [
-INFO  22:47:36,525 - #24 pet
-INFO  22:47:36,525 - #20 -
-INFO  22:47:36,525 - #25 3
-INFO  22:47:36,525 - #18 ]
-INFO  22:47:36,525 - #7 =
-INFO  22:47:36,525 - #27 c
-INFO  22:47:36,525 - #10 ;
-INFO  22:47:36,525 - #14 print
-INFO  22:47:36,525 - #12 (
-INFO  22:47:36,525 - #24 nizch
-INFO  22:47:36,525 - #17 [
-INFO  22:47:36,525 - #25 1
-INFO  22:47:36,525 - #18 ]
-INFO  22:47:36,525 - #13 )
-INFO  22:47:36,525 - #10 ;
-INFO  22:47:36,525 - #14 print
-INFO  22:47:36,525 - #12 (
-INFO  22:47:36,525 - #24 nizch
-INFO  22:47:36,525 - #17 [
-INFO  22:47:36,525 - #24 jedan
-INFO  22:47:36,525 - #21 *
-INFO  22:47:36,525 - #25 2
-INFO  22:47:36,539 - #18 ]
-INFO  22:47:36,539 - #13 )
-INFO  22:47:36,539 - #10 ;
-INFO  22:47:36,539 - #11 read
-INFO  22:47:36,539 - #12 (
-INFO  22:47:36,539 - #24 bodovi
-INFO  22:47:36,539 - #13 )
-INFO  22:47:36,539 - #10 ;
-INFO  22:47:36,539 - #24 bodovi
-INFO  22:47:36,539 - #7 =
-INFO  22:47:36,539 - #20 -
-INFO  22:47:36,539 - #24 bodovi
-INFO  22:47:36,539 - #19 +
-INFO  22:47:36,539 - #12 (
-INFO  22:47:36,539 - #24 pet
-INFO  22:47:36,539 - #21 *
-INFO  22:47:36,539 - #24 a
-INFO  22:47:36,539 - #22 /
-INFO  22:47:36,539 - #25 2
-INFO  22:47:36,539 - #20 -
-INFO  22:47:36,539 - #24 jedan
-INFO  22:47:36,539 - #13 )
-INFO  22:47:36,539 - #21 *
-INFO  22:47:36,539 - #24 bodovi
-INFO  22:47:36,539 - #20 -
-INFO  22:47:36,539 - #12 (
-INFO  22:47:36,539 - #25 3
-INFO  22:47:36,539 - #23 %
-INFO  22:47:36,539 - #25 2
-INFO  22:47:36,539 - #19 +
-INFO  22:47:36,539 - #25 3
-INFO  22:47:36,539 - #21 *
-INFO  22:47:36,539 - #25 2
-INFO  22:47:36,539 - #20 -
-INFO  22:47:36,539 - #25 3
-INFO  22:47:36,539 - #13 )
-INFO  22:47:36,539 - #10 ;
-INFO  22:47:36,539 - #14 print
-INFO  22:47:36,539 - #12 (
-INFO  22:47:36,539 - #24 bodovi
-INFO  22:47:36,539 - #13 )
-INFO  22:47:36,539 - #10 ;
-INFO  22:47:36,539 - #4 }
-INFO  22:47:36,539 - #4 }
-INFO  22:47:36,564 - Program(
+INFO  13:07:23,332 - Compiling source file: C:\Users\vm190559d\Desktop\Fax\7. Semestar\PP1\Projekat\test\program.mj
+INFO  13:07:23,391 - #2 program
+INFO  13:07:23,391 - #24 test301
+INFO  13:07:23,391 - #6 const
+INFO  13:07:23,394 - #24 int
+INFO  13:07:23,394 - #24 nula
+INFO  13:07:23,394 - #7 =
+INFO  13:07:23,394 - #25 0
+INFO  13:07:23,394 - #10 ;
+INFO  13:07:23,394 - #6 const
+INFO  13:07:23,394 - #24 int
+INFO  13:07:23,394 - #24 jedan
+INFO  13:07:23,394 - #7 =
+INFO  13:07:23,394 - #25 1
+INFO  13:07:23,394 - #10 ;
+INFO  13:07:23,394 - #6 const
+INFO  13:07:23,394 - #24 int
+INFO  13:07:23,394 - #24 pet
+INFO  13:07:23,394 - #7 =
+INFO  13:07:23,394 - #25 5
+INFO  13:07:23,394 - #10 ;
+INFO  13:07:23,394 - #24 int
+INFO  13:07:23,394 - #24 niz
+INFO  13:07:23,397 - #17 [
+INFO  13:07:23,397 - #18 ]
+INFO  13:07:23,397 - #15 ,
+INFO  13:07:23,397 - #24 niz2
+INFO  13:07:23,397 - #17 [
+INFO  13:07:23,397 - #18 ]
+INFO  13:07:23,397 - #15 ,
+INFO  13:07:23,399 - #24 a
+INFO  13:07:23,399 - #15 ,
+INFO  13:07:23,399 - #24 b
+INFO  13:07:23,399 - #10 ;
+INFO  13:07:23,399 - #24 char
+INFO  13:07:23,399 - #24 nizch
+INFO  13:07:23,399 - #17 [
+INFO  13:07:23,399 - #18 ]
+INFO  13:07:23,399 - #10 ;
+INFO  13:07:23,399 - #24 int
+INFO  13:07:23,399 - #24 mat
+INFO  13:07:23,399 - #17 [
+INFO  13:07:23,399 - #18 ]
+INFO  13:07:23,399 - #17 [
+INFO  13:07:23,399 - #18 ]
+INFO  13:07:23,399 - #10 ;
+INFO  13:07:23,399 - #5 {
+INFO  13:07:23,399 - #24 void
+INFO  13:07:23,400 - #24 main
+INFO  13:07:23,400 - #12 (
+INFO  13:07:23,400 - #13 )
+INFO  13:07:23,402 - #24 int
+INFO  13:07:23,402 - #24 bodovi
+INFO  13:07:23,402 - #10 ;
+INFO  13:07:23,402 - #24 bool
+INFO  13:07:23,402 - #24 bt
+INFO  13:07:23,402 - #10 ;
+INFO  13:07:23,402 - #5 {
+INFO  13:07:23,402 - #24 bodovi
+INFO  13:07:23,404 - #7 =
+INFO  13:07:23,404 - #25 0
+INFO  13:07:23,405 - #10 ;
+INFO  13:07:23,407 - #24 bodovi
+INFO  13:07:23,407 - #8 ++
+INFO  13:07:23,407 - #10 ;
+INFO  13:07:23,407 - #24 bodovi
+INFO  13:07:23,407 - #7 =
+INFO  13:07:23,407 - #24 bodovi
+INFO  13:07:23,408 - #19 +
+INFO  13:07:23,408 - #24 jedan
+INFO  13:07:23,409 - #10 ;
+INFO  13:07:23,409 - #24 bodovi
+INFO  13:07:23,409 - #7 =
+INFO  13:07:23,409 - #24 bodovi
+INFO  13:07:23,409 - #21 *
+INFO  13:07:23,409 - #24 pet
+INFO  13:07:23,416 - #10 ;
+INFO  13:07:23,416 - #24 bodovi
+INFO  13:07:23,416 - #9 --
+INFO  13:07:23,416 - #10 ;
+INFO  13:07:23,416 - #14 print
+INFO  13:07:23,416 - #12 (
+INFO  13:07:23,416 - #24 bodovi
+INFO  13:07:23,416 - #13 )
+INFO  13:07:23,416 - #10 ;
+INFO  13:07:23,416 - #24 niz
+INFO  13:07:23,416 - #7 =
+INFO  13:07:23,416 - #16 new
+INFO  13:07:23,416 - #24 int
+INFO  13:07:23,416 - #17 [
+INFO  13:07:23,416 - #25 3
+INFO  13:07:23,416 - #18 ]
+INFO  13:07:23,416 - #10 ;
+INFO  13:07:23,416 - #24 niz
+INFO  13:07:23,416 - #17 [
+INFO  13:07:23,416 - #24 nula
+INFO  13:07:23,416 - #18 ]
+INFO  13:07:23,416 - #7 =
+INFO  13:07:23,416 - #24 jedan
+INFO  13:07:23,416 - #10 ;
+INFO  13:07:23,416 - #24 niz
+INFO  13:07:23,416 - #17 [
+INFO  13:07:23,416 - #25 1
+INFO  13:07:23,416 - #18 ]
+INFO  13:07:23,416 - #7 =
+INFO  13:07:23,416 - #25 2
+INFO  13:07:23,416 - #10 ;
+INFO  13:07:23,416 - #24 niz
+INFO  13:07:23,416 - #17 [
+INFO  13:07:23,416 - #24 niz
+INFO  13:07:23,416 - #17 [
+INFO  13:07:23,416 - #24 jedan
+INFO  13:07:23,416 - #18 ]
+INFO  13:07:23,416 - #18 ]
+INFO  13:07:23,416 - #7 =
+INFO  13:07:23,416 - #24 niz
+INFO  13:07:23,416 - #17 [
+INFO  13:07:23,416 - #24 niz
+INFO  13:07:23,416 - #17 [
+INFO  13:07:23,416 - #25 0
+INFO  13:07:23,416 - #18 ]
+INFO  13:07:23,416 - #18 ]
+INFO  13:07:23,416 - #21 *
+INFO  13:07:23,416 - #25 3
+INFO  13:07:23,416 - #10 ;
+INFO  13:07:23,416 - #24 bodovi
+INFO  13:07:23,416 - #7 =
+INFO  13:07:23,416 - #24 niz
+INFO  13:07:23,416 - #17 [
+INFO  13:07:23,416 - #25 2
+INFO  13:07:23,416 - #18 ]
+INFO  13:07:23,416 - #22 /
+INFO  13:07:23,416 - #24 niz
+INFO  13:07:23,416 - #17 [
+INFO  13:07:23,416 - #25 0
+INFO  13:07:23,416 - #18 ]
+INFO  13:07:23,416 - #10 ;
+INFO  13:07:23,416 - #14 print
+INFO  13:07:23,416 - #12 (
+INFO  13:07:23,416 - #24 bodovi
+INFO  13:07:23,416 - #13 )
+INFO  13:07:23,416 - #10 ;
+INFO  13:07:23,416 - #14 print
+INFO  13:07:23,416 - #12 (
+INFO  13:07:23,416 - #24 niz
+INFO  13:07:23,416 - #17 [
+INFO  13:07:23,416 - #25 2
+INFO  13:07:23,416 - #18 ]
+INFO  13:07:23,416 - #13 )
+INFO  13:07:23,416 - #10 ;
+INFO  13:07:23,416 - #24 mat
+INFO  13:07:23,416 - #7 =
+INFO  13:07:23,416 - #16 new
+INFO  13:07:23,416 - #24 int
+INFO  13:07:23,416 - #17 [
+INFO  13:07:23,416 - #25 2
+INFO  13:07:23,416 - #18 ]
+INFO  13:07:23,416 - #17 [
+INFO  13:07:23,416 - #25 2
+INFO  13:07:23,416 - #18 ]
+INFO  13:07:23,416 - #10 ;
+INFO  13:07:23,416 - #24 mat
+INFO  13:07:23,416 - #17 [
+INFO  13:07:23,416 - #25 0
+INFO  13:07:23,416 - #18 ]
+INFO  13:07:23,416 - #17 [
+INFO  13:07:23,416 - #25 0
+INFO  13:07:23,416 - #18 ]
+INFO  13:07:23,416 - #7 =
+INFO  13:07:23,416 - #24 niz
+INFO  13:07:23,416 - #17 [
+INFO  13:07:23,416 - #24 nula
+INFO  13:07:23,416 - #18 ]
+INFO  13:07:23,416 - #10 ;
+INFO  13:07:23,416 - #24 mat
+INFO  13:07:23,416 - #17 [
+INFO  13:07:23,416 - #25 0
+INFO  13:07:23,416 - #18 ]
+INFO  13:07:23,416 - #17 [
+INFO  13:07:23,416 - #24 mat
+INFO  13:07:23,416 - #17 [
+INFO  13:07:23,416 - #25 0
+INFO  13:07:23,416 - #18 ]
+INFO  13:07:23,416 - #17 [
+INFO  13:07:23,416 - #25 0
+INFO  13:07:23,416 - #18 ]
+INFO  13:07:23,416 - #18 ]
+INFO  13:07:23,416 - #7 =
+INFO  13:07:23,416 - #25 2
+INFO  13:07:23,416 - #10 ;
+INFO  13:07:23,416 - #24 mat
+INFO  13:07:23,416 - #17 [
+INFO  13:07:23,416 - #25 1
+INFO  13:07:23,416 - #18 ]
+INFO  13:07:23,416 - #17 [
+INFO  13:07:23,416 - #24 jedan
+INFO  13:07:23,416 - #20 -
+INFO  13:07:23,416 - #24 niz
+INFO  13:07:23,431 - #17 [
+INFO  13:07:23,431 - #25 0
+INFO  13:07:23,431 - #18 ]
+INFO  13:07:23,431 - #18 ]
+INFO  13:07:23,431 - #7 =
+INFO  13:07:23,431 - #25 5
+INFO  13:07:23,431 - #10 ;
+INFO  13:07:23,431 - #24 mat
+INFO  13:07:23,431 - #17 [
+INFO  13:07:23,431 - #25 1
+INFO  13:07:23,431 - #18 ]
+INFO  13:07:23,431 - #17 [
+INFO  13:07:23,431 - #25 1
+INFO  13:07:23,431 - #18 ]
+INFO  13:07:23,431 - #7 =
+INFO  13:07:23,431 - #24 mat
+INFO  13:07:23,431 - #17 [
+INFO  13:07:23,431 - #25 0
+INFO  13:07:23,431 - #18 ]
+INFO  13:07:23,431 - #17 [
+INFO  13:07:23,431 - #25 0
+INFO  13:07:23,431 - #18 ]
+INFO  13:07:23,431 - #21 *
+INFO  13:07:23,431 - #24 mat
+INFO  13:07:23,431 - #17 [
+INFO  13:07:23,431 - #25 0
+INFO  13:07:23,431 - #18 ]
+INFO  13:07:23,431 - #17 [
+INFO  13:07:23,431 - #25 1
+INFO  13:07:23,431 - #18 ]
+INFO  13:07:23,431 - #10 ;
+INFO  13:07:23,431 - #14 print
+INFO  13:07:23,431 - #12 (
+INFO  13:07:23,431 - #24 mat
+INFO  13:07:23,431 - #17 [
+INFO  13:07:23,431 - #25 1
+INFO  13:07:23,431 - #18 ]
+INFO  13:07:23,431 - #17 [
+INFO  13:07:23,431 - #25 0
+INFO  13:07:23,431 - #18 ]
+INFO  13:07:23,431 - #13 )
+INFO  13:07:23,431 - #10 ;
+INFO  13:07:23,431 - #14 print
+INFO  13:07:23,431 - #12 (
+INFO  13:07:23,431 - #24 mat
+INFO  13:07:23,431 - #17 [
+INFO  13:07:23,434 - #25 1
+INFO  13:07:23,434 - #18 ]
+INFO  13:07:23,434 - #17 [
+INFO  13:07:23,434 - #25 1
+INFO  13:07:23,434 - #18 ]
+INFO  13:07:23,434 - #13 )
+INFO  13:07:23,434 - #10 ;
+INFO  13:07:23,434 - #24 nizch
+INFO  13:07:23,434 - #7 =
+INFO  13:07:23,434 - #16 new
+INFO  13:07:23,434 - #24 char
+INFO  13:07:23,434 - #17 [
+INFO  13:07:23,434 - #25 3
+INFO  13:07:23,434 - #18 ]
+INFO  13:07:23,434 - #10 ;
+INFO  13:07:23,434 - #24 nizch
+INFO  13:07:23,434 - #17 [
+INFO  13:07:23,434 - #25 0
+INFO  13:07:23,434 - #18 ]
+INFO  13:07:23,434 - #7 =
+INFO  13:07:23,434 - #27 a
+INFO  13:07:23,434 - #10 ;
+INFO  13:07:23,434 - #24 nizch
+INFO  13:07:23,434 - #17 [
+INFO  13:07:23,434 - #24 jedan
+INFO  13:07:23,434 - #18 ]
+INFO  13:07:23,434 - #7 =
+INFO  13:07:23,434 - #27 b
+INFO  13:07:23,434 - #10 ;
+INFO  13:07:23,434 - #24 nizch
+INFO  13:07:23,434 - #17 [
+INFO  13:07:23,434 - #24 pet
+INFO  13:07:23,434 - #20 -
+INFO  13:07:23,434 - #25 3
+INFO  13:07:23,434 - #18 ]
+INFO  13:07:23,434 - #7 =
+INFO  13:07:23,434 - #27 c
+INFO  13:07:23,434 - #10 ;
+INFO  13:07:23,434 - #14 print
+INFO  13:07:23,434 - #12 (
+INFO  13:07:23,434 - #24 nizch
+INFO  13:07:23,434 - #17 [
+INFO  13:07:23,434 - #25 1
+INFO  13:07:23,434 - #18 ]
+INFO  13:07:23,434 - #13 )
+INFO  13:07:23,434 - #10 ;
+INFO  13:07:23,434 - #14 print
+INFO  13:07:23,434 - #12 (
+INFO  13:07:23,434 - #24 nizch
+INFO  13:07:23,434 - #17 [
+INFO  13:07:23,434 - #24 jedan
+INFO  13:07:23,434 - #21 *
+INFO  13:07:23,434 - #25 2
+INFO  13:07:23,434 - #18 ]
+INFO  13:07:23,434 - #13 )
+INFO  13:07:23,434 - #10 ;
+INFO  13:07:23,434 - #4 }
+INFO  13:07:23,434 - #4 }
+INFO  13:07:23,434 - Program(
   ProgName(
    test301
   ) [ProgName]
@@ -519,88 +480,8 @@ INFO  22:47:36,564 - Program(
                                                     Statements(
                                                       Statements(
                                                         Statements(
-                                                          Statements(
-                                                            Statements(
-                                                              Statements(
-                                                                NoStmt(
-                                                                ) [NoStmt]
-                                                                StatementDesignator(
-                                                                  DesignatorStatementEqual(
-                                                                    DesignatorExpression(
-                                                                     bodovi
-                                                                      NoExprListExpr(
-                                                                      ) [NoExprListExpr]
-                                                                    ) [DesignatorExpression]
-                                                                    Expression(
-                                                                      NoMinusExpression(
-                                                                      ) [NoMinusExpression]
-                                                                      Terminator(
-                                                                        Consts(
-                                                                          FactorNum(
-                                                                           0
-                                                                          ) [FactorNum]
-                                                                        ) [Consts]
-                                                                        NoMulopFactor(
-                                                                        ) [NoMulopFactor]
-                                                                      ) [Terminator]
-                                                                      NoAddOperationTerminator(
-                                                                      ) [NoAddOperationTerminator]
-                                                                    ) [Expression]
-                                                                  ) [DesignatorStatementEqual]
-                                                                ) [StatementDesignator]
-                                                              ) [Statements]
-                                                              StatementDesignator(
-                                                                DesignatorStatementPlusPlus(
-                                                                  DesignatorExpression(
-                                                                   bodovi
-                                                                    NoExprListExpr(
-                                                                    ) [NoExprListExpr]
-                                                                  ) [DesignatorExpression]
-                                                                ) [DesignatorStatementPlusPlus]
-                                                              ) [StatementDesignator]
-                                                            ) [Statements]
-                                                            StatementDesignator(
-                                                              DesignatorStatementEqual(
-                                                                DesignatorExpression(
-                                                                 bodovi
-                                                                  NoExprListExpr(
-                                                                  ) [NoExprListExpr]
-                                                                ) [DesignatorExpression]
-                                                                Expression(
-                                                                  NoMinusExpression(
-                                                                  ) [NoMinusExpression]
-                                                                  Terminator(
-                                                                    FactorDes(
-                                                                      DesignatorExpression(
-                                                                       bodovi
-                                                                        NoExprListExpr(
-                                                                        ) [NoExprListExpr]
-                                                                      ) [DesignatorExpression]
-                                                                    ) [FactorDes]
-                                                                    NoMulopFactor(
-                                                                    ) [NoMulopFactor]
-                                                                  ) [Terminator]
-                                                                  AddOperationTerminatorRec(
-                                                                    NoAddOperationTerminator(
-                                                                    ) [NoAddOperationTerminator]
-                                                                    AddOperationPlus(
-                                                                    ) [AddOperationPlus]
-                                                                    Terminator(
-                                                                      FactorDes(
-                                                                        DesignatorExpression(
-                                                                         jedan
-                                                                          NoExprListExpr(
-                                                                          ) [NoExprListExpr]
-                                                                        ) [DesignatorExpression]
-                                                                      ) [FactorDes]
-                                                                      NoMulopFactor(
-                                                                      ) [NoMulopFactor]
-                                                                    ) [Terminator]
-                                                                  ) [AddOperationTerminatorRec]
-                                                                ) [Expression]
-                                                              ) [DesignatorStatementEqual]
-                                                            ) [StatementDesignator]
-                                                          ) [Statements]
+                                                          NoStmt(
+                                                          ) [NoStmt]
                                                           StatementDesignator(
                                                             DesignatorStatementEqual(
                                                               DesignatorExpression(
@@ -612,26 +493,13 @@ INFO  22:47:36,564 - Program(
                                                                 NoMinusExpression(
                                                                 ) [NoMinusExpression]
                                                                 Terminator(
-                                                                  FactorDes(
-                                                                    DesignatorExpression(
-                                                                     bodovi
-                                                                      NoExprListExpr(
-                                                                      ) [NoExprListExpr]
-                                                                    ) [DesignatorExpression]
-                                                                  ) [FactorDes]
-                                                                  MulopFactorRec(
-                                                                    NoMulopFactor(
-                                                                    ) [NoMulopFactor]
-                                                                    MulOperationMul(
-                                                                    ) [MulOperationMul]
-                                                                    FactorDes(
-                                                                      DesignatorExpression(
-                                                                       pet
-                                                                        NoExprListExpr(
-                                                                        ) [NoExprListExpr]
-                                                                      ) [DesignatorExpression]
-                                                                    ) [FactorDes]
-                                                                  ) [MulopFactorRec]
+                                                                  Consts(
+                                                                    FactorNum(
+                                                                     0
+                                                                    ) [FactorNum]
+                                                                  ) [Consts]
+                                                                  NoMulopFactor(
+                                                                  ) [NoMulopFactor]
                                                                 ) [Terminator]
                                                                 NoAddOperationTerminator(
                                                                 ) [NoAddOperationTerminator]
@@ -640,16 +508,64 @@ INFO  22:47:36,564 - Program(
                                                           ) [StatementDesignator]
                                                         ) [Statements]
                                                         StatementDesignator(
-                                                          DesignatorStatementMinusMinus(
+                                                          DesignatorStatementPlusPlus(
                                                             DesignatorExpression(
                                                              bodovi
                                                               NoExprListExpr(
                                                               ) [NoExprListExpr]
                                                             ) [DesignatorExpression]
-                                                          ) [DesignatorStatementMinusMinus]
+                                                          ) [DesignatorStatementPlusPlus]
                                                         ) [StatementDesignator]
                                                       ) [Statements]
-                                                      PrintStmt(
+                                                      StatementDesignator(
+                                                        DesignatorStatementEqual(
+                                                          DesignatorExpression(
+                                                           bodovi
+                                                            NoExprListExpr(
+                                                            ) [NoExprListExpr]
+                                                          ) [DesignatorExpression]
+                                                          Expression(
+                                                            NoMinusExpression(
+                                                            ) [NoMinusExpression]
+                                                            Terminator(
+                                                              FactorDes(
+                                                                DesignatorExpression(
+                                                                 bodovi
+                                                                  NoExprListExpr(
+                                                                  ) [NoExprListExpr]
+                                                                ) [DesignatorExpression]
+                                                              ) [FactorDes]
+                                                              NoMulopFactor(
+                                                              ) [NoMulopFactor]
+                                                            ) [Terminator]
+                                                            AddOperationTerminatorRec(
+                                                              NoAddOperationTerminator(
+                                                              ) [NoAddOperationTerminator]
+                                                              AddOperationPlus(
+                                                              ) [AddOperationPlus]
+                                                              Terminator(
+                                                                FactorDes(
+                                                                  DesignatorExpression(
+                                                                   jedan
+                                                                    NoExprListExpr(
+                                                                    ) [NoExprListExpr]
+                                                                  ) [DesignatorExpression]
+                                                                ) [FactorDes]
+                                                                NoMulopFactor(
+                                                                ) [NoMulopFactor]
+                                                              ) [Terminator]
+                                                            ) [AddOperationTerminatorRec]
+                                                          ) [Expression]
+                                                        ) [DesignatorStatementEqual]
+                                                      ) [StatementDesignator]
+                                                    ) [Statements]
+                                                    StatementDesignator(
+                                                      DesignatorStatementEqual(
+                                                        DesignatorExpression(
+                                                         bodovi
+                                                          NoExprListExpr(
+                                                          ) [NoExprListExpr]
+                                                        ) [DesignatorExpression]
                                                         Expression(
                                                           NoMinusExpression(
                                                           ) [NoMinusExpression]
@@ -661,53 +577,19 @@ INFO  22:47:36,564 - Program(
                                                                 ) [NoExprListExpr]
                                                               ) [DesignatorExpression]
                                                             ) [FactorDes]
-                                                            NoMulopFactor(
-                                                            ) [NoMulopFactor]
-                                                          ) [Terminator]
-                                                          NoAddOperationTerminator(
-                                                          ) [NoAddOperationTerminator]
-                                                        ) [Expression]
-                                                        NoNumberInPrintNumber(
-                                                        ) [NoNumberInPrintNumber]
-                                                      ) [PrintStmt]
-                                                    ) [Statements]
-                                                    StatementDesignator(
-                                                      DesignatorStatementEqual(
-                                                        DesignatorExpression(
-                                                         niz
-                                                          NoExprListExpr(
-                                                          ) [NoExprListExpr]
-                                                        ) [DesignatorExpression]
-                                                        Expression(
-                                                          NoMinusExpression(
-                                                          ) [NoMinusExpression]
-                                                          Terminator(
-                                                            FactorNewExpr(
-                                                              TypeIdent(
-                                                               int
-                                                              ) [TypeIdent]
-                                                              LsquareClass(
-                                                              ) [LsquareClass]
-                                                              Expression(
-                                                                NoMinusExpression(
-                                                                ) [NoMinusExpression]
-                                                                Terminator(
-                                                                  Consts(
-                                                                    FactorNum(
-                                                                     3
-                                                                    ) [FactorNum]
-                                                                  ) [Consts]
-                                                                  NoMulopFactor(
-                                                                  ) [NoMulopFactor]
-                                                                ) [Terminator]
-                                                                NoAddOperationTerminator(
-                                                                ) [NoAddOperationTerminator]
-                                                              ) [Expression]
-                                                              RsquareClass(
-                                                              ) [RsquareClass]
-                                                            ) [FactorNewExpr]
-                                                            NoMulopFactor(
-                                                            ) [NoMulopFactor]
+                                                            MulopFactorRec(
+                                                              NoMulopFactor(
+                                                              ) [NoMulopFactor]
+                                                              MulOperationMul(
+                                                              ) [MulOperationMul]
+                                                              FactorDes(
+                                                                DesignatorExpression(
+                                                                 pet
+                                                                  NoExprListExpr(
+                                                                  ) [NoExprListExpr]
+                                                                ) [DesignatorExpression]
+                                                              ) [FactorDes]
+                                                            ) [MulopFactorRec]
                                                           ) [Terminator]
                                                           NoAddOperationTerminator(
                                                           ) [NoAddOperationTerminator]
@@ -716,7 +598,185 @@ INFO  22:47:36,564 - Program(
                                                     ) [StatementDesignator]
                                                   ) [Statements]
                                                   StatementDesignator(
-                                                    DesignatorStatementEqual(
+                                                    DesignatorStatementMinusMinus(
+                                                      DesignatorExpression(
+                                                       bodovi
+                                                        NoExprListExpr(
+                                                        ) [NoExprListExpr]
+                                                      ) [DesignatorExpression]
+                                                    ) [DesignatorStatementMinusMinus]
+                                                  ) [StatementDesignator]
+                                                ) [Statements]
+                                                PrintStmt(
+                                                  Expression(
+                                                    NoMinusExpression(
+                                                    ) [NoMinusExpression]
+                                                    Terminator(
+                                                      FactorDes(
+                                                        DesignatorExpression(
+                                                         bodovi
+                                                          NoExprListExpr(
+                                                          ) [NoExprListExpr]
+                                                        ) [DesignatorExpression]
+                                                      ) [FactorDes]
+                                                      NoMulopFactor(
+                                                      ) [NoMulopFactor]
+                                                    ) [Terminator]
+                                                    NoAddOperationTerminator(
+                                                    ) [NoAddOperationTerminator]
+                                                  ) [Expression]
+                                                  NoNumberInPrintNumber(
+                                                  ) [NoNumberInPrintNumber]
+                                                ) [PrintStmt]
+                                              ) [Statements]
+                                              StatementDesignator(
+                                                DesignatorStatementEqual(
+                                                  DesignatorExpression(
+                                                   niz
+                                                    NoExprListExpr(
+                                                    ) [NoExprListExpr]
+                                                  ) [DesignatorExpression]
+                                                  Expression(
+                                                    NoMinusExpression(
+                                                    ) [NoMinusExpression]
+                                                    Terminator(
+                                                      FactorNewExpr(
+                                                        TypeIdent(
+                                                         int
+                                                        ) [TypeIdent]
+                                                        LsquareClass(
+                                                        ) [LsquareClass]
+                                                        Expression(
+                                                          NoMinusExpression(
+                                                          ) [NoMinusExpression]
+                                                          Terminator(
+                                                            Consts(
+                                                              FactorNum(
+                                                               3
+                                                              ) [FactorNum]
+                                                            ) [Consts]
+                                                            NoMulopFactor(
+                                                            ) [NoMulopFactor]
+                                                          ) [Terminator]
+                                                          NoAddOperationTerminator(
+                                                          ) [NoAddOperationTerminator]
+                                                        ) [Expression]
+                                                        RsquareClass(
+                                                        ) [RsquareClass]
+                                                      ) [FactorNewExpr]
+                                                      NoMulopFactor(
+                                                      ) [NoMulopFactor]
+                                                    ) [Terminator]
+                                                    NoAddOperationTerminator(
+                                                    ) [NoAddOperationTerminator]
+                                                  ) [Expression]
+                                                ) [DesignatorStatementEqual]
+                                              ) [StatementDesignator]
+                                            ) [Statements]
+                                            StatementDesignator(
+                                              DesignatorStatementEqual(
+                                                DesignatorExpression(
+                                                 niz
+                                                  ExprListExpr(
+                                                    LsquareClass(
+                                                    ) [LsquareClass]
+                                                    Expression(
+                                                      NoMinusExpression(
+                                                      ) [NoMinusExpression]
+                                                      Terminator(
+                                                        FactorDes(
+                                                          DesignatorExpression(
+                                                           nula
+                                                            NoExprListExpr(
+                                                            ) [NoExprListExpr]
+                                                          ) [DesignatorExpression]
+                                                        ) [FactorDes]
+                                                        NoMulopFactor(
+                                                        ) [NoMulopFactor]
+                                                      ) [Terminator]
+                                                      NoAddOperationTerminator(
+                                                      ) [NoAddOperationTerminator]
+                                                    ) [Expression]
+                                                    RsquareClass(
+                                                    ) [RsquareClass]
+                                                  ) [ExprListExpr]
+                                                ) [DesignatorExpression]
+                                                Expression(
+                                                  NoMinusExpression(
+                                                  ) [NoMinusExpression]
+                                                  Terminator(
+                                                    FactorDes(
+                                                      DesignatorExpression(
+                                                       jedan
+                                                        NoExprListExpr(
+                                                        ) [NoExprListExpr]
+                                                      ) [DesignatorExpression]
+                                                    ) [FactorDes]
+                                                    NoMulopFactor(
+                                                    ) [NoMulopFactor]
+                                                  ) [Terminator]
+                                                  NoAddOperationTerminator(
+                                                  ) [NoAddOperationTerminator]
+                                                ) [Expression]
+                                              ) [DesignatorStatementEqual]
+                                            ) [StatementDesignator]
+                                          ) [Statements]
+                                          StatementDesignator(
+                                            DesignatorStatementEqual(
+                                              DesignatorExpression(
+                                               niz
+                                                ExprListExpr(
+                                                  LsquareClass(
+                                                  ) [LsquareClass]
+                                                  Expression(
+                                                    NoMinusExpression(
+                                                    ) [NoMinusExpression]
+                                                    Terminator(
+                                                      Consts(
+                                                        FactorNum(
+                                                         1
+                                                        ) [FactorNum]
+                                                      ) [Consts]
+                                                      NoMulopFactor(
+                                                      ) [NoMulopFactor]
+                                                    ) [Terminator]
+                                                    NoAddOperationTerminator(
+                                                    ) [NoAddOperationTerminator]
+                                                  ) [Expression]
+                                                  RsquareClass(
+                                                  ) [RsquareClass]
+                                                ) [ExprListExpr]
+                                              ) [DesignatorExpression]
+                                              Expression(
+                                                NoMinusExpression(
+                                                ) [NoMinusExpression]
+                                                Terminator(
+                                                  Consts(
+                                                    FactorNum(
+                                                     2
+                                                    ) [FactorNum]
+                                                  ) [Consts]
+                                                  NoMulopFactor(
+                                                  ) [NoMulopFactor]
+                                                ) [Terminator]
+                                                NoAddOperationTerminator(
+                                                ) [NoAddOperationTerminator]
+                                              ) [Expression]
+                                            ) [DesignatorStatementEqual]
+                                          ) [StatementDesignator]
+                                        ) [Statements]
+                                        StatementDesignator(
+                                          DesignatorStatementEqual(
+                                            DesignatorExpression(
+                                             niz
+                                              ExprListExpr(
+                                                LsquareClass(
+                                                ) [LsquareClass]
+                                                Expression(
+                                                  NoMinusExpression(
+                                                  ) [NoMinusExpression]
+                                                  Terminator(
+                                                    FactorDes(
                                                       DesignatorExpression(
                                                        niz
                                                         ExprListExpr(
@@ -728,7 +788,7 @@ INFO  22:47:36,564 - Program(
                                                             Terminator(
                                                               FactorDes(
                                                                 DesignatorExpression(
-                                                                 nula
+                                                                 jedan
                                                                   NoExprListExpr(
                                                                   ) [NoExprListExpr]
                                                                 ) [DesignatorExpression]
@@ -743,72 +803,22 @@ INFO  22:47:36,564 - Program(
                                                           ) [RsquareClass]
                                                         ) [ExprListExpr]
                                                       ) [DesignatorExpression]
-                                                      Expression(
-                                                        NoMinusExpression(
-                                                        ) [NoMinusExpression]
-                                                        Terminator(
-                                                          FactorDes(
-                                                            DesignatorExpression(
-                                                             jedan
-                                                              NoExprListExpr(
-                                                              ) [NoExprListExpr]
-                                                            ) [DesignatorExpression]
-                                                          ) [FactorDes]
-                                                          NoMulopFactor(
-                                                          ) [NoMulopFactor]
-                                                        ) [Terminator]
-                                                        NoAddOperationTerminator(
-                                                        ) [NoAddOperationTerminator]
-                                                      ) [Expression]
-                                                    ) [DesignatorStatementEqual]
-                                                  ) [StatementDesignator]
-                                                ) [Statements]
-                                                StatementDesignator(
-                                                  DesignatorStatementEqual(
-                                                    DesignatorExpression(
-                                                     niz
-                                                      ExprListExpr(
-                                                        LsquareClass(
-                                                        ) [LsquareClass]
-                                                        Expression(
-                                                          NoMinusExpression(
-                                                          ) [NoMinusExpression]
-                                                          Terminator(
-                                                            Consts(
-                                                              FactorNum(
-                                                               1
-                                                              ) [FactorNum]
-                                                            ) [Consts]
-                                                            NoMulopFactor(
-                                                            ) [NoMulopFactor]
-                                                          ) [Terminator]
-                                                          NoAddOperationTerminator(
-                                                          ) [NoAddOperationTerminator]
-                                                        ) [Expression]
-                                                        RsquareClass(
-                                                        ) [RsquareClass]
-                                                      ) [ExprListExpr]
-                                                    ) [DesignatorExpression]
-                                                    Expression(
-                                                      NoMinusExpression(
-                                                      ) [NoMinusExpression]
-                                                      Terminator(
-                                                        Consts(
-                                                          FactorNum(
-                                                           2
-                                                          ) [FactorNum]
-                                                        ) [Consts]
-                                                        NoMulopFactor(
-                                                        ) [NoMulopFactor]
-                                                      ) [Terminator]
-                                                      NoAddOperationTerminator(
-                                                      ) [NoAddOperationTerminator]
-                                                    ) [Expression]
-                                                  ) [DesignatorStatementEqual]
-                                                ) [StatementDesignator]
-                                              ) [Statements]
-                                              StatementDesignator(
-                                                DesignatorStatementEqual(
+                                                    ) [FactorDes]
+                                                    NoMulopFactor(
+                                                    ) [NoMulopFactor]
+                                                  ) [Terminator]
+                                                  NoAddOperationTerminator(
+                                                  ) [NoAddOperationTerminator]
+                                                ) [Expression]
+                                                RsquareClass(
+                                                ) [RsquareClass]
+                                              ) [ExprListExpr]
+                                            ) [DesignatorExpression]
+                                            Expression(
+                                              NoMinusExpression(
+                                              ) [NoMinusExpression]
+                                              Terminator(
+                                                FactorDes(
                                                   DesignatorExpression(
                                                    niz
                                                     ExprListExpr(
@@ -828,13 +838,11 @@ INFO  22:47:36,564 - Program(
                                                                   NoMinusExpression(
                                                                   ) [NoMinusExpression]
                                                                   Terminator(
-                                                                    FactorDes(
-                                                                      DesignatorExpression(
-                                                                       jedan
-                                                                        NoExprListExpr(
-                                                                        ) [NoExprListExpr]
-                                                                      ) [DesignatorExpression]
-                                                                    ) [FactorDes]
+                                                                    Consts(
+                                                                      FactorNum(
+                                                                       0
+                                                                      ) [FactorNum]
+                                                                    ) [Consts]
                                                                     NoMulopFactor(
                                                                     ) [NoMulopFactor]
                                                                   ) [Terminator]
@@ -856,174 +864,32 @@ INFO  22:47:36,564 - Program(
                                                       ) [RsquareClass]
                                                     ) [ExprListExpr]
                                                   ) [DesignatorExpression]
-                                                  Expression(
-                                                    NoMinusExpression(
-                                                    ) [NoMinusExpression]
-                                                    Terminator(
-                                                      FactorDes(
-                                                        DesignatorExpression(
-                                                         niz
-                                                          ExprListExpr(
-                                                            LsquareClass(
-                                                            ) [LsquareClass]
-                                                            Expression(
-                                                              NoMinusExpression(
-                                                              ) [NoMinusExpression]
-                                                              Terminator(
-                                                                FactorDes(
-                                                                  DesignatorExpression(
-                                                                   niz
-                                                                    ExprListExpr(
-                                                                      LsquareClass(
-                                                                      ) [LsquareClass]
-                                                                      Expression(
-                                                                        NoMinusExpression(
-                                                                        ) [NoMinusExpression]
-                                                                        Terminator(
-                                                                          Consts(
-                                                                            FactorNum(
-                                                                             0
-                                                                            ) [FactorNum]
-                                                                          ) [Consts]
-                                                                          NoMulopFactor(
-                                                                          ) [NoMulopFactor]
-                                                                        ) [Terminator]
-                                                                        NoAddOperationTerminator(
-                                                                        ) [NoAddOperationTerminator]
-                                                                      ) [Expression]
-                                                                      RsquareClass(
-                                                                      ) [RsquareClass]
-                                                                    ) [ExprListExpr]
-                                                                  ) [DesignatorExpression]
-                                                                ) [FactorDes]
-                                                                NoMulopFactor(
-                                                                ) [NoMulopFactor]
-                                                              ) [Terminator]
-                                                              NoAddOperationTerminator(
-                                                              ) [NoAddOperationTerminator]
-                                                            ) [Expression]
-                                                            RsquareClass(
-                                                            ) [RsquareClass]
-                                                          ) [ExprListExpr]
-                                                        ) [DesignatorExpression]
-                                                      ) [FactorDes]
-                                                      MulopFactorRec(
-                                                        NoMulopFactor(
-                                                        ) [NoMulopFactor]
-                                                        MulOperationMul(
-                                                        ) [MulOperationMul]
-                                                        Consts(
-                                                          FactorNum(
-                                                           3
-                                                          ) [FactorNum]
-                                                        ) [Consts]
-                                                      ) [MulopFactorRec]
-                                                    ) [Terminator]
-                                                    NoAddOperationTerminator(
-                                                    ) [NoAddOperationTerminator]
-                                                  ) [Expression]
-                                                ) [DesignatorStatementEqual]
-                                              ) [StatementDesignator]
-                                            ) [Statements]
-                                            StatementDesignator(
-                                              DesignatorStatementEqual(
-                                                DesignatorExpression(
-                                                 bodovi
-                                                  NoExprListExpr(
-                                                  ) [NoExprListExpr]
-                                                ) [DesignatorExpression]
-                                                Expression(
-                                                  NoMinusExpression(
-                                                  ) [NoMinusExpression]
-                                                  Terminator(
-                                                    FactorDes(
-                                                      DesignatorExpression(
-                                                       niz
-                                                        ExprListExpr(
-                                                          LsquareClass(
-                                                          ) [LsquareClass]
-                                                          Expression(
-                                                            NoMinusExpression(
-                                                            ) [NoMinusExpression]
-                                                            Terminator(
-                                                              Consts(
-                                                                FactorNum(
-                                                                 2
-                                                                ) [FactorNum]
-                                                              ) [Consts]
-                                                              NoMulopFactor(
-                                                              ) [NoMulopFactor]
-                                                            ) [Terminator]
-                                                            NoAddOperationTerminator(
-                                                            ) [NoAddOperationTerminator]
-                                                          ) [Expression]
-                                                          RsquareClass(
-                                                          ) [RsquareClass]
-                                                        ) [ExprListExpr]
-                                                      ) [DesignatorExpression]
-                                                    ) [FactorDes]
-                                                    MulopFactorRec(
-                                                      NoMulopFactor(
-                                                      ) [NoMulopFactor]
-                                                      MulOperationDiv(
-                                                      ) [MulOperationDiv]
-                                                      FactorDes(
-                                                        DesignatorExpression(
-                                                         niz
-                                                          ExprListExpr(
-                                                            LsquareClass(
-                                                            ) [LsquareClass]
-                                                            Expression(
-                                                              NoMinusExpression(
-                                                              ) [NoMinusExpression]
-                                                              Terminator(
-                                                                Consts(
-                                                                  FactorNum(
-                                                                   0
-                                                                  ) [FactorNum]
-                                                                ) [Consts]
-                                                                NoMulopFactor(
-                                                                ) [NoMulopFactor]
-                                                              ) [Terminator]
-                                                              NoAddOperationTerminator(
-                                                              ) [NoAddOperationTerminator]
-                                                            ) [Expression]
-                                                            RsquareClass(
-                                                            ) [RsquareClass]
-                                                          ) [ExprListExpr]
-                                                        ) [DesignatorExpression]
-                                                      ) [FactorDes]
-                                                    ) [MulopFactorRec]
-                                                  ) [Terminator]
-                                                  NoAddOperationTerminator(
-                                                  ) [NoAddOperationTerminator]
-                                                ) [Expression]
-                                              ) [DesignatorStatementEqual]
-                                            ) [StatementDesignator]
-                                          ) [Statements]
-                                          PrintStmt(
-                                            Expression(
-                                              NoMinusExpression(
-                                              ) [NoMinusExpression]
-                                              Terminator(
-                                                FactorDes(
-                                                  DesignatorExpression(
-                                                   bodovi
-                                                    NoExprListExpr(
-                                                    ) [NoExprListExpr]
-                                                  ) [DesignatorExpression]
                                                 ) [FactorDes]
-                                                NoMulopFactor(
-                                                ) [NoMulopFactor]
+                                                MulopFactorRec(
+                                                  NoMulopFactor(
+                                                  ) [NoMulopFactor]
+                                                  MulOperationMul(
+                                                  ) [MulOperationMul]
+                                                  Consts(
+                                                    FactorNum(
+                                                     3
+                                                    ) [FactorNum]
+                                                  ) [Consts]
+                                                ) [MulopFactorRec]
                                               ) [Terminator]
                                               NoAddOperationTerminator(
                                               ) [NoAddOperationTerminator]
                                             ) [Expression]
-                                            NoNumberInPrintNumber(
-                                            ) [NoNumberInPrintNumber]
-                                          ) [PrintStmt]
-                                        ) [Statements]
-                                        PrintStmt(
+                                          ) [DesignatorStatementEqual]
+                                        ) [StatementDesignator]
+                                      ) [Statements]
+                                      StatementDesignator(
+                                        DesignatorStatementEqual(
+                                          DesignatorExpression(
+                                           bodovi
+                                            NoExprListExpr(
+                                            ) [NoExprListExpr]
+                                          ) [DesignatorExpression]
                                           Expression(
                                             NoMinusExpression(
                                             ) [NoMinusExpression]
@@ -1054,72 +920,38 @@ INFO  22:47:36,564 - Program(
                                                   ) [ExprListExpr]
                                                 ) [DesignatorExpression]
                                               ) [FactorDes]
-                                              NoMulopFactor(
-                                              ) [NoMulopFactor]
-                                            ) [Terminator]
-                                            NoAddOperationTerminator(
-                                            ) [NoAddOperationTerminator]
-                                          ) [Expression]
-                                          NoNumberInPrintNumber(
-                                          ) [NoNumberInPrintNumber]
-                                        ) [PrintStmt]
-                                      ) [Statements]
-                                      StatementDesignator(
-                                        DesignatorStatementEqual(
-                                          DesignatorExpression(
-                                           mat
-                                            NoExprListExpr(
-                                            ) [NoExprListExpr]
-                                          ) [DesignatorExpression]
-                                          Expression(
-                                            NoMinusExpression(
-                                            ) [NoMinusExpression]
-                                            Terminator(
-                                              FactorNewTypeExpr(
-                                                TypeIdent(
-                                                 int
-                                                ) [TypeIdent]
-                                                LsquareClass(
-                                                ) [LsquareClass]
-                                                Expression(
-                                                  NoMinusExpression(
-                                                  ) [NoMinusExpression]
-                                                  Terminator(
-                                                    Consts(
-                                                      FactorNum(
-                                                       2
-                                                      ) [FactorNum]
-                                                    ) [Consts]
-                                                    NoMulopFactor(
-                                                    ) [NoMulopFactor]
-                                                  ) [Terminator]
-                                                  NoAddOperationTerminator(
-                                                  ) [NoAddOperationTerminator]
-                                                ) [Expression]
-                                                RsquareClass(
-                                                ) [RsquareClass]
-                                                LsquareClass(
-                                                ) [LsquareClass]
-                                                Expression(
-                                                  NoMinusExpression(
-                                                  ) [NoMinusExpression]
-                                                  Terminator(
-                                                    Consts(
-                                                      FactorNum(
-                                                       2
-                                                      ) [FactorNum]
-                                                    ) [Consts]
-                                                    NoMulopFactor(
-                                                    ) [NoMulopFactor]
-                                                  ) [Terminator]
-                                                  NoAddOperationTerminator(
-                                                  ) [NoAddOperationTerminator]
-                                                ) [Expression]
-                                                RsquareClass(
-                                                ) [RsquareClass]
-                                              ) [FactorNewTypeExpr]
-                                              NoMulopFactor(
-                                              ) [NoMulopFactor]
+                                              MulopFactorRec(
+                                                NoMulopFactor(
+                                                ) [NoMulopFactor]
+                                                MulOperationDiv(
+                                                ) [MulOperationDiv]
+                                                FactorDes(
+                                                  DesignatorExpression(
+                                                   niz
+                                                    ExprListExpr(
+                                                      LsquareClass(
+                                                      ) [LsquareClass]
+                                                      Expression(
+                                                        NoMinusExpression(
+                                                        ) [NoMinusExpression]
+                                                        Terminator(
+                                                          Consts(
+                                                            FactorNum(
+                                                             0
+                                                            ) [FactorNum]
+                                                          ) [Consts]
+                                                          NoMulopFactor(
+                                                          ) [NoMulopFactor]
+                                                        ) [Terminator]
+                                                        NoAddOperationTerminator(
+                                                        ) [NoAddOperationTerminator]
+                                                      ) [Expression]
+                                                      RsquareClass(
+                                                      ) [RsquareClass]
+                                                    ) [ExprListExpr]
+                                                  ) [DesignatorExpression]
+                                                ) [FactorDes]
+                                              ) [MulopFactorRec]
                                             ) [Terminator]
                                             NoAddOperationTerminator(
                                             ) [NoAddOperationTerminator]
@@ -1127,97 +959,84 @@ INFO  22:47:36,564 - Program(
                                         ) [DesignatorStatementEqual]
                                       ) [StatementDesignator]
                                     ) [Statements]
-                                    StatementDesignator(
-                                      DesignatorStatementEqual(
-                                        DesignatorExpression(
-                                         mat
-                                          ExprListExprMatrix(
-                                            LsquareClass(
-                                            ) [LsquareClass]
-                                            Expression(
-                                              NoMinusExpression(
-                                              ) [NoMinusExpression]
-                                              Terminator(
-                                                Consts(
-                                                  FactorNum(
-                                                   0
-                                                  ) [FactorNum]
-                                                ) [Consts]
-                                                NoMulopFactor(
-                                                ) [NoMulopFactor]
-                                              ) [Terminator]
-                                              NoAddOperationTerminator(
-                                              ) [NoAddOperationTerminator]
-                                            ) [Expression]
-                                            RsquareClass(
-                                            ) [RsquareClass]
-                                            LsquareClass(
-                                            ) [LsquareClass]
-                                            Expression(
-                                              NoMinusExpression(
-                                              ) [NoMinusExpression]
-                                              Terminator(
-                                                Consts(
-                                                  FactorNum(
-                                                   0
-                                                  ) [FactorNum]
-                                                ) [Consts]
-                                                NoMulopFactor(
-                                                ) [NoMulopFactor]
-                                              ) [Terminator]
-                                              NoAddOperationTerminator(
-                                              ) [NoAddOperationTerminator]
-                                            ) [Expression]
-                                            RsquareClass(
-                                            ) [RsquareClass]
-                                          ) [ExprListExprMatrix]
-                                        ) [DesignatorExpression]
-                                        Expression(
-                                          NoMinusExpression(
-                                          ) [NoMinusExpression]
-                                          Terminator(
-                                            FactorDes(
-                                              DesignatorExpression(
-                                               niz
-                                                ExprListExpr(
-                                                  LsquareClass(
-                                                  ) [LsquareClass]
-                                                  Expression(
-                                                    NoMinusExpression(
-                                                    ) [NoMinusExpression]
-                                                    Terminator(
-                                                      FactorDes(
-                                                        DesignatorExpression(
-                                                         nula
-                                                          NoExprListExpr(
-                                                          ) [NoExprListExpr]
-                                                        ) [DesignatorExpression]
-                                                      ) [FactorDes]
-                                                      NoMulopFactor(
-                                                      ) [NoMulopFactor]
-                                                    ) [Terminator]
-                                                    NoAddOperationTerminator(
-                                                    ) [NoAddOperationTerminator]
-                                                  ) [Expression]
-                                                  RsquareClass(
-                                                  ) [RsquareClass]
-                                                ) [ExprListExpr]
-                                              ) [DesignatorExpression]
-                                            ) [FactorDes]
-                                            NoMulopFactor(
-                                            ) [NoMulopFactor]
-                                          ) [Terminator]
-                                          NoAddOperationTerminator(
-                                          ) [NoAddOperationTerminator]
-                                        ) [Expression]
-                                      ) [DesignatorStatementEqual]
-                                    ) [StatementDesignator]
+                                    PrintStmt(
+                                      Expression(
+                                        NoMinusExpression(
+                                        ) [NoMinusExpression]
+                                        Terminator(
+                                          FactorDes(
+                                            DesignatorExpression(
+                                             bodovi
+                                              NoExprListExpr(
+                                              ) [NoExprListExpr]
+                                            ) [DesignatorExpression]
+                                          ) [FactorDes]
+                                          NoMulopFactor(
+                                          ) [NoMulopFactor]
+                                        ) [Terminator]
+                                        NoAddOperationTerminator(
+                                        ) [NoAddOperationTerminator]
+                                      ) [Expression]
+                                      NoNumberInPrintNumber(
+                                      ) [NoNumberInPrintNumber]
+                                    ) [PrintStmt]
                                   ) [Statements]
-                                  StatementDesignator(
-                                    DesignatorStatementEqual(
-                                      DesignatorExpression(
-                                       mat
-                                        ExprListExprMatrix(
+                                  PrintStmt(
+                                    Expression(
+                                      NoMinusExpression(
+                                      ) [NoMinusExpression]
+                                      Terminator(
+                                        FactorDes(
+                                          DesignatorExpression(
+                                           niz
+                                            ExprListExpr(
+                                              LsquareClass(
+                                              ) [LsquareClass]
+                                              Expression(
+                                                NoMinusExpression(
+                                                ) [NoMinusExpression]
+                                                Terminator(
+                                                  Consts(
+                                                    FactorNum(
+                                                     2
+                                                    ) [FactorNum]
+                                                  ) [Consts]
+                                                  NoMulopFactor(
+                                                  ) [NoMulopFactor]
+                                                ) [Terminator]
+                                                NoAddOperationTerminator(
+                                                ) [NoAddOperationTerminator]
+                                              ) [Expression]
+                                              RsquareClass(
+                                              ) [RsquareClass]
+                                            ) [ExprListExpr]
+                                          ) [DesignatorExpression]
+                                        ) [FactorDes]
+                                        NoMulopFactor(
+                                        ) [NoMulopFactor]
+                                      ) [Terminator]
+                                      NoAddOperationTerminator(
+                                      ) [NoAddOperationTerminator]
+                                    ) [Expression]
+                                    NoNumberInPrintNumber(
+                                    ) [NoNumberInPrintNumber]
+                                  ) [PrintStmt]
+                                ) [Statements]
+                                StatementDesignator(
+                                  DesignatorStatementEqual(
+                                    DesignatorExpression(
+                                     mat
+                                      NoExprListExpr(
+                                      ) [NoExprListExpr]
+                                    ) [DesignatorExpression]
+                                    Expression(
+                                      NoMinusExpression(
+                                      ) [NoMinusExpression]
+                                      Terminator(
+                                        FactorNewTypeExpr(
+                                          TypeIdent(
+                                           int
+                                          ) [TypeIdent]
                                           LsquareClass(
                                           ) [LsquareClass]
                                           Expression(
@@ -1226,7 +1045,7 @@ INFO  22:47:36,564 - Program(
                                             Terminator(
                                               Consts(
                                                 FactorNum(
-                                                 0
+                                                 2
                                                 ) [FactorNum]
                                               ) [Consts]
                                               NoMulopFactor(
@@ -1243,51 +1062,11 @@ INFO  22:47:36,564 - Program(
                                             NoMinusExpression(
                                             ) [NoMinusExpression]
                                             Terminator(
-                                              FactorDes(
-                                                DesignatorExpression(
-                                                 mat
-                                                  ExprListExprMatrix(
-                                                    LsquareClass(
-                                                    ) [LsquareClass]
-                                                    Expression(
-                                                      NoMinusExpression(
-                                                      ) [NoMinusExpression]
-                                                      Terminator(
-                                                        Consts(
-                                                          FactorNum(
-                                                           0
-                                                          ) [FactorNum]
-                                                        ) [Consts]
-                                                        NoMulopFactor(
-                                                        ) [NoMulopFactor]
-                                                      ) [Terminator]
-                                                      NoAddOperationTerminator(
-                                                      ) [NoAddOperationTerminator]
-                                                    ) [Expression]
-                                                    RsquareClass(
-                                                    ) [RsquareClass]
-                                                    LsquareClass(
-                                                    ) [LsquareClass]
-                                                    Expression(
-                                                      NoMinusExpression(
-                                                      ) [NoMinusExpression]
-                                                      Terminator(
-                                                        Consts(
-                                                          FactorNum(
-                                                           0
-                                                          ) [FactorNum]
-                                                        ) [Consts]
-                                                        NoMulopFactor(
-                                                        ) [NoMulopFactor]
-                                                      ) [Terminator]
-                                                      NoAddOperationTerminator(
-                                                      ) [NoAddOperationTerminator]
-                                                    ) [Expression]
-                                                    RsquareClass(
-                                                    ) [RsquareClass]
-                                                  ) [ExprListExprMatrix]
-                                                ) [DesignatorExpression]
-                                              ) [FactorDes]
+                                              Consts(
+                                                FactorNum(
+                                                 2
+                                                ) [FactorNum]
+                                              ) [Consts]
                                               NoMulopFactor(
                                               ) [NoMulopFactor]
                                             ) [Terminator]
@@ -1296,116 +1075,7 @@ INFO  22:47:36,564 - Program(
                                           ) [Expression]
                                           RsquareClass(
                                           ) [RsquareClass]
-                                        ) [ExprListExprMatrix]
-                                      ) [DesignatorExpression]
-                                      Expression(
-                                        NoMinusExpression(
-                                        ) [NoMinusExpression]
-                                        Terminator(
-                                          Consts(
-                                            FactorNum(
-                                             2
-                                            ) [FactorNum]
-                                          ) [Consts]
-                                          NoMulopFactor(
-                                          ) [NoMulopFactor]
-                                        ) [Terminator]
-                                        NoAddOperationTerminator(
-                                        ) [NoAddOperationTerminator]
-                                      ) [Expression]
-                                    ) [DesignatorStatementEqual]
-                                  ) [StatementDesignator]
-                                ) [Statements]
-                                StatementDesignator(
-                                  DesignatorStatementEqual(
-                                    DesignatorExpression(
-                                     mat
-                                      ExprListExprMatrix(
-                                        LsquareClass(
-                                        ) [LsquareClass]
-                                        Expression(
-                                          NoMinusExpression(
-                                          ) [NoMinusExpression]
-                                          Terminator(
-                                            Consts(
-                                              FactorNum(
-                                               1
-                                              ) [FactorNum]
-                                            ) [Consts]
-                                            NoMulopFactor(
-                                            ) [NoMulopFactor]
-                                          ) [Terminator]
-                                          NoAddOperationTerminator(
-                                          ) [NoAddOperationTerminator]
-                                        ) [Expression]
-                                        RsquareClass(
-                                        ) [RsquareClass]
-                                        LsquareClass(
-                                        ) [LsquareClass]
-                                        Expression(
-                                          NoMinusExpression(
-                                          ) [NoMinusExpression]
-                                          Terminator(
-                                            FactorDes(
-                                              DesignatorExpression(
-                                               jedan
-                                                NoExprListExpr(
-                                                ) [NoExprListExpr]
-                                              ) [DesignatorExpression]
-                                            ) [FactorDes]
-                                            NoMulopFactor(
-                                            ) [NoMulopFactor]
-                                          ) [Terminator]
-                                          AddOperationTerminatorRec(
-                                            NoAddOperationTerminator(
-                                            ) [NoAddOperationTerminator]
-                                            AddOperationMinus(
-                                            ) [AddOperationMinus]
-                                            Terminator(
-                                              FactorDes(
-                                                DesignatorExpression(
-                                                 niz
-                                                  ExprListExpr(
-                                                    LsquareClass(
-                                                    ) [LsquareClass]
-                                                    Expression(
-                                                      NoMinusExpression(
-                                                      ) [NoMinusExpression]
-                                                      Terminator(
-                                                        Consts(
-                                                          FactorNum(
-                                                           0
-                                                          ) [FactorNum]
-                                                        ) [Consts]
-                                                        NoMulopFactor(
-                                                        ) [NoMulopFactor]
-                                                      ) [Terminator]
-                                                      NoAddOperationTerminator(
-                                                      ) [NoAddOperationTerminator]
-                                                    ) [Expression]
-                                                    RsquareClass(
-                                                    ) [RsquareClass]
-                                                  ) [ExprListExpr]
-                                                ) [DesignatorExpression]
-                                              ) [FactorDes]
-                                              NoMulopFactor(
-                                              ) [NoMulopFactor]
-                                            ) [Terminator]
-                                          ) [AddOperationTerminatorRec]
-                                        ) [Expression]
-                                        RsquareClass(
-                                        ) [RsquareClass]
-                                      ) [ExprListExprMatrix]
-                                    ) [DesignatorExpression]
-                                    Expression(
-                                      NoMinusExpression(
-                                      ) [NoMinusExpression]
-                                      Terminator(
-                                        Consts(
-                                          FactorNum(
-                                           5
-                                          ) [FactorNum]
-                                        ) [Consts]
+                                        ) [FactorNewTypeExpr]
                                         NoMulopFactor(
                                         ) [NoMulopFactor]
                                       ) [Terminator]
@@ -1428,7 +1098,7 @@ INFO  22:47:36,564 - Program(
                                         Terminator(
                                           Consts(
                                             FactorNum(
-                                             1
+                                             0
                                             ) [FactorNum]
                                           ) [Consts]
                                           NoMulopFactor(
@@ -1447,7 +1117,7 @@ INFO  22:47:36,564 - Program(
                                         Terminator(
                                           Consts(
                                             FactorNum(
-                                             1
+                                             0
                                             ) [FactorNum]
                                           ) [Consts]
                                           NoMulopFactor(
@@ -1466,19 +1136,21 @@ INFO  22:47:36,564 - Program(
                                     Terminator(
                                       FactorDes(
                                         DesignatorExpression(
-                                         mat
-                                          ExprListExprMatrix(
+                                         niz
+                                          ExprListExpr(
                                             LsquareClass(
                                             ) [LsquareClass]
                                             Expression(
                                               NoMinusExpression(
                                               ) [NoMinusExpression]
                                               Terminator(
-                                                Consts(
-                                                  FactorNum(
-                                                   0
-                                                  ) [FactorNum]
-                                                ) [Consts]
+                                                FactorDes(
+                                                  DesignatorExpression(
+                                                   nula
+                                                    NoExprListExpr(
+                                                    ) [NoExprListExpr]
+                                                  ) [DesignatorExpression]
+                                                ) [FactorDes]
                                                 NoMulopFactor(
                                                 ) [NoMulopFactor]
                                               ) [Terminator]
@@ -1487,33 +1159,48 @@ INFO  22:47:36,564 - Program(
                                             ) [Expression]
                                             RsquareClass(
                                             ) [RsquareClass]
-                                            LsquareClass(
-                                            ) [LsquareClass]
-                                            Expression(
-                                              NoMinusExpression(
-                                              ) [NoMinusExpression]
-                                              Terminator(
-                                                Consts(
-                                                  FactorNum(
-                                                   0
-                                                  ) [FactorNum]
-                                                ) [Consts]
-                                                NoMulopFactor(
-                                                ) [NoMulopFactor]
-                                              ) [Terminator]
-                                              NoAddOperationTerminator(
-                                              ) [NoAddOperationTerminator]
-                                            ) [Expression]
-                                            RsquareClass(
-                                            ) [RsquareClass]
-                                          ) [ExprListExprMatrix]
+                                          ) [ExprListExpr]
                                         ) [DesignatorExpression]
                                       ) [FactorDes]
-                                      MulopFactorRec(
+                                      NoMulopFactor(
+                                      ) [NoMulopFactor]
+                                    ) [Terminator]
+                                    NoAddOperationTerminator(
+                                    ) [NoAddOperationTerminator]
+                                  ) [Expression]
+                                ) [DesignatorStatementEqual]
+                              ) [StatementDesignator]
+                            ) [Statements]
+                            StatementDesignator(
+                              DesignatorStatementEqual(
+                                DesignatorExpression(
+                                 mat
+                                  ExprListExprMatrix(
+                                    LsquareClass(
+                                    ) [LsquareClass]
+                                    Expression(
+                                      NoMinusExpression(
+                                      ) [NoMinusExpression]
+                                      Terminator(
+                                        Consts(
+                                          FactorNum(
+                                           0
+                                          ) [FactorNum]
+                                        ) [Consts]
                                         NoMulopFactor(
                                         ) [NoMulopFactor]
-                                        MulOperationMul(
-                                        ) [MulOperationMul]
+                                      ) [Terminator]
+                                      NoAddOperationTerminator(
+                                      ) [NoAddOperationTerminator]
+                                    ) [Expression]
+                                    RsquareClass(
+                                    ) [RsquareClass]
+                                    LsquareClass(
+                                    ) [LsquareClass]
+                                    Expression(
+                                      NoMinusExpression(
+                                      ) [NoMinusExpression]
+                                      Terminator(
                                         FactorDes(
                                           DesignatorExpression(
                                            mat
@@ -1545,7 +1232,7 @@ INFO  22:47:36,564 - Program(
                                                 Terminator(
                                                   Consts(
                                                     FactorNum(
-                                                     1
+                                                     0
                                                     ) [FactorNum]
                                                   ) [Consts]
                                                   NoMulopFactor(
@@ -1559,42 +1246,236 @@ INFO  22:47:36,564 - Program(
                                             ) [ExprListExprMatrix]
                                           ) [DesignatorExpression]
                                         ) [FactorDes]
-                                      ) [MulopFactorRec]
+                                        NoMulopFactor(
+                                        ) [NoMulopFactor]
+                                      ) [Terminator]
+                                      NoAddOperationTerminator(
+                                      ) [NoAddOperationTerminator]
+                                    ) [Expression]
+                                    RsquareClass(
+                                    ) [RsquareClass]
+                                  ) [ExprListExprMatrix]
+                                ) [DesignatorExpression]
+                                Expression(
+                                  NoMinusExpression(
+                                  ) [NoMinusExpression]
+                                  Terminator(
+                                    Consts(
+                                      FactorNum(
+                                       2
+                                      ) [FactorNum]
+                                    ) [Consts]
+                                    NoMulopFactor(
+                                    ) [NoMulopFactor]
+                                  ) [Terminator]
+                                  NoAddOperationTerminator(
+                                  ) [NoAddOperationTerminator]
+                                ) [Expression]
+                              ) [DesignatorStatementEqual]
+                            ) [StatementDesignator]
+                          ) [Statements]
+                          StatementDesignator(
+                            DesignatorStatementEqual(
+                              DesignatorExpression(
+                               mat
+                                ExprListExprMatrix(
+                                  LsquareClass(
+                                  ) [LsquareClass]
+                                  Expression(
+                                    NoMinusExpression(
+                                    ) [NoMinusExpression]
+                                    Terminator(
+                                      Consts(
+                                        FactorNum(
+                                         1
+                                        ) [FactorNum]
+                                      ) [Consts]
+                                      NoMulopFactor(
+                                      ) [NoMulopFactor]
                                     ) [Terminator]
                                     NoAddOperationTerminator(
                                     ) [NoAddOperationTerminator]
                                   ) [Expression]
-                                ) [DesignatorStatementEqual]
-                              ) [StatementDesignator]
-                            ) [Statements]
-                            PrintStmt(
+                                  RsquareClass(
+                                  ) [RsquareClass]
+                                  LsquareClass(
+                                  ) [LsquareClass]
+                                  Expression(
+                                    NoMinusExpression(
+                                    ) [NoMinusExpression]
+                                    Terminator(
+                                      FactorDes(
+                                        DesignatorExpression(
+                                         jedan
+                                          NoExprListExpr(
+                                          ) [NoExprListExpr]
+                                        ) [DesignatorExpression]
+                                      ) [FactorDes]
+                                      NoMulopFactor(
+                                      ) [NoMulopFactor]
+                                    ) [Terminator]
+                                    AddOperationTerminatorRec(
+                                      NoAddOperationTerminator(
+                                      ) [NoAddOperationTerminator]
+                                      AddOperationMinus(
+                                      ) [AddOperationMinus]
+                                      Terminator(
+                                        FactorDes(
+                                          DesignatorExpression(
+                                           niz
+                                            ExprListExpr(
+                                              LsquareClass(
+                                              ) [LsquareClass]
+                                              Expression(
+                                                NoMinusExpression(
+                                                ) [NoMinusExpression]
+                                                Terminator(
+                                                  Consts(
+                                                    FactorNum(
+                                                     0
+                                                    ) [FactorNum]
+                                                  ) [Consts]
+                                                  NoMulopFactor(
+                                                  ) [NoMulopFactor]
+                                                ) [Terminator]
+                                                NoAddOperationTerminator(
+                                                ) [NoAddOperationTerminator]
+                                              ) [Expression]
+                                              RsquareClass(
+                                              ) [RsquareClass]
+                                            ) [ExprListExpr]
+                                          ) [DesignatorExpression]
+                                        ) [FactorDes]
+                                        NoMulopFactor(
+                                        ) [NoMulopFactor]
+                                      ) [Terminator]
+                                    ) [AddOperationTerminatorRec]
+                                  ) [Expression]
+                                  RsquareClass(
+                                  ) [RsquareClass]
+                                ) [ExprListExprMatrix]
+                              ) [DesignatorExpression]
                               Expression(
                                 NoMinusExpression(
                                 ) [NoMinusExpression]
                                 Terminator(
+                                  Consts(
+                                    FactorNum(
+                                     5
+                                    ) [FactorNum]
+                                  ) [Consts]
+                                  NoMulopFactor(
+                                  ) [NoMulopFactor]
+                                ) [Terminator]
+                                NoAddOperationTerminator(
+                                ) [NoAddOperationTerminator]
+                              ) [Expression]
+                            ) [DesignatorStatementEqual]
+                          ) [StatementDesignator]
+                        ) [Statements]
+                        StatementDesignator(
+                          DesignatorStatementEqual(
+                            DesignatorExpression(
+                             mat
+                              ExprListExprMatrix(
+                                LsquareClass(
+                                ) [LsquareClass]
+                                Expression(
+                                  NoMinusExpression(
+                                  ) [NoMinusExpression]
+                                  Terminator(
+                                    Consts(
+                                      FactorNum(
+                                       1
+                                      ) [FactorNum]
+                                    ) [Consts]
+                                    NoMulopFactor(
+                                    ) [NoMulopFactor]
+                                  ) [Terminator]
+                                  NoAddOperationTerminator(
+                                  ) [NoAddOperationTerminator]
+                                ) [Expression]
+                                RsquareClass(
+                                ) [RsquareClass]
+                                LsquareClass(
+                                ) [LsquareClass]
+                                Expression(
+                                  NoMinusExpression(
+                                  ) [NoMinusExpression]
+                                  Terminator(
+                                    Consts(
+                                      FactorNum(
+                                       1
+                                      ) [FactorNum]
+                                    ) [Consts]
+                                    NoMulopFactor(
+                                    ) [NoMulopFactor]
+                                  ) [Terminator]
+                                  NoAddOperationTerminator(
+                                  ) [NoAddOperationTerminator]
+                                ) [Expression]
+                                RsquareClass(
+                                ) [RsquareClass]
+                              ) [ExprListExprMatrix]
+                            ) [DesignatorExpression]
+                            Expression(
+                              NoMinusExpression(
+                              ) [NoMinusExpression]
+                              Terminator(
+                                FactorDes(
+                                  DesignatorExpression(
+                                   mat
+                                    ExprListExprMatrix(
+                                      LsquareClass(
+                                      ) [LsquareClass]
+                                      Expression(
+                                        NoMinusExpression(
+                                        ) [NoMinusExpression]
+                                        Terminator(
+                                          Consts(
+                                            FactorNum(
+                                             0
+                                            ) [FactorNum]
+                                          ) [Consts]
+                                          NoMulopFactor(
+                                          ) [NoMulopFactor]
+                                        ) [Terminator]
+                                        NoAddOperationTerminator(
+                                        ) [NoAddOperationTerminator]
+                                      ) [Expression]
+                                      RsquareClass(
+                                      ) [RsquareClass]
+                                      LsquareClass(
+                                      ) [LsquareClass]
+                                      Expression(
+                                        NoMinusExpression(
+                                        ) [NoMinusExpression]
+                                        Terminator(
+                                          Consts(
+                                            FactorNum(
+                                             0
+                                            ) [FactorNum]
+                                          ) [Consts]
+                                          NoMulopFactor(
+                                          ) [NoMulopFactor]
+                                        ) [Terminator]
+                                        NoAddOperationTerminator(
+                                        ) [NoAddOperationTerminator]
+                                      ) [Expression]
+                                      RsquareClass(
+                                      ) [RsquareClass]
+                                    ) [ExprListExprMatrix]
+                                  ) [DesignatorExpression]
+                                ) [FactorDes]
+                                MulopFactorRec(
+                                  NoMulopFactor(
+                                  ) [NoMulopFactor]
+                                  MulOperationMul(
+                                  ) [MulOperationMul]
                                   FactorDes(
                                     DesignatorExpression(
                                      mat
                                       ExprListExprMatrix(
-                                        LsquareClass(
-                                        ) [LsquareClass]
-                                        Expression(
-                                          NoMinusExpression(
-                                          ) [NoMinusExpression]
-                                          Terminator(
-                                            Consts(
-                                              FactorNum(
-                                               1
-                                              ) [FactorNum]
-                                            ) [Consts]
-                                            NoMulopFactor(
-                                            ) [NoMulopFactor]
-                                          ) [Terminator]
-                                          NoAddOperationTerminator(
-                                          ) [NoAddOperationTerminator]
-                                        ) [Expression]
-                                        RsquareClass(
-                                        ) [RsquareClass]
                                         LsquareClass(
                                         ) [LsquareClass]
                                         Expression(
@@ -1614,94 +1495,45 @@ INFO  22:47:36,564 - Program(
                                         ) [Expression]
                                         RsquareClass(
                                         ) [RsquareClass]
+                                        LsquareClass(
+                                        ) [LsquareClass]
+                                        Expression(
+                                          NoMinusExpression(
+                                          ) [NoMinusExpression]
+                                          Terminator(
+                                            Consts(
+                                              FactorNum(
+                                               1
+                                              ) [FactorNum]
+                                            ) [Consts]
+                                            NoMulopFactor(
+                                            ) [NoMulopFactor]
+                                          ) [Terminator]
+                                          NoAddOperationTerminator(
+                                          ) [NoAddOperationTerminator]
+                                        ) [Expression]
+                                        RsquareClass(
+                                        ) [RsquareClass]
                                       ) [ExprListExprMatrix]
                                     ) [DesignatorExpression]
                                   ) [FactorDes]
-                                  NoMulopFactor(
-                                  ) [NoMulopFactor]
-                                ) [Terminator]
-                                NoAddOperationTerminator(
-                                ) [NoAddOperationTerminator]
-                              ) [Expression]
-                              NoNumberInPrintNumber(
-                              ) [NoNumberInPrintNumber]
-                            ) [PrintStmt]
-                          ) [Statements]
-                          PrintStmt(
-                            Expression(
-                              NoMinusExpression(
-                              ) [NoMinusExpression]
-                              Terminator(
-                                FactorDes(
-                                  DesignatorExpression(
-                                   mat
-                                    ExprListExprMatrix(
-                                      LsquareClass(
-                                      ) [LsquareClass]
-                                      Expression(
-                                        NoMinusExpression(
-                                        ) [NoMinusExpression]
-                                        Terminator(
-                                          Consts(
-                                            FactorNum(
-                                             1
-                                            ) [FactorNum]
-                                          ) [Consts]
-                                          NoMulopFactor(
-                                          ) [NoMulopFactor]
-                                        ) [Terminator]
-                                        NoAddOperationTerminator(
-                                        ) [NoAddOperationTerminator]
-                                      ) [Expression]
-                                      RsquareClass(
-                                      ) [RsquareClass]
-                                      LsquareClass(
-                                      ) [LsquareClass]
-                                      Expression(
-                                        NoMinusExpression(
-                                        ) [NoMinusExpression]
-                                        Terminator(
-                                          Consts(
-                                            FactorNum(
-                                             1
-                                            ) [FactorNum]
-                                          ) [Consts]
-                                          NoMulopFactor(
-                                          ) [NoMulopFactor]
-                                        ) [Terminator]
-                                        NoAddOperationTerminator(
-                                        ) [NoAddOperationTerminator]
-                                      ) [Expression]
-                                      RsquareClass(
-                                      ) [RsquareClass]
-                                    ) [ExprListExprMatrix]
-                                  ) [DesignatorExpression]
-                                ) [FactorDes]
-                                NoMulopFactor(
-                                ) [NoMulopFactor]
+                                ) [MulopFactorRec]
                               ) [Terminator]
                               NoAddOperationTerminator(
                               ) [NoAddOperationTerminator]
                             ) [Expression]
-                            NoNumberInPrintNumber(
-                            ) [NoNumberInPrintNumber]
-                          ) [PrintStmt]
-                        ) [Statements]
-                        StatementDesignator(
-                          DesignatorStatementEqual(
-                            DesignatorExpression(
-                             nizch
-                              NoExprListExpr(
-                              ) [NoExprListExpr]
-                            ) [DesignatorExpression]
-                            Expression(
-                              NoMinusExpression(
-                              ) [NoMinusExpression]
-                              Terminator(
-                                FactorNewExpr(
-                                  TypeIdent(
-                                   char
-                                  ) [TypeIdent]
+                          ) [DesignatorStatementEqual]
+                        ) [StatementDesignator]
+                      ) [Statements]
+                      PrintStmt(
+                        Expression(
+                          NoMinusExpression(
+                          ) [NoMinusExpression]
+                          Terminator(
+                            FactorDes(
+                              DesignatorExpression(
+                               mat
+                                ExprListExprMatrix(
                                   LsquareClass(
                                   ) [LsquareClass]
                                   Expression(
@@ -1710,7 +1542,7 @@ INFO  22:47:36,564 - Program(
                                     Terminator(
                                       Consts(
                                         FactorNum(
-                                         3
+                                         1
                                         ) [FactorNum]
                                       ) [Consts]
                                       NoMulopFactor(
@@ -1721,132 +1553,118 @@ INFO  22:47:36,564 - Program(
                                   ) [Expression]
                                   RsquareClass(
                                   ) [RsquareClass]
-                                ) [FactorNewExpr]
-                                NoMulopFactor(
-                                ) [NoMulopFactor]
-                              ) [Terminator]
-                              NoAddOperationTerminator(
-                              ) [NoAddOperationTerminator]
-                            ) [Expression]
-                          ) [DesignatorStatementEqual]
-                        ) [StatementDesignator]
-                      ) [Statements]
-                      StatementDesignator(
-                        DesignatorStatementEqual(
-                          DesignatorExpression(
-                           nizch
-                            ExprListExpr(
-                              LsquareClass(
-                              ) [LsquareClass]
-                              Expression(
-                                NoMinusExpression(
-                                ) [NoMinusExpression]
-                                Terminator(
-                                  Consts(
-                                    FactorNum(
-                                     0
-                                    ) [FactorNum]
-                                  ) [Consts]
-                                  NoMulopFactor(
-                                  ) [NoMulopFactor]
-                                ) [Terminator]
-                                NoAddOperationTerminator(
-                                ) [NoAddOperationTerminator]
-                              ) [Expression]
-                              RsquareClass(
-                              ) [RsquareClass]
-                            ) [ExprListExpr]
-                          ) [DesignatorExpression]
-                          Expression(
-                            NoMinusExpression(
-                            ) [NoMinusExpression]
-                            Terminator(
-                              Consts(
-                                FactorChar(
-                                 a
-                                ) [FactorChar]
-                              ) [Consts]
-                              NoMulopFactor(
-                              ) [NoMulopFactor]
-                            ) [Terminator]
-                            NoAddOperationTerminator(
-                            ) [NoAddOperationTerminator]
-                          ) [Expression]
-                        ) [DesignatorStatementEqual]
-                      ) [StatementDesignator]
-                    ) [Statements]
-                    StatementDesignator(
-                      DesignatorStatementEqual(
-                        DesignatorExpression(
-                         nizch
-                          ExprListExpr(
-                            LsquareClass(
-                            ) [LsquareClass]
-                            Expression(
-                              NoMinusExpression(
-                              ) [NoMinusExpression]
-                              Terminator(
-                                FactorDes(
-                                  DesignatorExpression(
-                                   jedan
-                                    NoExprListExpr(
-                                    ) [NoExprListExpr]
-                                  ) [DesignatorExpression]
-                                ) [FactorDes]
-                                NoMulopFactor(
-                                ) [NoMulopFactor]
-                              ) [Terminator]
-                              NoAddOperationTerminator(
-                              ) [NoAddOperationTerminator]
-                            ) [Expression]
-                            RsquareClass(
-                            ) [RsquareClass]
-                          ) [ExprListExpr]
-                        ) [DesignatorExpression]
-                        Expression(
-                          NoMinusExpression(
-                          ) [NoMinusExpression]
-                          Terminator(
-                            Consts(
-                              FactorChar(
-                               b
-                              ) [FactorChar]
-                            ) [Consts]
+                                  LsquareClass(
+                                  ) [LsquareClass]
+                                  Expression(
+                                    NoMinusExpression(
+                                    ) [NoMinusExpression]
+                                    Terminator(
+                                      Consts(
+                                        FactorNum(
+                                         0
+                                        ) [FactorNum]
+                                      ) [Consts]
+                                      NoMulopFactor(
+                                      ) [NoMulopFactor]
+                                    ) [Terminator]
+                                    NoAddOperationTerminator(
+                                    ) [NoAddOperationTerminator]
+                                  ) [Expression]
+                                  RsquareClass(
+                                  ) [RsquareClass]
+                                ) [ExprListExprMatrix]
+                              ) [DesignatorExpression]
+                            ) [FactorDes]
                             NoMulopFactor(
                             ) [NoMulopFactor]
                           ) [Terminator]
                           NoAddOperationTerminator(
                           ) [NoAddOperationTerminator]
                         ) [Expression]
-                      ) [DesignatorStatementEqual]
-                    ) [StatementDesignator]
+                        NoNumberInPrintNumber(
+                        ) [NoNumberInPrintNumber]
+                      ) [PrintStmt]
+                    ) [Statements]
+                    PrintStmt(
+                      Expression(
+                        NoMinusExpression(
+                        ) [NoMinusExpression]
+                        Terminator(
+                          FactorDes(
+                            DesignatorExpression(
+                             mat
+                              ExprListExprMatrix(
+                                LsquareClass(
+                                ) [LsquareClass]
+                                Expression(
+                                  NoMinusExpression(
+                                  ) [NoMinusExpression]
+                                  Terminator(
+                                    Consts(
+                                      FactorNum(
+                                       1
+                                      ) [FactorNum]
+                                    ) [Consts]
+                                    NoMulopFactor(
+                                    ) [NoMulopFactor]
+                                  ) [Terminator]
+                                  NoAddOperationTerminator(
+                                  ) [NoAddOperationTerminator]
+                                ) [Expression]
+                                RsquareClass(
+                                ) [RsquareClass]
+                                LsquareClass(
+                                ) [LsquareClass]
+                                Expression(
+                                  NoMinusExpression(
+                                  ) [NoMinusExpression]
+                                  Terminator(
+                                    Consts(
+                                      FactorNum(
+                                       1
+                                      ) [FactorNum]
+                                    ) [Consts]
+                                    NoMulopFactor(
+                                    ) [NoMulopFactor]
+                                  ) [Terminator]
+                                  NoAddOperationTerminator(
+                                  ) [NoAddOperationTerminator]
+                                ) [Expression]
+                                RsquareClass(
+                                ) [RsquareClass]
+                              ) [ExprListExprMatrix]
+                            ) [DesignatorExpression]
+                          ) [FactorDes]
+                          NoMulopFactor(
+                          ) [NoMulopFactor]
+                        ) [Terminator]
+                        NoAddOperationTerminator(
+                        ) [NoAddOperationTerminator]
+                      ) [Expression]
+                      NoNumberInPrintNumber(
+                      ) [NoNumberInPrintNumber]
+                    ) [PrintStmt]
                   ) [Statements]
                   StatementDesignator(
                     DesignatorStatementEqual(
                       DesignatorExpression(
                        nizch
-                        ExprListExpr(
-                          LsquareClass(
-                          ) [LsquareClass]
-                          Expression(
-                            NoMinusExpression(
-                            ) [NoMinusExpression]
-                            Terminator(
-                              FactorDes(
-                                DesignatorExpression(
-                                 pet
-                                  NoExprListExpr(
-                                  ) [NoExprListExpr]
-                                ) [DesignatorExpression]
-                              ) [FactorDes]
-                              NoMulopFactor(
-                              ) [NoMulopFactor]
-                            ) [Terminator]
-                            AddOperationTerminatorRec(
-                              NoAddOperationTerminator(
-                              ) [NoAddOperationTerminator]
-                              AddOperationMinus(
-                              ) [AddOperationMinus]
+                        NoExprListExpr(
+                        ) [NoExprListExpr]
+                      ) [DesignatorExpression]
+                      Expression(
+                        NoMinusExpression(
+                        ) [NoMinusExpression]
+                        Terminator(
+                          FactorNewExpr(
+                            TypeIdent(
+                             char
+                            ) [TypeIdent]
+                            LsquareClass(
+                            ) [LsquareClass]
+                            Expression(
+                              NoMinusExpression(
+                              ) [NoMinusExpression]
                               Terminator(
                                 Consts(
                                   FactorNum(
@@ -1856,21 +1674,12 @@ INFO  22:47:36,564 - Program(
                                 NoMulopFactor(
                                 ) [NoMulopFactor]
                               ) [Terminator]
-                            ) [AddOperationTerminatorRec]
-                          ) [Expression]
-                          RsquareClass(
-                          ) [RsquareClass]
-                        ) [ExprListExpr]
-                      ) [DesignatorExpression]
-                      Expression(
-                        NoMinusExpression(
-                        ) [NoMinusExpression]
-                        Terminator(
-                          Consts(
-                            FactorChar(
-                             c
-                            ) [FactorChar]
-                          ) [Consts]
+                              NoAddOperationTerminator(
+                              ) [NoAddOperationTerminator]
+                            ) [Expression]
+                            RsquareClass(
+                            ) [RsquareClass]
+                          ) [FactorNewExpr]
                           NoMulopFactor(
                           ) [NoMulopFactor]
                         ) [Terminator]
@@ -1880,275 +1689,195 @@ INFO  22:47:36,564 - Program(
                     ) [DesignatorStatementEqual]
                   ) [StatementDesignator]
                 ) [Statements]
-                PrintStmt(
+                StatementDesignator(
+                  DesignatorStatementEqual(
+                    DesignatorExpression(
+                     nizch
+                      ExprListExpr(
+                        LsquareClass(
+                        ) [LsquareClass]
+                        Expression(
+                          NoMinusExpression(
+                          ) [NoMinusExpression]
+                          Terminator(
+                            Consts(
+                              FactorNum(
+                               0
+                              ) [FactorNum]
+                            ) [Consts]
+                            NoMulopFactor(
+                            ) [NoMulopFactor]
+                          ) [Terminator]
+                          NoAddOperationTerminator(
+                          ) [NoAddOperationTerminator]
+                        ) [Expression]
+                        RsquareClass(
+                        ) [RsquareClass]
+                      ) [ExprListExpr]
+                    ) [DesignatorExpression]
+                    Expression(
+                      NoMinusExpression(
+                      ) [NoMinusExpression]
+                      Terminator(
+                        Consts(
+                          FactorChar(
+                           a
+                          ) [FactorChar]
+                        ) [Consts]
+                        NoMulopFactor(
+                        ) [NoMulopFactor]
+                      ) [Terminator]
+                      NoAddOperationTerminator(
+                      ) [NoAddOperationTerminator]
+                    ) [Expression]
+                  ) [DesignatorStatementEqual]
+                ) [StatementDesignator]
+              ) [Statements]
+              StatementDesignator(
+                DesignatorStatementEqual(
+                  DesignatorExpression(
+                   nizch
+                    ExprListExpr(
+                      LsquareClass(
+                      ) [LsquareClass]
+                      Expression(
+                        NoMinusExpression(
+                        ) [NoMinusExpression]
+                        Terminator(
+                          FactorDes(
+                            DesignatorExpression(
+                             jedan
+                              NoExprListExpr(
+                              ) [NoExprListExpr]
+                            ) [DesignatorExpression]
+                          ) [FactorDes]
+                          NoMulopFactor(
+                          ) [NoMulopFactor]
+                        ) [Terminator]
+                        NoAddOperationTerminator(
+                        ) [NoAddOperationTerminator]
+                      ) [Expression]
+                      RsquareClass(
+                      ) [RsquareClass]
+                    ) [ExprListExpr]
+                  ) [DesignatorExpression]
                   Expression(
                     NoMinusExpression(
                     ) [NoMinusExpression]
                     Terminator(
-                      FactorDes(
-                        DesignatorExpression(
-                         nizch
-                          ExprListExpr(
-                            LsquareClass(
-                            ) [LsquareClass]
-                            Expression(
-                              NoMinusExpression(
-                              ) [NoMinusExpression]
-                              Terminator(
-                                Consts(
-                                  FactorNum(
-                                   1
-                                  ) [FactorNum]
-                                ) [Consts]
-                                NoMulopFactor(
-                                ) [NoMulopFactor]
-                              ) [Terminator]
-                              NoAddOperationTerminator(
-                              ) [NoAddOperationTerminator]
-                            ) [Expression]
-                            RsquareClass(
-                            ) [RsquareClass]
-                          ) [ExprListExpr]
-                        ) [DesignatorExpression]
-                      ) [FactorDes]
+                      Consts(
+                        FactorChar(
+                         b
+                        ) [FactorChar]
+                      ) [Consts]
                       NoMulopFactor(
                       ) [NoMulopFactor]
                     ) [Terminator]
                     NoAddOperationTerminator(
                     ) [NoAddOperationTerminator]
                   ) [Expression]
-                  NoNumberInPrintNumber(
-                  ) [NoNumberInPrintNumber]
-                ) [PrintStmt]
-              ) [Statements]
-              PrintStmt(
-                Expression(
-                  NoMinusExpression(
-                  ) [NoMinusExpression]
-                  Terminator(
-                    FactorDes(
-                      DesignatorExpression(
-                       nizch
-                        ExprListExpr(
-                          LsquareClass(
-                          ) [LsquareClass]
-                          Expression(
-                            NoMinusExpression(
-                            ) [NoMinusExpression]
-                            Terminator(
-                              FactorDes(
-                                DesignatorExpression(
-                                 jedan
-                                  NoExprListExpr(
-                                  ) [NoExprListExpr]
-                                ) [DesignatorExpression]
-                              ) [FactorDes]
-                              MulopFactorRec(
-                                NoMulopFactor(
-                                ) [NoMulopFactor]
-                                MulOperationMul(
-                                ) [MulOperationMul]
-                                Consts(
-                                  FactorNum(
-                                   2
-                                  ) [FactorNum]
-                                ) [Consts]
-                              ) [MulopFactorRec]
-                            ) [Terminator]
-                            NoAddOperationTerminator(
-                            ) [NoAddOperationTerminator]
-                          ) [Expression]
-                          RsquareClass(
-                          ) [RsquareClass]
-                        ) [ExprListExpr]
-                      ) [DesignatorExpression]
-                    ) [FactorDes]
-                    NoMulopFactor(
-                    ) [NoMulopFactor]
-                  ) [Terminator]
-                  NoAddOperationTerminator(
-                  ) [NoAddOperationTerminator]
-                ) [Expression]
-                NoNumberInPrintNumber(
-                ) [NoNumberInPrintNumber]
-              ) [PrintStmt]
+                ) [DesignatorStatementEqual]
+              ) [StatementDesignator]
             ) [Statements]
-            StatementRead(
-              DesignatorExpression(
-               bodovi
-                NoExprListExpr(
-                ) [NoExprListExpr]
-              ) [DesignatorExpression]
-            ) [StatementRead]
-          ) [Statements]
-          StatementDesignator(
-            DesignatorStatementEqual(
-              DesignatorExpression(
-               bodovi
-                NoExprListExpr(
-                ) [NoExprListExpr]
-              ) [DesignatorExpression]
-              Expression(
-                MinusExpression(
-                ) [MinusExpression]
-                Terminator(
-                  FactorDes(
-                    DesignatorExpression(
-                     bodovi
-                      NoExprListExpr(
-                      ) [NoExprListExpr]
-                    ) [DesignatorExpression]
-                  ) [FactorDes]
-                  NoMulopFactor(
-                  ) [NoMulopFactor]
-                ) [Terminator]
-                AddOperationTerminatorRec(
-                  AddOperationTerminatorRec(
-                    NoAddOperationTerminator(
-                    ) [NoAddOperationTerminator]
-                    AddOperationPlus(
-                    ) [AddOperationPlus]
-                    Terminator(
-                      FactorExpr(
-                        Expression(
-                          NoMinusExpression(
-                          ) [NoMinusExpression]
-                          Terminator(
-                            FactorDes(
-                              DesignatorExpression(
-                               pet
-                                NoExprListExpr(
-                                ) [NoExprListExpr]
-                              ) [DesignatorExpression]
-                            ) [FactorDes]
-                            MulopFactorRec(
-                              MulopFactorRec(
-                                NoMulopFactor(
-                                ) [NoMulopFactor]
-                                MulOperationMul(
-                                ) [MulOperationMul]
-                                FactorDes(
-                                  DesignatorExpression(
-                                   a
-                                    NoExprListExpr(
-                                    ) [NoExprListExpr]
-                                  ) [DesignatorExpression]
-                                ) [FactorDes]
-                              ) [MulopFactorRec]
-                              MulOperationDiv(
-                              ) [MulOperationDiv]
-                              Consts(
-                                FactorNum(
-                                 2
-                                ) [FactorNum]
-                              ) [Consts]
-                            ) [MulopFactorRec]
-                          ) [Terminator]
-                          AddOperationTerminatorRec(
-                            NoAddOperationTerminator(
-                            ) [NoAddOperationTerminator]
-                            AddOperationMinus(
-                            ) [AddOperationMinus]
-                            Terminator(
-                              FactorDes(
-                                DesignatorExpression(
-                                 jedan
-                                  NoExprListExpr(
-                                  ) [NoExprListExpr]
-                                ) [DesignatorExpression]
-                              ) [FactorDes]
-                              NoMulopFactor(
-                              ) [NoMulopFactor]
-                            ) [Terminator]
-                          ) [AddOperationTerminatorRec]
-                        ) [Expression]
-                      ) [FactorExpr]
-                      MulopFactorRec(
-                        NoMulopFactor(
-                        ) [NoMulopFactor]
-                        MulOperationMul(
-                        ) [MulOperationMul]
+            StatementDesignator(
+              DesignatorStatementEqual(
+                DesignatorExpression(
+                 nizch
+                  ExprListExpr(
+                    LsquareClass(
+                    ) [LsquareClass]
+                    Expression(
+                      NoMinusExpression(
+                      ) [NoMinusExpression]
+                      Terminator(
                         FactorDes(
                           DesignatorExpression(
-                           bodovi
+                           pet
                             NoExprListExpr(
                             ) [NoExprListExpr]
                           ) [DesignatorExpression]
                         ) [FactorDes]
-                      ) [MulopFactorRec]
-                    ) [Terminator]
-                  ) [AddOperationTerminatorRec]
-                  AddOperationMinus(
-                  ) [AddOperationMinus]
-                  Terminator(
-                    FactorExpr(
-                      Expression(
-                        NoMinusExpression(
-                        ) [NoMinusExpression]
+                        NoMulopFactor(
+                        ) [NoMulopFactor]
+                      ) [Terminator]
+                      AddOperationTerminatorRec(
+                        NoAddOperationTerminator(
+                        ) [NoAddOperationTerminator]
+                        AddOperationMinus(
+                        ) [AddOperationMinus]
                         Terminator(
                           Consts(
                             FactorNum(
                              3
                             ) [FactorNum]
                           ) [Consts]
-                          MulopFactorRec(
-                            NoMulopFactor(
-                            ) [NoMulopFactor]
-                            MulOperationPercent(
-                            ) [MulOperationPercent]
-                            Consts(
-                              FactorNum(
-                               2
-                              ) [FactorNum]
-                            ) [Consts]
-                          ) [MulopFactorRec]
+                          NoMulopFactor(
+                          ) [NoMulopFactor]
                         ) [Terminator]
-                        AddOperationTerminatorRec(
-                          AddOperationTerminatorRec(
-                            NoAddOperationTerminator(
-                            ) [NoAddOperationTerminator]
-                            AddOperationPlus(
-                            ) [AddOperationPlus]
-                            Terminator(
-                              Consts(
-                                FactorNum(
-                                 3
-                                ) [FactorNum]
-                              ) [Consts]
-                              MulopFactorRec(
-                                NoMulopFactor(
-                                ) [NoMulopFactor]
-                                MulOperationMul(
-                                ) [MulOperationMul]
-                                Consts(
-                                  FactorNum(
-                                   2
-                                  ) [FactorNum]
-                                ) [Consts]
-                              ) [MulopFactorRec]
-                            ) [Terminator]
-                          ) [AddOperationTerminatorRec]
-                          AddOperationMinus(
-                          ) [AddOperationMinus]
-                          Terminator(
-                            Consts(
-                              FactorNum(
-                               3
-                              ) [FactorNum]
-                            ) [Consts]
-                            NoMulopFactor(
-                            ) [NoMulopFactor]
-                          ) [Terminator]
-                        ) [AddOperationTerminatorRec]
-                      ) [Expression]
-                    ) [FactorExpr]
+                      ) [AddOperationTerminatorRec]
+                    ) [Expression]
+                    RsquareClass(
+                    ) [RsquareClass]
+                  ) [ExprListExpr]
+                ) [DesignatorExpression]
+                Expression(
+                  NoMinusExpression(
+                  ) [NoMinusExpression]
+                  Terminator(
+                    Consts(
+                      FactorChar(
+                       c
+                      ) [FactorChar]
+                    ) [Consts]
                     NoMulopFactor(
                     ) [NoMulopFactor]
                   ) [Terminator]
-                ) [AddOperationTerminatorRec]
-              ) [Expression]
-            ) [DesignatorStatementEqual]
-          ) [StatementDesignator]
+                  NoAddOperationTerminator(
+                  ) [NoAddOperationTerminator]
+                ) [Expression]
+              ) [DesignatorStatementEqual]
+            ) [StatementDesignator]
+          ) [Statements]
+          PrintStmt(
+            Expression(
+              NoMinusExpression(
+              ) [NoMinusExpression]
+              Terminator(
+                FactorDes(
+                  DesignatorExpression(
+                   nizch
+                    ExprListExpr(
+                      LsquareClass(
+                      ) [LsquareClass]
+                      Expression(
+                        NoMinusExpression(
+                        ) [NoMinusExpression]
+                        Terminator(
+                          Consts(
+                            FactorNum(
+                             1
+                            ) [FactorNum]
+                          ) [Consts]
+                          NoMulopFactor(
+                          ) [NoMulopFactor]
+                        ) [Terminator]
+                        NoAddOperationTerminator(
+                        ) [NoAddOperationTerminator]
+                      ) [Expression]
+                      RsquareClass(
+                      ) [RsquareClass]
+                    ) [ExprListExpr]
+                  ) [DesignatorExpression]
+                ) [FactorDes]
+                NoMulopFactor(
+                ) [NoMulopFactor]
+              ) [Terminator]
+              NoAddOperationTerminator(
+              ) [NoAddOperationTerminator]
+            ) [Expression]
+            NoNumberInPrintNumber(
+            ) [NoNumberInPrintNumber]
+          ) [PrintStmt]
         ) [Statements]
         PrintStmt(
           Expression(
@@ -2157,9 +1886,39 @@ INFO  22:47:36,564 - Program(
             Terminator(
               FactorDes(
                 DesignatorExpression(
-                 bodovi
-                  NoExprListExpr(
-                  ) [NoExprListExpr]
+                 nizch
+                  ExprListExpr(
+                    LsquareClass(
+                    ) [LsquareClass]
+                    Expression(
+                      NoMinusExpression(
+                      ) [NoMinusExpression]
+                      Terminator(
+                        FactorDes(
+                          DesignatorExpression(
+                           jedan
+                            NoExprListExpr(
+                            ) [NoExprListExpr]
+                          ) [DesignatorExpression]
+                        ) [FactorDes]
+                        MulopFactorRec(
+                          NoMulopFactor(
+                          ) [NoMulopFactor]
+                          MulOperationMul(
+                          ) [MulOperationMul]
+                          Consts(
+                            FactorNum(
+                             2
+                            ) [FactorNum]
+                          ) [Consts]
+                        ) [MulopFactorRec]
+                      ) [Terminator]
+                      NoAddOperationTerminator(
+                      ) [NoAddOperationTerminator]
+                    ) [Expression]
+                    RsquareClass(
+                    ) [RsquareClass]
+                  ) [ExprListExpr]
                 ) [DesignatorExpression]
               ) [FactorDes]
               NoMulopFactor(
@@ -2177,21 +1936,21 @@ INFO  22:47:36,564 - Program(
     ) [MethodDecl]
   ) [MethodDeclarations]
 ) [Program]
-INFO  22:47:36,571 - ===================================
-INFO  22:47:36,571 - Deklarisana promenljiva nula na liniji 5
-INFO  22:47:36,571 - Deklarisana promenljiva jedan na liniji 6
-INFO  22:47:36,571 - Deklarisana promenljiva pet na liniji 7
-INFO  22:47:36,571 - Deklarisana promenljiva niz na liniji 9
-INFO  22:47:36,571 - Deklarisana promenljiva niz2 na liniji 9
-INFO  22:47:36,571 - Deklarisana promenljiva a na liniji 9
-INFO  22:47:36,571 - Deklarisana promenljiva b na liniji 9
-INFO  22:47:36,571 - Deklarisana promenljiva nizch na liniji 10
-INFO  22:47:36,571 - Deklarisana promenljiva mat na liniji 11
-INFO  22:47:36,571 - Obradjuje se funkcija main na liniji 14
-INFO  22:47:36,571 - Deklarisana promenljiva bodovi na liniji 15
-INFO  22:47:36,571 - Deklarisana promenljiva bt na liniji 16
-INFO  22:47:36,571 -  Pozvanih "print" naredbi ima = 8
-INFO  22:47:36,571 -  Deklarisanih promenljivih ima = 11
-INFO  22:47:36,571 - ===================================
-INFO  22:47:36,571 - Parsiranje uspesno zavrseno
-INFO  22:47:36,571 - Ulaz je semanticki ispravan
+INFO  13:07:23,447 - ===================================
+INFO  13:07:23,447 - Deklarisana promenljiva nula na liniji 5
+INFO  13:07:23,447 - Deklarisana promenljiva jedan na liniji 6
+INFO  13:07:23,447 - Deklarisana promenljiva pet na liniji 7
+INFO  13:07:23,447 - Deklarisana promenljiva niz na liniji 9
+INFO  13:07:23,447 - Deklarisana promenljiva niz2 na liniji 9
+INFO  13:07:23,447 - Deklarisana promenljiva a na liniji 9
+INFO  13:07:23,447 - Deklarisana promenljiva b na liniji 9
+INFO  13:07:23,447 - Deklarisana promenljiva nizch na liniji 10
+INFO  13:07:23,447 - Deklarisana promenljiva mat na liniji 11
+INFO  13:07:23,447 - Obradjuje se funkcija main na liniji 14
+INFO  13:07:23,447 - Deklarisana promenljiva bodovi na liniji 15
+INFO  13:07:23,447 - Deklarisana promenljiva bt na liniji 16
+INFO  13:07:23,447 -  Pozvanih "print" naredbi ima = 7
+INFO  13:07:23,447 -  Deklarisanih promenljivih ima = 11
+INFO  13:07:23,447 - ===================================
+INFO  13:07:23,447 - Parsiranje uspesno zavrseno
+INFO  13:07:23,447 - Ulaz je semanticki ispravan
