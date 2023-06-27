@@ -42,7 +42,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
     private Struct varDeclType = null;
     private int assignmentType = -1;
-    private String assignmentName = "", designatorName = "";
+    private String assignmentName = "";
 
     private int identType[] = null, varType[] = null, derefType[] = null;
     private int identTypeCnt = 0, varTypeCnt = 0, derefTypeCnt = 0;
@@ -216,6 +216,11 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
             } else if (localState == LocalState.ArrayCreation) {
                 localState = LocalState.InitialLocal;
+                if(assignment.getDesignator().obj.getType().getKind() != Struct.Array){
+                    report_error("Greska na liniji " + assignment.getLine() + " : " +
+                            "nekompatibilni tipovi u dodeli vrednosti! ", null);
+                    return;
+                }
                 int type = getKind(assignment.getDesignator().obj);
                 boolean correct = true, jump = false;
                 if (type != identType[0]) {
@@ -489,7 +494,6 @@ public class SemanticAnalyzer extends VisitorAdaptor {
     }
 
     public void visit(DesignatorExpression designator) {
-        designatorName = designator.getName();
         Obj obj = Tab.find(designator.getName());
         if (obj == Tab.noObj) {
             report_error("Greska na liniji " + designator.getLine() + " : ime " + designator.getName() +

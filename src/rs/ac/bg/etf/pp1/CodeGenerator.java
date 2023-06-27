@@ -9,8 +9,6 @@ import rs.etf.pp1.symboltable.concepts.Struct;
 import java.util.LinkedList;
 import java.util.Queue;
 
-// TODO: videti da li treba da se dodaje i dodavanje bool konstanti u tabelu simbola
-
 public class CodeGenerator extends VisitorAdaptor {
 
     private int mainPc;
@@ -43,7 +41,7 @@ public class CodeGenerator extends VisitorAdaptor {
             kind = printStmt.getExpr().struct.getElemType().getKind();
         if (kind == Struct.Array)
             kind = printStmt.getExpr().struct.getElemType().getElemType().getKind();
-        if (kind == Struct.Int) {
+        if (kind == Struct.Int || kind == Struct.Bool) {
             Code.loadConst(5);
             Code.put(Code.print);
         } else {
@@ -57,6 +55,16 @@ public class CodeGenerator extends VisitorAdaptor {
         Obj con = Tab.insert(Obj.Con, "$", factorNum.struct);
         con.setLevel(0);
         con.setAdr(factorNum.getValue());
+        Code.load(con);
+        if (!currentOperations.isEmpty()) {
+            Code.put(currentOperations.remove());
+        }
+    }
+
+    public void visit(FactorBool factorBool) {
+        Obj con = Tab.insert(Obj.Con, "$", factorBool.struct);
+        con.setLevel(0);
+        con.setAdr(factorBool.getValue() ? 1 : 0);
         Code.load(con);
         if (!currentOperations.isEmpty()) {
             Code.put(currentOperations.remove());
@@ -105,7 +113,7 @@ public class CodeGenerator extends VisitorAdaptor {
         if (arrayCreation) {
             arrayCreation = false;
             Code.put(Code.newarray);
-            if (arrayType == Tab.intType)
+            if (arrayType == Tab.intType || arrayType.getKind() == Struct.Bool)
                 Code.put(1);
             else
                 Code.put(0);
@@ -119,8 +127,11 @@ public class CodeGenerator extends VisitorAdaptor {
             Code.store(index2);                  // broj redova - duzina niza ciji je svaki elem niz duzine columnNumber
             Code.load(index2);
             Code.put(Code.newarray);
-            Code.loadConst(1);
-            Code.store(designatorStatementEqual.getDesignator().obj);                  // ne desava se ova linija u run
+            if (arrayType == Tab.intType || arrayType.getKind() == Struct.Bool)
+                Code.put(1);
+            else
+                Code.put(0);
+            Code.store(designatorStatementEqual.getDesignator().obj);
 
             Code.loadConst(0);
             Code.store(curr);
@@ -181,6 +192,7 @@ public class CodeGenerator extends VisitorAdaptor {
     public void visit(DesignatorExpression designator) {
         SyntaxNode parent = designator.getParent();
         boolean oneOperand = false;
+        boolean read = false;
         if ((DesignatorStatementPlusPlus.class != parent.getClass()
                 && DesignatorStatementMinusMinus.class != parent.getClass())) {
             oneOperandDeref = false;
@@ -188,36 +200,44 @@ public class CodeGenerator extends VisitorAdaptor {
 
         } else
             oneOperand = true;
+        if (StatementRead.class == parent.getClass())
+            read = true;
         if (DesignatorStatementEqual.class != parent.getClass()) {
             if (dereference > 0 && exprEnter) {
-                if (oneOperand)
-                    Code.put(Code.dup);             // index ostaje pre dereferencirane vrednostini na steku za ++ i -- operacije
-                Code.load(designator.obj);
-                Code.put(Code.dup_x1);
-                Code.put(Code.pop);
-                Code.put(Code.aload);
-                if (!currentOperations.isEmpty()) {
-                    Code.put(currentOperations.remove());
+                if (read)
+                    Code.load(designator.obj);
+                else {
+                    if (oneOperand)
+                        Code.put(Code.dup);             // index ostaje pre dereferencirane vrednostini na steku za ++ i -- operacije
+                    Code.load(designator.obj);
+                    Code.put(Code.dup_x1);
+                    Code.put(Code.pop);
+                    Code.put(Code.aload);
+                    if (!currentOperations.isEmpty()) {
+                        Code.put(currentOperations.remove());
+                    }
                 }
                 dereference--;
             } else if (matrixDerederence > 0 && exprEnterMatrix) {      // rowIndex columnIndex -- sadrzaj steka
-                if(oneOperand){
-                    Code.put(Code.dup2);            // rowIndex columnIndex columnIndex rowIndex za ++ i -- operacije
-                    Code.put(Code.dup);
+                if (!read){
+                    if (oneOperand) {
+                        Code.put(Code.dup2);            // rowIndex columnIndex columnIndex rowIndex za ++ i -- operacije
+                        Code.put(Code.dup);
+                        Code.put(Code.pop);
+                        // rowIndex columnIndex rowIndex columnIndex
+                    }
+                    Code.put(Code.dup_x1);
                     Code.put(Code.pop);
-                    // rowIndex columnIndex rowIndex columnIndex
-                }
-                Code.put(Code.dup_x1);
-                Code.put(Code.pop);
-                Code.load(designator.obj);
-                Code.put(Code.dup_x1);
-                Code.put(Code.pop);
-                Code.put(Code.aload);
-                Code.put(Code.dup_x1);
-                Code.put(Code.pop);
-                Code.put(Code.aload);
-                if (!currentOperations.isEmpty()) {
-                    Code.put(currentOperations.remove());
+                    Code.load(designator.obj);
+                    Code.put(Code.dup_x1);
+                    Code.put(Code.pop);
+                    Code.put(Code.aload);
+                    Code.put(Code.dup_x1);
+                    Code.put(Code.pop);
+                    Code.put(Code.aload);
+                    if (!currentOperations.isEmpty()) {
+                        Code.put(currentOperations.remove());
+                    }
                 }
                 matrixDerederence--;
             } else {
@@ -249,8 +269,51 @@ public class CodeGenerator extends VisitorAdaptor {
     }
 
     public void visit(StatementRead statementRead) {
-        Code.put(Code.read);
-        Code.store(statementRead.getDesignator().obj);
+        if (statementRead.getDesignator().obj.getType() == Tab.intType)
+            Code.put(Code.read);
+        else
+            Code.put(Code.bread);
+
+        if (statementRead.getDesignator().obj.getType().getKind() == Struct.Array) {
+            if (statementRead.getDesignator().obj.getType().getElemType().getKind() == Struct.Array) {
+                // matrica
+                // stanje na steku: rowIndex columnIndex value
+                Code.put(Code.dup_x1);
+                Code.put(Code.pop);
+                // rowIndex value columnIndex
+                Code.put(Code.dup_x2);
+                Code.put(Code.pop);
+                // columnIndex rowIndex value
+                Code.put(Code.dup_x1);
+                Code.put(Code.pop);
+                // columnIndex value rowIndex
+                Code.load(statementRead.getDesignator().obj);
+                // columnIndex value rowIndex address
+                Code.put(Code.dup_x1);
+                Code.put(Code.pop);
+                // columnIndex value address rowIndex
+                Code.put(Code.aload);
+                // columnIndex value arrayAddress
+                Code.put(Code.dup_x2);
+                Code.put(Code.pop);
+                // arrayAddress columnIndex value
+                Code.put(Code.astore);
+            } else {
+                // niz
+                // stanje na steku: index address value
+                Code.put(Code.dup_x2);
+                Code.put(Code.pop);
+                // value index address
+                Code.put(Code.dup_x2);
+                Code.put(Code.pop);
+                // address value index
+                Code.put(Code.dup_x1);
+                Code.put(Code.pop);
+                // adress index value
+                Code.put(Code.astore);
+            }
+        } else
+            Code.store(statementRead.getDesignator().obj);
         afterStatementRestart();
     }
 
@@ -318,8 +381,7 @@ public class CodeGenerator extends VisitorAdaptor {
             Code.put(Code.pop);
             // arrayAddress columnIndex value
             Code.put(Code.astore);
-        }
-        else {
+        } else {
             oneOperandDeref = false;
             // index value
             Code.load(designatorStatementMinusMinus.getDesignator().obj);
@@ -379,7 +441,7 @@ public class CodeGenerator extends VisitorAdaptor {
     public void visit(RparenClass rparenClass) {
         indexing--;
         currentOperations = operations[indexing];
-        if(!currentOperations.isEmpty()){
+        if (!currentOperations.isEmpty()) {
             Code.put(currentOperations.remove());
         }
     }
