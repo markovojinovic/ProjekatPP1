@@ -121,23 +121,6 @@ public class SemanticAnalyzer extends VisitorAdaptor {
             return 3;
     }
 
-    private int getKindDept(String name) {
-        Obj var = Tab.find(name);
-        if (var == Tab.noObj) {
-            report_error("===============Nepostojeca promenljiva pustena u tabelu u okviru kontrole", null);
-            return -1;
-        }
-        int varKind = var.getType().getKind();
-        if (varKind != Struct.Array)
-            return 1;
-
-        varKind = var.getType().getElemType().getKind();
-        if (varKind != Struct.Array)
-            return 2;
-        else
-            return 3;
-    }
-
     private void check_ident_type(SyntaxNode node) {
         if (identType != null) {
             int startType = identType[0];
@@ -175,6 +158,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
             noDec = true;
         else if (assignmentType == 19) {
             Obj rVar = Tab.find(assignmentName);
+            report_info("Trazimo ( " + assignmentName + ") na liniji "  + assignment.getLine() + " - nadjeno " + varToStoring(rVar), null);
             int kind = getKind(rVar);
             if (rVar == Tab.noObj)
                 noDec = true;
@@ -331,6 +315,72 @@ public class SemanticAnalyzer extends VisitorAdaptor {
         }
     }
 
+    private String varToStoring(Obj var){
+        String ret = "";
+
+        switch(var.getKind()){
+            case Obj.Var: ret += "Var : "; break;
+            case Obj.Con: ret += "Con : "; break;
+            case Obj.Type: ret += "Type : "; break;
+        }
+
+        ret += var.getName();
+        ret += " ";
+
+        switch (var.getType().getKind()) {
+            case Struct.None:
+                ret +="notype ";
+                break;
+            case Struct.Int:
+                ret +="int ";
+                break;
+            case Struct.Char:
+                ret +="char ";
+                break;
+            case Struct.Bool:
+                ret +="bool ";
+                break;
+            case Struct.Array:
+                ret +="Arr of ";
+
+                switch (var.getType().getElemType().getKind()) {
+                    case Struct.None:
+                        ret +="notype ";
+                        break;
+                    case Struct.Int:
+                        ret +="int ";
+                        break;
+                    case Struct.Char:
+                        ret +="char ";
+                        break;
+                    case Struct.Class:
+                        ret +="Class ";
+                        break;
+                    case Struct.Array:
+                        ret +="Arr of ";
+
+                        switch (var.getType().getElemType().getElemType().getKind()) {
+                            case Struct.None:
+                                ret +="notype ";
+                                break;
+                            case Struct.Int:
+                                ret +="int ";
+                                break;
+                            case Struct.Char:
+                                ret +="char ";
+                                break;
+                            case Struct.Class:
+                                ret +="Class ";
+                                break;
+                        }
+                        break;
+                }
+
+        }
+
+        return ret;
+    }
+
     // =================================================================================================================
 
     public void visit(VarDeclarationArray varDecl) {
@@ -437,6 +487,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
     public void visit(TypeIdent type) {
         Obj typeNode = Tab.find(type.getTypeName());
+        // report_info("Trazimo ( " + type.getTypeName() + " ) na liniji "  + type.getLine() + " : " + typeNode.toString(), null);
         if (typeNode == Tab.noObj) {
             if (type.getTypeName().equals("bool"))
                 type.struct = new Struct(Struct.Bool);
@@ -495,6 +546,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
     public void visit(DesignatorExpression designator) {
         Obj obj = Tab.find(designator.getName());
+        report_info("Trazimo ( " + designator.getName() + " ) na liniji "  + designator.getLine() + " - nadjeno " + varToStoring(obj), null);
         if (obj == Tab.noObj) {
             report_error("Greska na liniji " + designator.getLine() + " : ime " + designator.getName() +
                     " nije deklarisano! ", null);
@@ -741,6 +793,7 @@ public class SemanticAnalyzer extends VisitorAdaptor {
 
     public void visit(DesignatorStatementEqual assignment) {
         Obj var = Tab.find(assignment.getDesignator().obj.getName());
+        report_info("Trazimo ( " + assignment.getDesignator().obj.getName() + " ) na liniji "  + assignment.getLine() + " - nadjeno " + varToStoring(var), null);
         designator_equal_check(var, assignment);
         assignmentType = -1;
         identType = null;

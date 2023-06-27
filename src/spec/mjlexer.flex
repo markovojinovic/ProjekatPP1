@@ -8,12 +8,12 @@ import java_cup.runtime.Symbol;
 
 	// ukljucivanje informacije o poziciji tokena
 	private Symbol new_symbol(int type) {
-		return new Symbol(type, yyline+1, yycolumn);
+		return new Symbol(type, yyline+1, yycolumn + 1);
 	}
 
 	// ukljucivanje informacije o poziciji tokena
 	private Symbol new_symbol(int type, Object value) {
-		return new Symbol(type, yyline+1, yycolumn, value);
+		return new Symbol(type, yyline+1, yycolumn + 1, value);
 	}
 
 %}
