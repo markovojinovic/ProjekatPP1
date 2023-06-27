@@ -14,14 +14,12 @@ import java.util.Queue;
 public class CodeGenerator extends VisitorAdaptor {
 
     private int mainPc;
-    private String designatorName = "";
     private Queue<Integer>[] operations = new LinkedList[256];
     private Queue<Integer> currentOperations;
     private boolean arrayCreation = false, exprEnter = false, oneOperandDeref = false,
             matrixCreation = false, exprEnterMatrix = false, oneOperandDerefMatrix = false;
     private int dereference = 0, matrixDerederence = 0, indexing = 0;
     private Struct arrayType = null;
-    private Obj arrayValue = null, arrayIndex = null;
 
     public CodeGenerator() {
         for (int i = 0; i < 256; i++) {
@@ -35,8 +33,6 @@ public class CodeGenerator extends VisitorAdaptor {
     }
 
     private void afterStatementRestart() {
-        arrayValue = null;
-        arrayIndex = null;
         indexing = 0;
         dereference = 0;
     }
@@ -183,7 +179,6 @@ public class CodeGenerator extends VisitorAdaptor {
     }
 
     public void visit(DesignatorExpression designator) {
-        designatorName = designator.getName();
         SyntaxNode parent = designator.getParent();
         boolean oneOperand = false;
         if ((DesignatorStatementPlusPlus.class != parent.getClass()
@@ -374,6 +369,19 @@ public class CodeGenerator extends VisitorAdaptor {
     public void visit(RsquareClass rsquareClass) {
         indexing--;
         currentOperations = operations[indexing];
+    }
+
+    public void visit(LparenClass lparenClass) {
+        indexing++;
+        currentOperations = operations[indexing];
+    }
+
+    public void visit(RparenClass rparenClass) {
+        indexing--;
+        currentOperations = operations[indexing];
+        if(!currentOperations.isEmpty()){
+            Code.put(currentOperations.remove());
+        }
     }
 
 }
