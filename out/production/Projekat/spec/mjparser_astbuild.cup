@@ -75,6 +75,8 @@ nonterminal SquareList SquareList;
 nonterminal IdentInLine IdentInLine;
 nonterminal IdentList IdentList;
 nonterminal OptionalComma OptionalComma;
+nonterminal Lparen Lparen;
+nonterminal Rparen Rparen;
 nonterminal IdentSquareList IdentSquareList;
 nonterminal FormPars FormPars;
 nonterminal TypeIdentSquareList TypeIdentSquareList;
@@ -191,7 +193,7 @@ MulopFactor ::= (MulopFactorRec) MulopFactor:M1 Mulop:M2 Factor:F3 {: RESULT=new
               ;
 
 Factor ::= (Consts) Constant:c {: RESULT=new Consts(c); RESULT.setLine(cleft); :}
-         | (FactorExpr) LPAREN Expr:E1 RPAREN {: RESULT=new FactorExpr(E1); RESULT.setLine(E1left); :}
+         | (FactorExpr) Lparen:L1 Expr:E2 Rparen:R3 {: RESULT=new FactorExpr(L1, E2, R3); RESULT.setLine(L1left); :}
          | (FactorNewExpr) NEW Type:t Lsqare:L1 Expr:e Rsqare:R2 {: RESULT=new FactorNewExpr(t, L1, e, R2); RESULT.setLine(tleft); :}
          | (FactorDes) Designator:d {: RESULT=new FactorDes(d); RESULT.setLine(dleft); :}
          | (FactorNewTypeExpr) NEW Type:t Lsqare:L1 Expr:e1 Rsqare:R2 Lsqare:L3 Expr:e2 Rsqare:R4 {: RESULT=new FactorNewTypeExpr(t, L1, e1, R2, L3, e2, R4); RESULT.setLine(tleft); :}
@@ -246,3 +248,7 @@ Type ::= (TypeIdent) IDENT:typeName {: RESULT=new TypeIdent(typeName); RESULT.se
 Lsqare ::= (LsquareClass) LSQUARE {: RESULT=new LsquareClass(); :};
 
 Rsqare ::= (RsquareClass) RSQUARE {: RESULT=new RsquareClass(); :};
+
+Lparen ::= (LparenClass) LPAREN {: RESULT=new LparenClass(); :};
+
+Rparen ::= (RparenClass) RPAREN {: RESULT=new RparenClass(); :};

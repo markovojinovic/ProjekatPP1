@@ -62,7 +62,7 @@ terminal Boolean BOOLCONST;
 terminal Character CHARCONST;
 
 nonterminal DesignatorStatement, NumberInPrint, Minus, Addop, FunctionParameters, Lsqare, Rsqare;
-nonterminal Mulop, ExprList, VarDecl, SquareList, IdentInLine, IdentList, OptionalComma;
+nonterminal Mulop, ExprList, VarDecl, SquareList, IdentInLine, IdentList, OptionalComma, Lparen, Rparen;
 nonterminal IdentSquareList, FormPars, TypeIdentSquareList, DesignatorListMany, DesignatorList;
 nonterminal VarDeclList, MethodDeclList, StatementList, IdentInLineList, OneVarDeclaration, OneVarDeclarationList;
 
@@ -170,7 +170,7 @@ MulopFactor ::= (MulopFactorRec) MulopFactor Mulop Factor
               ;
 
 Factor ::= (Consts) Constant:c
-         | (FactorExpr) LPAREN Expr RPAREN
+         | (FactorExpr) Lparen Expr Rparen
          | (FactorNewExpr) NEW Type:t Lsqare Expr:e Rsqare
          | (FactorDes) Designator:d
          | (FactorNewTypeExpr) NEW Type:t Lsqare Expr:e1 Rsqare Lsqare Expr:e2 Rsqare
@@ -225,3 +225,7 @@ Type ::= (TypeIdent) IDENT:typeName ;
 Lsqare ::= (LsquareClass) LSQUARE;
 
 Rsqare ::= (RsquareClass) RSQUARE;
+
+Lparen ::= (LparenClass) LPAREN;
+
+Rparen ::= (RparenClass) RPAREN;
