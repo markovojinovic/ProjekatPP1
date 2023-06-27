@@ -11,13 +11,6 @@ import java.util.Queue;
 
 // TODO: videti da li treba da se dodaje i dodavanje bool konstanti u tabelu simbola
 
-class Expressions {
-    public int data;
-    public int type;
-    public static final int Constant = 0;
-    public static final int Variable = 1;
-}
-
 public class CodeGenerator extends VisitorAdaptor {
 
     private int mainPc;
@@ -25,7 +18,7 @@ public class CodeGenerator extends VisitorAdaptor {
     private Queue<Integer>[] operations = new LinkedList[256];
     private Queue<Integer> currentOperations;
     private boolean arrayCreation = false, exprEnter = false, oneOperandDeref = false,
-            matrixCreation = false, exprEnterMatrix = false;
+            matrixCreation = false, exprEnterMatrix = false, oneOperandDerefMatrix = false;
     private int dereference = 0, matrixDerederence = 0, indexing = 0;
     private Struct arrayType = null;
     private Obj arrayValue = null, arrayIndex = null;
@@ -192,13 +185,18 @@ public class CodeGenerator extends VisitorAdaptor {
     public void visit(DesignatorExpression designator) {
         designatorName = designator.getName();
         SyntaxNode parent = designator.getParent();
+        boolean oneOperand = false;
         if ((DesignatorStatementPlusPlus.class != parent.getClass()
-                && DesignatorStatementMinusMinus.class != parent.getClass()) && oneOperandDeref) {
+                && DesignatorStatementMinusMinus.class != parent.getClass())) {
             oneOperandDeref = false;
+            oneOperandDerefMatrix = false;
 
-        }
+        } else
+            oneOperand = true;
         if (DesignatorStatementEqual.class != parent.getClass()) {
             if (dereference > 0 && exprEnter) {
+                if (oneOperand)
+                    Code.put(Code.dup);             // index ostaje pre dereferencirane vrednostini na steku za ++ i -- operacije
                 Code.load(designator.obj);
                 Code.put(Code.dup_x1);
                 Code.put(Code.pop);
@@ -208,6 +206,12 @@ public class CodeGenerator extends VisitorAdaptor {
                 }
                 dereference--;
             } else if (matrixDerederence > 0 && exprEnterMatrix) {      // rowIndex columnIndex -- sadrzaj steka
+                if(oneOperand){
+                    Code.put(Code.dup2);            // rowIndex columnIndex columnIndex rowIndex za ++ i -- operacije
+                    Code.put(Code.dup);
+                    Code.put(Code.pop);
+                    // rowIndex columnIndex rowIndex columnIndex
+                }
                 Code.put(Code.dup_x1);
                 Code.put(Code.pop);
                 Code.load(designator.obj);
@@ -256,43 +260,78 @@ public class CodeGenerator extends VisitorAdaptor {
     }
 
     public void visit(DesignatorStatementPlusPlus designatorStatementPlusPlus) {
-        // TODO: prepraviti ovo
-        Obj con = Tab.insert(Obj.Con, "$", Tab.intType);
-        con.setLevel(0);
-        con.setAdr(1);
-        Code.load(con);
-
+        Code.loadConst(1);
         Code.put(Code.add);
 
-        if (!oneOperandDeref)
+        if (!oneOperandDeref && !oneOperandDerefMatrix)
             Code.store(designatorStatementPlusPlus.getDesignator().obj);
-        else {
-            arrayValue = Tab.insert(Obj.Var, "$$", Tab.intType);
-            Code.store(arrayValue);
+        else if (oneOperandDerefMatrix) {
+            oneOperandDerefMatrix = false;
+            // rowIndex columnIndex value
+            Code.put(Code.dup_x2);
+            Code.put(Code.pop);
+            // value rowIndex columnIndex
+            Code.put(Code.dup_x2);
+            Code.put(Code.pop);
+            // columnIndex value rowIndex
             Code.load(designatorStatementPlusPlus.getDesignator().obj);
-            Code.load(arrayIndex);
-            Code.load(arrayValue);
+            // columnIndex value rowIndex address
+            Code.put(Code.dup_x1);
+            Code.put(Code.pop);
+            // columnIndex value address rowIndex
+            Code.put(Code.aload);
+            // columnIndex value arrayAddress
+            Code.put(Code.dup_x2);
+            Code.put(Code.pop);
+            // arrayAddress columnIndex value
+            Code.put(Code.astore);
+        } else {
+            oneOperandDeref = false;
+            // index value
+            Code.load(designatorStatementPlusPlus.getDesignator().obj);
+            // index value address
+            Code.put(Code.dup_x2);
+            Code.put(Code.pop);
+            // address index value
             Code.put(Code.astore);
         }
     }
 
     public void visit(DesignatorStatementMinusMinus designatorStatementMinusMinus) {
-        // TODO: prepraviti ovo
-        Obj con = Tab.insert(Obj.Con, "$", Tab.intType);
-        con.setLevel(0);
-        con.setAdr(1);
-        Code.load(con);
-
+        Code.loadConst(1);
         Code.put(Code.sub);
 
-        if (!oneOperandDeref)
+        if (!oneOperandDeref && !oneOperandDerefMatrix)
             Code.store(designatorStatementMinusMinus.getDesignator().obj);
-        else {
-            arrayValue = Tab.insert(Obj.Var, "$$", Tab.intType);
-            Code.store(arrayValue);
+        else if (oneOperandDerefMatrix) {
+            oneOperandDerefMatrix = false;
+            // rowIndex columnIndex value
+            Code.put(Code.dup_x2);
+            Code.put(Code.pop);
+            // value rowIndex columnIndex
+            Code.put(Code.dup_x2);
+            Code.put(Code.pop);
+            // columnIndex value rowIndex
             Code.load(designatorStatementMinusMinus.getDesignator().obj);
-            Code.load(arrayIndex);
-            Code.load(arrayValue);
+            // columnIndex value rowIndex address
+            Code.put(Code.dup_x1);
+            Code.put(Code.pop);
+            // columnIndex value address rowIndex
+            Code.put(Code.aload);
+            // columnIndex value arrayAddress
+            Code.put(Code.dup_x2);
+            Code.put(Code.pop);
+            // arrayAddress columnIndex value
+            Code.put(Code.astore);
+        }
+        else {
+            oneOperandDeref = false;
+            // index value
+            Code.load(designatorStatementMinusMinus.getDesignator().obj);
+            // index value address
+            Code.put(Code.dup_x2);
+            Code.put(Code.pop);
+            // address index value
             Code.put(Code.astore);
         }
     }
@@ -315,6 +354,7 @@ public class CodeGenerator extends VisitorAdaptor {
     public void visit(ExprListExprMatrix exprListExprMatrix) {
         matrixDerederence++;
         exprEnterMatrix = true;
+        oneOperandDerefMatrix = true;
     }
 
     public void visit(FactorNewTypeExpr factorNewTypeExpr) {
@@ -326,12 +366,12 @@ public class CodeGenerator extends VisitorAdaptor {
         afterStatementRestart();
     }
 
-    public void visit(LsquareClass lsquareClass){
+    public void visit(LsquareClass lsquareClass) {
         indexing++;
         currentOperations = operations[indexing];
     }
 
-    public void visit(RsquareClass rsquareClass){
+    public void visit(RsquareClass rsquareClass) {
         indexing--;
         currentOperations = operations[indexing];
     }
